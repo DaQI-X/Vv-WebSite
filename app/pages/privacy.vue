@@ -90,7 +90,7 @@
             <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">联系我们</h2>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
               如对本隐私政策有任何疑问，请通过
-              <a href="https://github.com/DaQI-X/Vv-WebSite/issues" target="_blank" rel="noopener" class="text-brand-600 dark:text-brand-400 hover:underline">GitHub Issues</a>
+              <a :href="config.public.githubRepo + '/issues'" target="_blank" rel="noopener" class="text-brand-600 dark:text-brand-400 hover:underline">GitHub Issues</a>
               联系我们。
             </p>
           </section>
@@ -101,5 +101,6 @@
 </template>
 
 <script setup lang="ts">
+const config = useRuntimeConfig()
 useHead({ title: '隐私政策 - Vv Transcribe' })
 </script>
