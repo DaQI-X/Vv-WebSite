@@ -5,7 +5,6 @@
     <HowItWorksSection />
     <UseCasesSection />
     <ComparisonSection />
-    <TestimonialsSection />
     <CTASection />
   </div>
 </template>
