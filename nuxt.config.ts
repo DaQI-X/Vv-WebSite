@@ -7,7 +7,8 @@ export default defineNuxtConfig({
       title: 'Vv Transcribe - 专业字幕转写校对工具',
       htmlAttrs: { lang: 'zh-CN' },
       link: [
-        { rel: 'icon', type: 'image/png', href: '/logo.png' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32.png' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
       ],
       meta: [
         { charset: 'utf-8' },
@@ -18,16 +19,17 @@ export default defineNuxtConfig({
         { property: 'og:title', content: 'Vv Transcribe - 专业字幕转写校对工具' },
         { property: 'og:description', content: 'AI 驱动的字幕转写与校对，精准比对字幕与播出稿，杜绝播出事故。本地运行，永久免费。' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: 'https://vvscribe.com' },
-        { property: 'og:image', content: 'https://vvscribe.com/og-image.png' },
+        { property: 'og:image', content: 'https://vvscribe.com/og-image.jpg' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'Vv Transcribe - 专业字幕转写校对工具' },
         { name: 'twitter:description', content: 'AI 驱动的字幕转写与校对，精准比对字幕与播出稿，杜绝播出事故。' },
+        { name: 'twitter:image', content: 'https://vvscribe.com/og-image.jpg' },
       ],
     },
   },
   runtimeConfig: {
     public: {
+      siteUrl: 'https://vvscribe.com',
       githubRepo: 'https://github.com/DaQI-X/Vv-Transcribe',
       downloadWinX64: 'https://github.com/DaQI-X/Vv-Transcribe/releases/latest/download/Vv-Transcribe-win-x64.exe',
       downloadMacArm64: 'https://github.com/DaQI-X/Vv-Transcribe/releases/latest/download/Vv-Transcribe-mac-arm64.dmg',
