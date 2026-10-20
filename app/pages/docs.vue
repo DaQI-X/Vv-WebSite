@@ -101,6 +101,20 @@
                   </ol>
                 </div>
               </div>
+
+              <div class="mt-6 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-5">
+                <h3 class="font-semibold text-amber-800 dark:text-amber-300 mb-2 flex items-center gap-2">
+                  <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                  首次打开提示「无法验证开发者 / 已损坏」或「Windows 已保护你的电脑」？
+                </h3>
+                <p class="text-sm text-amber-700 dark:text-amber-400 mb-3">
+                  这是正常现象。Vv Transcribe 是个人开源项目，暂未购买付费代码签名证书，系统因此会拦截提示——应用本身安全、功能完整、数据全程本地处理。按下面方法即可正常打开：
+                </p>
+                <ul class="space-y-2 text-sm text-amber-700 dark:text-amber-400">
+                  <li><strong>macOS：</strong>在「应用程序」里右键点 Vv Transcribe → 选「打开」→ 弹窗再点「打开」；若仍提示已损坏，在终端执行 <code class="px-1.5 py-0.5 bg-amber-100 dark:bg-amber-800/40 rounded text-xs">xattr -cr "/Applications/Vv Transcribe.app"</code>。</li>
+                  <li><strong>Windows：</strong>SmartScreen 弹窗点「更多信息」→「仍要运行」即可。</li>
+                </ul>
+              </div>
             </section>
 
             <section id="transcribe" class="scroll-mt-24">
