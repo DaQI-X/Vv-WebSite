@@ -25,12 +25,21 @@ export default defineNuxtConfig({
         { name: 'twitter:description', content: 'AI 驱动的字幕转写与校对，精准比对字幕与播出稿，杜绝播出事故。' },
         { name: 'twitter:image', content: 'https://vvscribe.com/og-image.jpg' },
       ],
+      // Cloudflare Web Analytics 无 Cookie 埋点，token 是公开值，不做隐私告知
+      script: [
+        {
+          type: 'module',
+          src: 'https://static.cloudflareinsights.com/beacon.min.js',
+          'data-cf-beacon': '{"token": "29a4ad3432324333888e6499035ea5e6"}',
+        },
+      ],
     },
   },
   runtimeConfig: {
     public: {
       siteUrl: 'https://vvscribe.com',
       githubRepo: 'https://github.com/DaQI-X/Vv-Transcribe',
+      contactEmail: 'hi@vvscribe.com',
       /** 发版时只改这一行，页面上的版本号都取自这里 */
       appVersion: '1.0.1',
       downloadWinX64: 'https://github.com/DaQI-X/Vv-Transcribe/releases/latest/download/Vv-Transcribe-win-x64.exe',

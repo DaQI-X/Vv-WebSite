@@ -91,6 +91,8 @@
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
               如对本隐私政策有任何疑问，请通过
               <a :href="config.public.githubRepo + '/issues'" target="_blank" rel="noopener" class="text-brand-600 dark:text-brand-400 hover:underline">GitHub Issues</a>
+              或邮件
+              <a :href="`mailto:${config.public.contactEmail}`" class="text-brand-600 dark:text-brand-400 hover:underline">{{ config.public.contactEmail }}</a>
               联系我们。
             </p>
           </section>
