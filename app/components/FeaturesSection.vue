@@ -51,7 +51,7 @@ const features = [
   },
   {
     title: '本地隐私保护',
-    desc: '所有转写与比对均在本地完成，文件不上传云端，数据安全有保障。',
+    desc: '本地模式下转写与比对全程在本机完成，文件不上传云端，数据安全有保障。',
     icon: LockIcon,
     bgClass: 'bg-green-50',
     iconClass: 'text-green-600',
