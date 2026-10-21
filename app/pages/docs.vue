@@ -62,7 +62,7 @@
               </h2>
               <div class="space-y-6">
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
-                  <h3 class="font-semibold text-gray-900 mb-3">系统要求</h3>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">系统要求</h3>
                   <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                     <li class="flex items-start gap-2">
                       <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
-                  <h3 class="font-semibold text-gray-900 mb-3">安装步骤</h3>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">安装步骤</h3>
                   <ol class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
                     <li class="flex items-start gap-3">
                       <span class="w-6 h-6 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-full flex items-center justify-center text-xs font-bold shrink-0">1</span>
@@ -128,7 +128,7 @@
               </h2>
               <div class="space-y-6">
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
-                  <h3 class="font-semibold text-gray-900 mb-3">导入文件</h3>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">导入文件</h3>
                   <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">支持以下方式导入音视频：</p>
                   <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                     <li class="flex items-start gap-2">
@@ -147,14 +147,14 @@
                 </div>
 
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
-                  <h3 class="font-semibold text-gray-900 mb-3">支持格式</h3>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">支持格式</h3>
                   <div class="flex flex-wrap gap-2">
                     <span v-for="fmt in formats" :key="fmt" class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm rounded-full">{{ fmt }}</span>
                   </div>
                 </div>
 
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
-                  <h3 class="font-semibold text-gray-900 mb-3">转写过程</h3>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">转写过程</h3>
                   <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
                     点击「开始转写」后，Whisper 引擎在本机 CPU 上对音频进行语音识别，结果逐句上屏、进度按真实音频位置计算，转写过程中可随时取消。速度取决于音频长度与本机 CPU 性能，全程不需要把文件上传到任何服务器。
                   </p>
@@ -172,7 +172,7 @@
               </h2>
               <div class="space-y-6">
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
-                  <h3 class="font-semibold text-gray-900 mb-3">上传参考稿</h3>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">上传参考稿</h3>
                   <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
                     转写完成后，可上传播出稿或参考稿进行比对。参考稿用于与转写结果逐字对比，快速发现差异。
                   </p>
@@ -193,7 +193,7 @@
                 </div>
 
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
-                  <h3 class="font-semibold text-gray-900 mb-3">Diff 比对结果</h3>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">Diff 比对结果</h3>
                   <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">比对结果以颜色标注差异：</p>
                   <div class="space-y-2 text-sm">
                     <div class="flex items-center gap-3">
@@ -220,21 +220,21 @@
                   <div class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <span class="text-lg"></span>
                     <div>
-                      <strong class="text-gray-900">差异分析</strong>
+                      <strong class="text-gray-900 dark:text-white">差异分析</strong>
                       <p class="mt-1">AI 逐一分析每个差异点，判断是转写错误还是参考稿表述不同</p>
                     </div>
                   </div>
                   <div class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <span class="text-lg">💡</span>
                     <div>
-                      <strong class="text-gray-900">纠错建议</strong>
+                      <strong class="text-gray-900 dark:text-white">纠错建议</strong>
                       <p class="mt-1">针对转写错误，AI 给出修正建议，一键采纳即可更新字幕</p>
                     </div>
                   </div>
                   <div class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                     <span class="text-lg"></span>
                     <div>
-                      <strong class="text-gray-900">参考稿问题</strong>
+                      <strong class="text-gray-900 dark:text-white">参考稿问题</strong>
                       <p class="mt-1">如发现参考稿本身存在问题（如错别字），AI 也会标注提醒</p>
                     </div>
                   </div>
@@ -280,14 +280,14 @@
               </h2>
               <div class="space-y-6">
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
-                  <h3 class="font-semibold text-gray-900 mb-3">功能说明</h3>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">功能说明</h3>
                   <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
                     转写默认使用打包在应用内的本地 Whisper 引擎，切换为「本地模式」后不需要联网、也不产生任何 API 费用。AI 纠错则依赖第三方大模型：需要在「纠错配置」里填写您自己的 API Key 才能运行，未填写时点击纠错会直接提示去设置。您也可以在「转写配置」里把转写模式切到云端，用第三方 ASR API 替代本地引擎。
                   </p>
                 </div>
 
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
-                  <h3 class="font-semibold text-gray-900 mb-3">支持的 API 厂商</h3>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">支持的 API 厂商</h3>
                   <div class="grid sm:grid-cols-2 gap-3 text-sm">
                     <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-3">
                       <div class="font-medium text-gray-900 dark:text-white">OpenAI</div>
@@ -309,7 +309,7 @@
                 </div>
 
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
-                  <h3 class="font-semibold text-gray-900 mb-3">配置步骤</h3>
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">配置步骤</h3>
                   <ol class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
                     <li class="flex items-start gap-3">
                       <span class="w-6 h-6 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-full flex items-center justify-center text-xs font-bold shrink-0">1</span>
