@@ -44,12 +44,12 @@
                     <div class="text-sm text-gray-500 mt-1">文件不上传云端，数据安全</div>
                   </div>
                   <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-4">
-                    <div class="text-2xl font-bold text-brand-600 dark:text-brand-400">零 API 费用</div>
-                    <div class="text-sm text-gray-500 mt-1">开源引擎，无持续成本</div>
+                    <div class="text-2xl font-bold text-brand-600 dark:text-brand-400">本地转写零费用</div>
+                    <div class="text-sm text-gray-500 mt-1">开源引擎，不依赖付费 API</div>
                   </div>
                   <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-4">
                     <div class="text-2xl font-bold text-brand-600 dark:text-brand-400">多格式支持</div>
-                    <div class="text-sm text-gray-500 mt-1">SRT/TXT 等多种导出格式</div>
+                    <div class="text-sm text-gray-500 mt-1">SRT/TXT/JSON/Markdown 导出</div>
                   </div>
                 </div>
               </div>
@@ -74,7 +74,7 @@
                     </li>
                     <li class="flex items-start gap-2">
                       <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                      <span><strong>磁盘空间：</strong>首次运行需下载约 1-2GB 模型文件</span>
+                      <span><strong>磁盘空间：</strong>安装包 270MB（macOS）/ 396MB（Windows），首次转写再下载约 150MB 模型文件</span>
                     </li>
                   </ul>
                 </div>
@@ -92,7 +92,7 @@
                     </li>
                     <li class="flex items-start gap-3">
                       <span class="w-6 h-6 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-full flex items-center justify-center text-xs font-bold shrink-0">3</span>
-                      <span>首次启动时，应用会自动下载 Whisper 模型（约 1-2GB），请耐心等待</span>
+                      <span>首次转写时，应用会自动下载 Whisper 模型（base，约 150MB），请耐心等待</span>
                     </li>
                     <li class="flex items-start gap-3">
                       <span class="w-6 h-6 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-full flex items-center justify-center text-xs font-bold shrink-0">4</span>
@@ -137,7 +137,7 @@
                     </li>
                     <li class="flex items-start gap-2">
                       <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                      <span><strong>URL 下载：</strong>粘贴视频 URL，应用自动下载并导入</span>
+                      <span><strong>链接导入：</strong>粘贴公开视频链接，应用自动下载并导入；部分站点有防盗链，失败时请改用本地文件</span>
                     </li>
                   </ul>
                 </div>
@@ -152,7 +152,7 @@
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
                   <h3 class="font-semibold text-gray-900 mb-3">转写过程</h3>
                   <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                    点击「开始转写」后，Whisper 引擎将在本地对音频进行语音识别。转写过程中会实时显示进度条和已识别的文字内容。转写速度取决于音频长度和计算机性能，通常 1 小时音频约需 5-15 分钟。
+                    点击「开始转写」后，Whisper 引擎在本机 CPU 上对音频进行语音识别，结果逐句上屏、进度按真实音频位置计算，转写过程中可随时取消。速度取决于音频长度与本机 CPU 性能，全程不需要把文件上传到任何服务器。
                   </p>
                   <div class="bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 rounded-lg p-4 text-sm text-amber-800 dark:text-amber-300">
                     <strong>提示：</strong>首次转写需要下载 AI 模型文件，请确保网络连接正常。后续转写将使用本地缓存的模型，无需联网。
@@ -175,7 +175,7 @@
                   <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                     <li class="flex items-start gap-2">
                       <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                      <span>点击「上传参考」按钮，选择 TXT 或 DOC 文件</span>
+                      <span>点击「上传参考」按钮，选择 TXT / Markdown / SRT / DOCX / PDF 文件（老式 .doc 请先另存为 .docx）</span>
                     </li>
                     <li class="flex items-start gap-2">
                       <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
@@ -210,7 +210,7 @@
               </h2>
               <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
                 <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                  完成参考稿比对后，点击「AI 纠错」按钮，AI 将自动分析所有差异，给出纠错建议与原因解释。
+                  点击「AI 纠错」即可运行，参考稿不是前置条件：已上传参考稿时，AI 以参考稿为准逐处比对差异并解释原因；没有参考稿时，AI 会通读转写文本，并结合内置的中文词库给出修正建议。纠错需要您在「设置 → 纠错配置」里填好 API Key。
                 </p>
                 <div class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
                   <div class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
@@ -247,7 +247,7 @@
                 导出字幕
               </h2>
               <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
-                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">校对完成后，可将字幕导出为多种格式：</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">校对完成后，点击「导出」会弹出系统「另存为」对话框，可选择格式与保存位置：</p>
                 <div class="grid sm:grid-cols-2 gap-4">
                   <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                     <div class="font-medium text-gray-900 dark:text-white mb-1">SRT 格式</div>
@@ -256,6 +256,14 @@
                   <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
                     <div class="font-medium text-gray-900 dark:text-white mb-1">TXT 格式</div>
                     <div class="text-xs text-gray-500">纯文本格式，方便复制粘贴和二次编辑</div>
+                  </div>
+                  <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                    <div class="font-medium text-gray-900 dark:text-white mb-1">JSON 格式</div>
+                    <div class="text-xs text-gray-500">保留时间轴与逐句结构，便于接入自动化流程</div>
+                  </div>
+                  <div class="border border-gray-200 dark:border-gray-700 rounded-lg p-4">
+                    <div class="font-medium text-gray-900 dark:text-white mb-1">Markdown 格式</div>
+                    <div class="text-xs text-gray-500">带时间标记的文稿，适合归档与审阅</div>
                   </div>
                 </div>
               </div>
@@ -270,7 +278,7 @@
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
                   <h3 class="font-semibold text-gray-900 mb-3">功能说明</h3>
                   <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
-                    Vv Transcribe 默认使用本地 Whisper 引擎进行转写和纠错，所有处理在本地完成，无需联网。同时支持接入第三方 AI 厂商 API，自定义转写和纠错引擎，灵活适配不同场景需求。
+                    转写默认使用打包在应用内的本地 Whisper 引擎，切换为「本地模式」后不需要联网、也不产生任何 API 费用。AI 纠错则依赖第三方大模型：需要在「纠错配置」里填写您自己的 API Key 才能运行，未填写时点击纠错会直接提示去设置。您也可以在「转写配置」里把转写模式切到云端，用第三方 ASR API 替代本地引擎。
                   </p>
                 </div>
 
@@ -301,25 +309,25 @@
                   <ol class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
                     <li class="flex items-start gap-3">
                       <span class="w-6 h-6 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-full flex items-center justify-center text-xs font-bold shrink-0">1</span>
-                      <span>打开应用，进入「设置」→「API 配置」</span>
+                      <span>打开应用，进入「设置」→「纠错配置」（要把转写切到云端则进「转写配置」）</span>
                     </li>
                     <li class="flex items-start gap-3">
                       <span class="w-6 h-6 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-full flex items-center justify-center text-xs font-bold shrink-0">2</span>
-                      <span>选择 API 厂商，填写 API Key 和 Base URL</span>
+                      <span>选择「服务商」，填写 API Key 与 API Base URL，必要时改「模型」</span>
                     </li>
                     <li class="flex items-start gap-3">
                       <span class="w-6 h-6 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-full flex items-center justify-center text-xs font-bold shrink-0">3</span>
-                      <span>选择要使用 API 的功能（转写 / 纠错 / 两者）</span>
+                      <span>点击「保存设置」——所有配置都要保存后才会生效，切换服务商不会自动改接口</span>
                     </li>
                     <li class="flex items-start gap-3">
                       <span class="w-6 h-6 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-full flex items-center justify-center text-xs font-bold shrink-0">4</span>
-                      <span>点击「测试连接」验证配置是否正确</span>
+                      <span>回到首页导入文件完成转写，点击「AI 纠错」即可验证配置是否可用；Key 缺失或调用失败都会给出可见提示</span>
                     </li>
                   </ol>
                 </div>
 
                 <div class="bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 rounded-lg p-4 text-sm text-amber-800 dark:text-amber-300">
-                  <strong>注意：</strong>使用第三方 API 会产生相应费用，费用由 API 厂商收取，与 Vv Transcribe 无关。未配置 API 时，所有功能均使用本地引擎，完全免费。
+                  <strong>注意：</strong>使用第三方 API 会产生相应费用，费用由 API 厂商收取，与 Vv Transcribe 无关。未配置 API 时，本地转写、参考稿比对和导出仍可正常使用；只有 AI 纠错必须有 Key 才能运行。
                 </div>
               </div>
             </section>
@@ -359,32 +367,40 @@ const sections = [
   { id: 'faq', title: '常见问题' },
 ]
 
-const formats = ['MP4', 'MP3', 'WAV', 'FLAC', 'AAC', 'OGG', 'M4A', 'WEBM', 'MOV', 'AVI']
+const formats = ['MP4', 'MOV', 'MKV', 'AVI', 'WEBM', 'FLV', 'MP3', 'WAV', 'M4A', 'FLAC', 'OGG', 'WMA']
 
 const faqs = [
   {
     q: '首次使用需要联网吗？',
-    a: '是的，首次启动时需要下载 Whisper AI 模型（约 1-2GB）。下载完成后，后续所有转写操作均在本地完成，无需联网。',
+    a: '需要一次：首次转写会下载约 150MB 的 Whisper 模型（国内经 hf-mirror.com 镜像）。模型缓存后，本地模式下的转写、比对和导出都不再需要联网；AI 纠错要调用您配置的第三方 API，始终需要网络。',
   },
   {
     q: '转写支持哪些语言？',
-    a: '目前支持中文（普通话）和英文的语音转写，后续版本将增加更多语言支持。',
+    a: '当前转写固定为中文（普通话）。英文及其他语言支持在后续版本规划中。',
   },
   {
     q: '转写准确率如何？',
-    a: '基于 OpenAI Whisper 引擎，在清晰音频条件下中文转写准确率可达 95% 以上。配合参考稿比对和 AI 纠错功能，可进一步提升最终字幕的准确性。',
+    a: '准确率与音频质量、口音和专有名词密度关系很大，我们不放没有实测依据的百分比。对播出字幕这类零容错场景，请务必用参考稿比对 + AI 纠错做二次校对，不要直接采信识别结果。',
   },
   {
     q: '文件数据安全吗？',
-    a: '所有转写和比对均在本地完成，文件不会上传到任何云端服务器。您的音视频内容和字幕数据完全保存在本地。',
+    a: '转写和参考稿比对全程在本机完成，音视频不会上传到任何服务器。若您启用云端转写或 AI 纠错，音频/字幕文本会发送给您自己配置的第三方 API，受该服务商的隐私政策约束。',
   },
   {
     q: '为什么转写速度有时较慢？',
-    a: '转写速度取决于音频长度、计算机性能（CPU/GPU）以及模型大小。Apple Silicon Mac 通常速度最快。1 小时音频一般需 5-15 分钟。',
+    a: '本地引擎在本机 CPU 上以 int8 推理，不依赖 GPU，速度主要取决于音频长度和 CPU 性能；首次转写还要额外等待模型下载与加载，开屏页和转写卡片会显示当前阶段。',
+  },
+  {
+    q: '转写中途可以停下来吗？',
+    a: '可以。转写卡片上有「取消转写」按钮，点击后会中止本次任务并回收引擎占用，您可以换文件或换模式重新开始。',
   },
   {
     q: '参考稿支持什么格式？',
-    a: '目前支持 TXT 纯文本格式。建议将 Word 文档另存为 TXT 后上传。',
+    a: '支持 TXT、Markdown、SRT、DOCX、PDF 五种；老式 .doc 请先在 Word 里另存为 .docx。每次只能上传一份，更换需先点参考稿气泡上的清除按钮。',
+  },
+  {
+    q: '怎么获取新版本？',
+    a: '应用不会自动安装更新（未做代码签名）。在「设置 → 关于与更新」点「检查更新」可看到是否有新版，按提示前往发布页下载新安装包覆盖安装即可。',
   },
 ]
 

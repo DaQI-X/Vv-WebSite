@@ -9,7 +9,7 @@
     <div class="relative max-w-3xl mx-auto px-6 text-center">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 border border-white/20 rounded-full text-white text-sm font-medium mb-6">
         <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-        永久免费 · 本地运行 · v1.0.0
+        永久免费 · 本地运行 · v{{ config.public.appVersion }}
       </div>
       <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">开始使用 Vv Transcribe</h2>
       <p class="text-brand-100 dark:text-brand-300 text-lg mb-10">免费下载，本地运行，数据安全无忧</p>
@@ -41,8 +41,8 @@
 
       <div class="grid grid-cols-3 gap-6 max-w-md mx-auto mb-8">
         <div>
-          <div class="text-2xl font-bold text-white">100%</div>
-          <div class="text-brand-200 dark:text-brand-400 text-xs mt-1">本地处理</div>
+          <div class="text-2xl font-bold text-white">本地</div>
+          <div class="text-brand-200 dark:text-brand-400 text-xs mt-1">转写与比对不上传</div>
         </div>
         <div>
           <div class="text-2xl font-bold text-white">¥0</div>
@@ -55,7 +55,7 @@
       </div>
 
       <p class="text-brand-200 dark:text-brand-400 text-sm">
-        所有功能永久免费，无订阅、无 API 费用。源代码开放于
+        应用永久免费、无订阅，本地转写零 API 费用；AI 纠错需自备第三方 Key，费用由所选厂商收取。源代码开放于
         <a :href="config.public.githubRepo" target="_blank" rel="noopener" class="underline hover:text-white transition-colors">GitHub</a>
       </p>
     </div>

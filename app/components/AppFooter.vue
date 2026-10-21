@@ -1,5 +1,6 @@
 <template>
-  <footer class="bg-gray-900 dark:bg-gray-950 text-gray-400 dark:text-gray-500 py-12">
+  <!-- 底部留白要高于「回到顶部」悬浮按钮（bottom-8 + 48px），否则版本号那一行会被压住 -->
+  <footer class="bg-gray-900 dark:bg-gray-950 text-gray-400 dark:text-gray-500 pt-12 pb-24">
     <div class="max-w-6xl mx-auto px-6">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         <NuxtLink to="/" class="flex items-center gap-2">
@@ -22,7 +23,7 @@
       </div>
       <div class="border-t border-gray-800 dark:border-gray-800 mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
         <p>&copy; {{ new Date().getFullYear() }} Vv Transcribe. All rights reserved.</p>
-        <p class="text-gray-500 dark:text-gray-600">当前版本 v1.0.0 · <NuxtLink to="/docs" class="text-gray-400 hover:text-white transition-colors">更新日志</NuxtLink></p>
+        <p class="text-gray-500 dark:text-gray-600">当前版本 v{{ config.public.appVersion }} · <a :href="`${config.public.githubRepo}/releases`" target="_blank" rel="noopener" class="text-gray-400 hover:text-white transition-colors">更新日志</a></p>
       </div>
     </div>
   </footer>

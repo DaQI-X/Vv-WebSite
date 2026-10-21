@@ -31,6 +31,8 @@ export default defineNuxtConfig({
     public: {
       siteUrl: 'https://vvscribe.com',
       githubRepo: 'https://github.com/DaQI-X/Vv-Transcribe',
+      /** 发版时只改这一行，页面上的版本号都取自这里 */
+      appVersion: '1.0.1',
       downloadWinX64: 'https://github.com/DaQI-X/Vv-Transcribe/releases/latest/download/Vv-Transcribe-win-x64.exe',
       downloadMacArm64: 'https://github.com/DaQI-X/Vv-Transcribe/releases/latest/download/Vv-Transcribe-mac-arm64.dmg',
       downloadMacX64: 'https://github.com/DaQI-X/Vv-Transcribe/releases/latest/download/Vv-Transcribe-mac-x64.dmg',

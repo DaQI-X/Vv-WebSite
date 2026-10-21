@@ -10,14 +10,14 @@
             返回首页
           </NuxtLink>
           <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">隐私政策</h1>
-          <p class="text-gray-500 dark:text-gray-400">最后更新：2026 年 10 月 15 日</p>
+          <p class="text-gray-500 dark:text-gray-400">最后更新：2026 年 10 月 21 日</p>
         </div>
 
         <div class="space-y-8">
           <section>
             <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">概述</h2>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-              Vv Transcribe（以下简称"本应用"）是一款面向媒体专业人士的本地字幕转写与校对工具。本隐私政策说明我们如何收集、使用和保护您的信息。核心原则：<strong>您的数据始终留在本地</strong>。
+              Vv Transcribe（以下简称"本应用"）是一款面向媒体专业人士的本地字幕转写与校对工具。本隐私政策说明我们如何收集、使用和保护您的信息。核心原则：<strong>默认全程在本地处理</strong>，只有在您主动配置第三方 API 之后，相关数据才会发往您指定的服务商。
             </p>
           </section>
 
@@ -26,11 +26,11 @@
             <ul class="space-y-2 text-gray-600 dark:text-gray-400">
               <li class="flex items-start gap-2">
                 <svg class="w-4 h-4 text-green-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                <span>所有音视频转写在本地完成，文件不上传任何服务器</span>
+                <span>本地模式下的音视频转写全程在本机完成，文件不上传任何服务器</span>
               </li>
               <li class="flex items-start gap-2">
                 <svg class="w-4 h-4 text-green-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                <span>参考稿比对、AI 纠错均在本地运行</span>
+                <span>参考稿比对在本地完成，不上传播出稿内容</span>
               </li>
               <li class="flex items-start gap-2">
                 <svg class="w-4 h-4 text-green-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
@@ -42,12 +42,12 @@
           <section>
             <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">API 配置（可选）</h2>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
-              如果您选择配置第三方 AI API（如 OpenAI、通义千问等），转写或纠错请求将发送至您指定的 API 端点。此时：
+              AI 纠错需要配置第三方 AI API（如 OpenAI、通义千问等）才能使用；若您把「转写配置」里的转写模式切到云端，转写也会请求您指定的 API 端点。此时：
             </p>
             <ul class="space-y-2 text-gray-600 dark:text-gray-400">
               <li class="flex items-start gap-2">
                 <svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01" /></svg>
-                <span>音频数据将发送至您配置的第三方 API 服务商</span>
+                <span>字幕文本（AI 纠错）或音频（云端转写）将发送至您配置的第三方 API 服务商</span>
               </li>
               <li class="flex items-start gap-2">
                 <svg class="w-4 h-4 text-amber-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01" /></svg>
@@ -82,7 +82,7 @@
           <section>
             <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">模型下载</h2>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-              首次使用时，本应用需要从 Hugging Face 下载 Whisper AI 模型文件（约 1-2GB）。下载过程仅涉及模型文件传输，不上传任何用户数据。模型文件下载后缓存在本地，后续使用无需重复下载。
+              首次转写时，本应用需要从 Hugging Face 下载 Whisper 模型文件（base 模型，约 150MB，国内经 hf-mirror.com 镜像加速）。下载过程仅涉及模型文件传输，不上传任何用户数据。模型文件下载后缓存在本地，后续使用无需重复下载。
             </p>
           </section>
 

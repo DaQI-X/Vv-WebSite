@@ -77,6 +77,6 @@ const rows = [
   { feature: 'API 配置扩展', vv: true, online: 'no', manual: 'no' },
   { feature: '多格式字幕导出', vv: true, online: 'partial', manual: 'no' },
   { feature: '永久免费', vv: true, online: 'no', manual: 'no' },
-  { feature: '无需联网', vv: true, online: 'no', manual: 'yes' },
+  { feature: '本地转写无需联网', vv: true, online: 'no', manual: 'yes' },
 ]
 </script>

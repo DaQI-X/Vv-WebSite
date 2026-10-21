@@ -30,7 +30,7 @@ const SubtitleIcon = { render: () => h('svg', { class: 'w-6 h-6', fill: 'none', 
 const features = [
   {
     title: 'AI 语音转写',
-    desc: '基于 Whisper 引擎，支持中英文等多种语言的音视频转写，本地运行，识别精准。',
+    desc: '基于 Whisper 引擎，在本机完成中文（普通话）音视频转写，逐句上屏，无需上传等待。',
     icon: MicIcon,
     bgClass: 'bg-brand-50',
     iconClass: 'text-brand-600',
@@ -58,14 +58,14 @@ const features = [
   },
   {
     title: '视频下载',
-    desc: '支持通过 URL 直接下载视频素材，省去额外下载步骤，一站式完成工作流。',
+    desc: '粘贴公开视频链接即可自动下载素材并转写；部分站点有防盗链，失败时改用本地文件导入。',
     icon: VideoIcon,
     bgClass: 'bg-blue-50',
     iconClass: 'text-blue-600',
   },
   {
     title: '多格式字幕导出',
-    desc: '支持 SRT、TXT 等多种字幕格式导出，无缝对接后期制作流程。',
+    desc: '支持 SRT、TXT、JSON、Markdown 四种格式导出，无缝对接后期制作流程。',
     icon: SubtitleIcon,
     bgClass: 'bg-rose-50',
     iconClass: 'text-rose-600',
