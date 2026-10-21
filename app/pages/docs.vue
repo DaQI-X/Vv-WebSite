@@ -99,6 +99,10 @@
                       <span>模型下载完成后即可开始使用</span>
                     </li>
                   </ol>
+                  <p class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800 text-sm text-gray-600 dark:text-gray-400">
+                    macOS 也可以用 Homebrew 安装：<code class="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">brew tap DaQI-X/tap && brew trust DaQI-X/tap && brew install --cask vv-transcribe</code>
+                    <span class="block mt-1 text-xs text-gray-500 dark:text-gray-500">Homebrew 7 之后必须先 trust 才允许加载第三方 tap；以后拿新版用 <code class="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">brew reinstall --cask vv-transcribe</code>，cask 跟的是 latest，upgrade 不会提示有新版。</span>
+                  </p>
                 </div>
               </div>
 
