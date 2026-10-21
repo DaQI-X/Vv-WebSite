@@ -70,11 +70,11 @@
                     </li>
                     <li class="flex items-start gap-2">
                       <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                      <span><strong>macOS：</strong>macOS 12+，支持 Intel 和 Apple Silicon (M1/M2/M3)</span>
+                      <span><strong>macOS：</strong>macOS 12+，支持 Intel 和 Apple Silicon（M 系列全系）</span>
                     </li>
                     <li class="flex items-start gap-2">
                       <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                      <span><strong>磁盘空间：</strong>安装包 270MB（macOS）/ 396MB（Windows），首次转写再下载约 150MB 模型文件</span>
+                      <span><strong>磁盘空间：</strong>安装包约 272MB（Apple 芯片）/ 314MB（Intel Mac）/ 396MB（Windows），首次转写再下载约 150MB 模型文件</span>
                     </li>
                   </ul>
                 </div>
