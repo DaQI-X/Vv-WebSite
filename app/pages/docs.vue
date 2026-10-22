@@ -143,9 +143,34 @@
                     </li>
                     <li class="flex items-start gap-2">
                       <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                      <span><strong>链接导入：</strong>粘贴公开视频链接，应用自动下载并导入；部分站点有防盗链，失败时请改用本地文件</span>
+                      <span><strong>链接导入：</strong>粘贴公开视频链接，应用自动下载并导入；部分站点有防盗链，失败时请改用本地文件。首次使用请看下方「链接转写的准备工作」</span>
                     </li>
                   </ul>
+                </div>
+
+                <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">链接转写的准备工作</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    链接转写要用到本机已有的两样东西：一个浏览器（Chrome / Edge / Chromium，用于通过站点的前端校验）和命令行工具
+                    <strong>yt-dlp</strong>（用于解析并下载音视频）。两者都不打包在安装包里，需要本机已安装。
+                  </p>
+                  <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span><strong>安装 yt-dlp：</strong>macOS 执行 <CommandCopy text="brew install yt-dlp" />，Windows 执行 <CommandCopy text="winget install yt-dlp.yt-dlp" />，装好后重启应用。未安装时点「开始转写」会直接弹出这条提示，不会静默失败。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span><strong>macOS 首次会弹授权：</strong>提交链接后系统会问 <strong>「"Vv Transcribe"想修改Mac上的App。」</strong>，请点 <strong>「允许…」</strong>。这是应用要启动本机浏览器来完成校验，每台 Mac 只需授权一次；授权后 macOS 会自动重启应用，若没自动重启，请自己完全退出再打开一次。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span><strong>不小心点了拒绝：</strong>链接转写会一直失败。打开 <strong>系统设置 → 隐私与安全性 → App 管理</strong>，找到 Vv Transcribe 把开关打开，再重启应用即可。</span>
+                    </li>
+                  </ul>
+                  <div class="mt-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-sm text-gray-600 dark:text-gray-400">
+                    浏览器只用于打开您粘贴的那个页面，用的是系统在临时目录里新建的一份独立空白配置，<strong>不会读取您的账号登录状态、密码、书签或浏览记录</strong>。Windows 不出现上面那个授权弹窗，装好 yt-dlp 即可直接用。
+                  </div>
                 </div>
 
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
@@ -385,6 +410,14 @@ const faqs = [
   {
     q: '转写支持哪些语言？',
     a: '当前转写固定为中文（普通话）。英文及其他语言支持在后续版本规划中。',
+  },
+  {
+    q: '用链接转写时，Mac 弹出「“Vv Transcribe”想修改Mac上的App。」怎么办？',
+    a: '点「允许…」就行，每台 Mac 只需授权一次。链接转写要启动本机的 Chrome/Edge 打开您粘贴的页面来完成站点校验，macOS 把这类操作归进「App 管理」权限，所以会弹窗确认。授权后系统会自动重启应用；如果当初点了拒绝，去「系统设置 → 隐私与安全性 → App 管理」打开 Vv Transcribe 的开关再重启应用即可。这一步不会读取您的浏览器账号、密码或浏览记录。',
+  },
+  {
+    q: '链接转写失败，提示未检测到 yt-dlp？',
+    a: '链接转写靠本机的 yt-dlp 解析下载，安装包里没有内置。macOS 执行 brew install yt-dlp，Windows 执行 winget install yt-dlp.yt-dlp，装完重启应用。若站点有防盗链或需要登录，仍可能解析失败，此时请改用「本地文件」上传下载好的音视频。',
   },
   {
     q: '转写准确率如何？',
