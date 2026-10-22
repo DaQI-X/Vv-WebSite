@@ -35,8 +35,8 @@
       </p>
 
       <div class="max-w-xl mx-auto mb-10 px-4 py-3 bg-white/10 border border-white/15 rounded-lg text-brand-100 dark:text-brand-300 text-xs leading-relaxed text-left">
-        首次打开若提示「无法验证开发者」(macOS) 或「Windows 已保护你的电脑」，属正常现象——本应用暂未付费签名，功能与数据安全不受影响。macOS 右键点应用图标 → 打开；Windows 点「更多信息」→「仍要运行」。
-        <a href="/docs#install" class="underline hover:text-white transition-colors">查看完整安装说明</a>
+        首次打开若提示「无法验证开发者」(macOS) 或「Windows 已保护你的电脑」，属正常现象——本应用暂未付费签名，功能与数据安全不受影响，且只需处理一次。macOS：点掉弹窗后打开 <strong class="font-semibold text-white">系统设置 → 隐私与安全性</strong>，最下方点 <strong class="font-semibold text-white">「仍要打开」</strong>；Windows：点「更多信息」→「仍要运行」。
+        <a href="/docs#install" class="underline hover:text-white transition-colors">看图文完整安装说明</a>
       </div>
 
       <div class="grid grid-cols-3 gap-6 max-w-md mx-auto mb-8">

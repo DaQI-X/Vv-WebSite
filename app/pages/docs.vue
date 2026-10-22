@@ -100,8 +100,8 @@
                     </li>
                   </ol>
                   <p class="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800 text-sm text-gray-600 dark:text-gray-400">
-                    macOS 也可以用 Homebrew 安装：<code class="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">brew tap DaQI-X/tap && brew trust DaQI-X/tap && brew install --cask vv-transcribe</code>
-                    <span class="block mt-1 text-xs text-gray-500 dark:text-gray-500">Homebrew 7 之后必须先 trust 才允许加载第三方 tap；以后拿新版用 <code class="px-1 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs">brew reinstall --cask vv-transcribe</code>，cask 跟的是 latest，upgrade 不会提示有新版。</span>
+                    macOS 也可以用 Homebrew 安装：<CommandCopy class="mt-1" text="brew tap DaQI-X/tap && brew trust DaQI-X/tap && brew install --cask vv-transcribe" />
+                    <span class="block mt-2 text-xs text-gray-500 dark:text-gray-400">Homebrew 7 之后必须先 trust 才允许加载第三方 tap；以后拿新版用 <CommandCopy text="brew reinstall --cask vv-transcribe" />，cask 跟的是 latest，upgrade 不会提示有新版。</span>
                   </p>
                 </div>
               </div>
@@ -112,12 +112,14 @@
                   首次打开提示「无法验证开发者 / 已损坏」或「Windows 已保护你的电脑」？
                 </h3>
                 <p class="text-sm text-amber-700 dark:text-amber-400 mb-3">
-                  这是正常现象。Vv Transcribe 是个人开源项目，暂未购买付费代码签名证书，系统因此会拦截提示——应用本身安全、功能完整、数据全程本地处理。按下面方法即可正常打开：
+                  这是正常现象。Vv Transcribe 是个人开源项目，暂未购买付费代码签名证书，系统因此会拦截提示——应用本身安全、功能完整，本地模式下的转写与比对不出这台电脑。按下面顺序操作即可正常打开，都只需做一次：
                 </p>
-                <ul class="space-y-2 text-sm text-amber-700 dark:text-amber-400">
-                  <li><strong>macOS：</strong>在「应用程序」里右键点 Vv Transcribe → 选「打开」→ 弹窗再点「打开」；若仍提示已损坏，在终端执行 <code class="px-1.5 py-0.5 bg-amber-100 dark:bg-amber-800/40 rounded text-xs">xattr -cr "/Applications/Vv Transcribe.app"</code>。</li>
-                  <li><strong>Windows：</strong>SmartScreen 弹窗点「更多信息」→「仍要运行」即可。</li>
-                </ul>
+                <ol class="space-y-3 text-sm text-amber-700 dark:text-amber-400 list-decimal list-inside">
+                  <li><strong>macOS 首选：</strong>先点掉那个「无法打开」弹窗，打开 <strong>系统设置 → 隐私与安全性</strong>，滚到最下方会看到一条「已阻止使用 Vv Transcribe」，点它右边的 <strong>「仍要打开」</strong>，可能需要输入开机密码。</li>
+                  <li><strong>macOS 备选：</strong>打开「应用程序」文件夹，<strong>右键</strong>点 Vv Transcribe → 选「打开」→ 弹窗里再点「打开」。</li>
+                  <li><strong>若提示「应用已损坏，无法打开」：</strong>这是下载带来的隔离属性造成的，把下面这行复制进「终端」回车执行（没有输出就是成功），再重新打开应用：<br><CommandCopy class="mt-1" :text="xattrCommand" /></li>
+                  <li><strong>Windows：</strong>蓝色的 SmartScreen 弹窗点「更多信息」→「仍要运行」。</li>
+                </ol>
               </div>
             </section>
 
@@ -359,6 +361,8 @@
 useHead({ title: '使用文档 - Vv Transcribe' })
 
 const activeSection = ref('overview')
+
+const xattrCommand = 'xattr -cr "/Applications/Vv Transcribe.app"'
 
 const sections = [
   { id: 'overview', title: '产品概述' },
