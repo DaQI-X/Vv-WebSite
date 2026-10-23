@@ -9,7 +9,7 @@
     },
     "docs": {
       "title": "Documentation - Vv Transcribe",
-      "description": "Vv Transcribe documentation: installation and first launch, audio and video transcription, reference script diffing, AI correction, subtitle export, API setup, and frequently asked questions."
+      "description": "Vv Transcribe documentation: installation and first launch, audio and video transcription, reference script diffing, local and AI proofreading, subtitle export, API setup, and frequently asked questions."
     },
     "privacy": {
       "title": "Privacy Policy - Vv Transcribe",
@@ -51,7 +51,7 @@
     "badge": "Built for media professionals",
     "titleLead": "AI-driven",
     "titleAccent": "subtitle transcription and proofreading",
-    "subtitleLead": "Diff captions against the broadcast script, let AI fix what speech recognition got wrong,",
+    "subtitleLead": "Diff captions against the broadcast script, then proofread locally or with AI,",
     "subtitleTail": "so nothing reaches air with a typo in it",
     "download": "Download free",
     "learnMore": "Learn more",
@@ -60,7 +60,7 @@
     "line1": "Good evening, and welcome to today's program.",
     "line2Wrong": "Invited today",
     "line2Right": "Joining us today",
-    "line2Badge": "Fixed by AI",
+    "line2Badge": "Proofread by AI",
     "line3": "a senior expert in the field."
   },
   "features": {
@@ -76,8 +76,8 @@
         "desc": "Upload the broadcast or reference script and it is diffed word by word against the transcript, so every difference stands out."
       },
       "correction": {
-        "title": "AI correction",
-        "desc": "AI explains why each difference occurred and proposes a fix, so you can locate and correct subtitle errors quickly."
+        "title": "Two ways to proofread",
+        "desc": "Local proofreading runs on the built-in misheard-word list and Chinese dictionary: no setup, no network, no tokens. AI proofreading calls the model you configure and explains each difference in context. Both only propose fixes - you accept them one by one."
       },
       "privacy": {
         "title": "Local by default",
@@ -106,8 +106,8 @@
         "desc": "The local Whisper engine transcribes at full speed with live progress. When it finishes you can upload a reference script to compare against."
       },
       "review": {
-        "title": "Compare and correct",
-        "desc": "Subtitles are diffed against the reference automatically. Click AI correction for the analysis and proposed fixes, then export."
+        "title": "Compare and proofread",
+        "desc": "Subtitles are diffed against the reference automatically. Click Proofread, pick local or AI, review each suggestion, then export."
       }
     }
   },
@@ -163,7 +163,7 @@
       "local": "Data stays on your machine",
       "asr": "Automatic AI transcription",
       "diff": "Diff against a reference script",
-      "correction": "AI correction",
+      "correction": "Local + AI proofreading",
       "api": "Bring-your-own API configuration",
       "export": "Multi-format subtitle export",
       "free": "Free forever",
@@ -187,12 +187,12 @@
     "notice": "If the first launch warns that the developer cannot be verified (macOS) or that Windows protected your PC, that is expected — the app is not code-signed yet, nothing about its features or your data is affected, and you only have to do this once. macOS: dismiss the dialog, open **System Settings → Privacy & Security**, click **\"Open Anyway\"** at the very bottom. Windows: click **More info** then **Run anyway**.",
     "noticeLink": "See the full illustrated install guide",
     "statLocal": "Local",
-    "statLocalLabel": "Transcription and diffing never upload",
+    "statLocalLabel": "Transcription and local proofreading never upload",
     "statFree": "¥0",
     "statFreeLabel": "Free forever",
     "statFormats": "4 formats",
     "statFormatsLabel": "Subtitle export",
-    "footnoteLead": "The app is free with no subscription, and local transcription costs nothing in API fees. AI correction needs your own third-party key, billed by the vendor you choose. The source code is open on",
+    "footnoteLead": "The app is free with no subscription, and local transcription plus local proofreading cost nothing in API fees. AI proofreading needs your own third-party key, billed by the vendor you choose. The source code is open on",
     "footnoteLink": "GitHub"
   },
   "docs": {
@@ -203,13 +203,13 @@
       "install": "Install and launch",
       "transcribe": "Audio and video transcription",
       "reference": "Reference script diff",
-      "correction": "AI correction",
+      "correction": "Proofreading",
       "export": "Export subtitles",
       "api": "API configuration",
       "faq": "FAQ"
     },
     "overview": {
-      "intro": "Vv Transcribe is an AI subtitle transcription and proofreading tool for media professionals. It runs the local Whisper speech recognition engine to transcribe audio and video quickly, then adds reference script comparison and AI correction, so broadcast teams can proofread captions precisely and keep mistakes off air.",
+      "intro": "Vv Transcribe is an AI subtitle transcription and proofreading tool for media professionals. It runs the local Whisper speech recognition engine to transcribe audio and video quickly, then adds reference script comparison plus both local and AI proofreading, so broadcast teams can proofread captions precisely and keep mistakes off air.",
       "card1Title": "Runs locally",
       "card1Desc": "Files never go to the cloud",
       "card2Title": "Zero API cost",
@@ -281,15 +281,15 @@
       "diffNote": "- differences are highlighted"
     },
     "correction": {
-      "lead": "Click AI correction to run it; a reference script is not a precondition. With one uploaded, AI treats the reference as the source of truth, walks through each difference and explains it. Without one, AI reads the transcript and uses the built-in Chinese dictionary to propose fixes. Correction needs an API key in Settings → Correction.",
-      "item1Title": "Difference analysis",
-      "item1Desc": "AI reviews each difference one by one and judges whether the transcript is wrong or the script is simply worded differently",
-      "item2Title": "Correction proposals",
-      "item2Desc": "For real transcription errors AI proposes a fix; accept it with one click to update the subtitle",
-      "item3Title": "Problems in the script",
-      "item3Desc": "If the reference script itself contains a mistake, such as a typo, AI flags that too",
+      "lead": "Click \"Proofread\" once the transcript is ready. If a model is configured, a dialog lets you pick \"local proofreading\" or \"AI proofreading\". With no key configured the dialog is skipped: local proofreading runs straight away and the button reads \"本地校对中\" (proofreading locally). A reference script is not a precondition - both modes work with or without one.",
+      "item1Title": "Local proofreading (no setup)",
+      "item1Desc": "No network, no tokens. It walks the transcript with the built-in list of misheard homophones (for example 以经 to 已经) and looks each result up in the bundled Chinese dictionary, so you can tell a recognition error from wording that was always correct.",
+      "item2Title": "AI proofreading (in context)",
+      "item2Desc": "Calls the third-party model you filled in under Settings → Proofread and reads the sentence in context: with a reference script it explains every difference against it, without one it scans the transcript for suspicious spots. Needs a connection and spends a few tokens.",
+      "item3Title": "Suggestions only - you approve each one",
+      "item3Desc": "Neither mode rewrites your subtitles. Each difference comes with an explanation and waits for you to click Accept; if the reference script itself contains a mistake, such as a typo, it is flagged for your judgement as well.",
       "noteLabel": "Heads up: ",
-      "noteText": "while AI correction is running the clear button on the reference script is disabled, so an accidental click cannot interrupt the analysis."
+      "noteText": "while a proofreading run is in progress the clear button on the reference script is disabled, so an accidental click cannot interrupt the analysis."
     },
     "export": {
       "lead": "When proofreading is done, click Export and the system Save dialog lets you pick the format and location:",
@@ -304,7 +304,7 @@
     },
     "api": {
       "aboutTitle": "How it works",
-      "aboutText": "Transcription uses the local Whisper engine bundled inside the app; in local mode it needs no network and produces no API cost. AI correction depends on a third-party model: fill in your own API key under Correction configuration and it will not run without one - clicking correction with no key takes you straight to settings. You can also switch the transcription mode to cloud under Transcription configuration and use a third-party ASR API instead of the local engine.",
+      "aboutText": "Transcription uses the local Whisper engine bundled inside the app; in local mode it needs no network and produces no API cost. Local proofreading is the same - it only consults the built-in misheard-word list and dictionary, so it works without a key. AI proofreading depends on a third-party model: fill in your own API key under Proofread configuration, and with no key filled in, clicking Proofread simply runs the local pass and tells you where to configure it. You can also switch the transcription mode to cloud under Transcription configuration and use a third-party ASR API instead of the local engine.",
       "vendorsTitle": "Supported API vendors",
       "vendor1Name": "OpenAI",
       "vendor1Desc": "GPT-4o / Whisper API",
@@ -315,17 +315,18 @@
       "vendor4Name": "Custom OpenAI-compatible",
       "vendor4Desc": "Any API that speaks the OpenAI format",
       "stepsTitle": "Configuration steps",
-      "step1": "Open the app and go to Settings → Correction (for cloud transcription, use Transcription instead)",
+      "step1": "Open the app and go to Settings → Proofread (for cloud transcription, use Transcription instead)",
       "step2": "Choose the provider, enter the API key and API base URL, and change the model if needed",
-      "step3": "Click Save settings - nothing takes effect until you save, and switching provider does not change the endpoint on its own",
-      "step4": "Back on the home screen, import a file and transcribe it, then click AI correction to verify the configuration; a missing key or a failed call both show a visible message",
+      "step3": "Click Test connection first - it sends a real request with what you have typed, before saving, so you know the key works",
+      "step4": "Then click Save settings - nothing takes effect until you save, and switching provider does not change the endpoint on its own",
+      "step5": "Back on the home screen, import a file and transcribe it, then click Proofread and pick AI to verify the configuration; a missing key or a failed call both show a visible message",
       "noteLabel": "Heads up: ",
-      "noteText": "third-party APIs charge their own fees, billed by the vendor and unrelated to Vv Transcribe. With no API configured, local transcription, reference comparison and export all still work; only AI correction requires a key."
+      "noteText": "third-party APIs charge their own fees, billed by the vendor and unrelated to Vv Transcribe. With no API configured, local transcription, reference comparison, local proofreading and export all still work; only AI proofreading (and cloud transcription) requires a key."
     },
     "faq": {
       "net": {
         "q": "Do I need a network connection the first time?",
-        "a": "Once: the first transcription downloads the Whisper model, about 150MB (in China this goes through the hf-mirror.com mirror). After the model is cached, local transcription, comparison and export need no network at all. AI correction calls the third-party API you configured, so it always needs a connection."
+        "a": "Once: the first transcription downloads the Whisper model, about 150MB (in China this goes through the hf-mirror.com mirror). After the model is cached, local transcription, comparison, local proofreading and export need no network at all. AI proofreading calls the third-party API you configured, so it always needs a connection."
       },
       "language": {
         "q": "Which languages does transcription support?",
@@ -341,11 +342,11 @@
       },
       "accuracy": {
         "q": "How accurate is the transcription?",
-        "a": "Accuracy depends heavily on audio quality, accent and how many proper nouns appear, so we do not publish a percentage we have not measured. For zero-tolerance use such as broadcast captions, always run reference comparison plus AI correction as a second pass instead of trusting the raw recognition result."
+        "a": "Accuracy depends heavily on audio quality, accent and how many proper nouns appear, so we do not publish a percentage we have not measured. For zero-tolerance use such as broadcast captions, always run reference comparison together with local or AI proofreading as a second pass instead of trusting the raw recognition result."
       },
       "security": {
         "q": "Is my file data safe?",
-        "a": "Transcription and reference comparison run entirely on your machine; audio and video are never uploaded to any server. If you enable cloud transcription or AI correction, the audio or caption text is sent to the third-party API you configured yourself, under that provider's privacy policy."
+        "a": "Transcription, reference comparison and local proofreading run entirely on your machine; audio and video are never uploaded to any server. If you enable cloud transcription or AI proofreading, the audio or caption text is sent to the third-party API you configured yourself, under that provider's privacy policy."
       },
       "speed": {
         "q": "Why is transcription sometimes slow?",
@@ -376,11 +377,11 @@
     "overviewText": "Vv Transcribe (\"the App\") is a local subtitle transcription and proofreading tool for media professionals. This policy explains what information we collect and how we protect it. The core principle: **everything is processed locally by default**, and data goes to a provider you chose only after you configure a third-party API yourself.",
     "localTitle": "Data processed on your machine",
     "local1": "Audio and video transcription in local mode runs entirely on your machine; files are never uploaded to any server",
-    "local2": "Reference comparison runs locally and does not upload the contents of your broadcast script",
+    "local2": "Reference comparison and local proofreading run on your machine and never upload your broadcast script or caption text",
     "local3": "Transcripts and subtitle files are stored only on your device",
     "apiTitle": "API configuration (optional)",
-    "apiLead": "AI correction only runs once you configure a third-party AI API (such as OpenAI or Qwen); if you also switch the transcription mode under Transcription configuration to cloud, transcription requests your chosen endpoint as well. In that case:",
-    "api1": "Caption text (AI correction) or audio (cloud transcription) is sent to the third-party API provider you configured",
+    "apiLead": "AI proofreading only runs once you configure a third-party AI API (such as OpenAI or Qwen); local proofreading needs no API configuration at all. If you also switch the transcription mode under Transcription configuration to cloud, transcription requests your chosen endpoint as well. In that case:",
+    "api1": "Caption text (AI proofreading) or audio (cloud transcription) is sent to the third-party API provider you configured",
     "api2": "Processing of that data is governed by that provider's own privacy policy",
     "api3": "Your API key is stored only on your own device and is never uploaded",
     "collectTitle": "Information we collect",

@@ -225,21 +225,21 @@
                 </p>
                 <div class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
                   <div class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                    <span class="text-lg"></span>
+                    <span class="text-lg">🖥️</span>
                     <div>
                       <strong class="text-gray-900 dark:text-white">{{ t('docs.correction.item1Title') }}</strong>
                       <p class="mt-1">{{ t('docs.correction.item1Desc') }}</p>
                     </div>
                   </div>
                   <div class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                    <span class="text-lg">💡</span>
+                    <span class="text-lg">🤖</span>
                     <div>
                       <strong class="text-gray-900 dark:text-white">{{ t('docs.correction.item2Title') }}</strong>
                       <p class="mt-1">{{ t('docs.correction.item2Desc') }}</p>
                     </div>
                   </div>
                   <div class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                    <span class="text-lg"></span>
+                    <span class="text-lg">✅</span>
                     <div>
                       <strong class="text-gray-900 dark:text-white">{{ t('docs.correction.item3Title') }}</strong>
                       <p class="mt-1">{{ t('docs.correction.item3Desc') }}</p>
@@ -294,7 +294,7 @@
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
                   <h3 class="font-semibold text-gray-900 dark:text-white mb-3">{{ t('docs.api.stepsTitle') }}</h3>
                   <ol class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                    <li v-for="i in 4" :key="i" class="flex items-start gap-3">
+                    <li v-for="i in 5" :key="i" class="flex items-start gap-3">
                       <span class="w-6 h-6 bg-brand-100 dark:bg-brand-900 text-brand-700 dark:text-brand-300 rounded-full flex items-center justify-center text-xs font-bold shrink-0">{{ i }}</span>
                       <span>{{ t(`docs.api.step${i}`) }}</span>
                     </li>
