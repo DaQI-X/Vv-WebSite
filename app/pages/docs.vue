@@ -74,7 +74,7 @@
                     </li>
                     <li class="flex items-start gap-2">
                       <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                      <span><strong>磁盘空间：</strong>安装包约 272MB（Apple 芯片）/ 314MB（Intel Mac）/ 396MB（Windows），首次转写再下载约 150MB 模型文件</span>
+                      <span><strong>磁盘空间：</strong>安装包约 307MB（Apple 芯片）/ 348MB（Intel Mac）/ 413MB（Windows），已内置链接转写组件；首次转写再下载约 150MB 模型文件</span>
                     </li>
                   </ul>
                 </div>
@@ -151,13 +151,13 @@
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
                   <h3 class="font-semibold text-gray-900 dark:text-white mb-3">链接转写的准备工作</h3>
                   <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                    链接转写要用到本机已有的两样东西：一个浏览器（Chrome / Edge / Chromium，用于通过站点的前端校验）和命令行工具
-                    <strong>yt-dlp</strong>（用于解析并下载音视频）。两者都不打包在安装包里，需要本机已安装。
+                    解析下载音视频用的 <strong>yt-dlp</strong> 已经内置在安装包里，不用再自己装。链接转写还会借用本机的一个浏览器
+                    （Chrome / Edge / Chromium）去通过站点的前端校验，所以首次使用时 macOS 会弹一次授权。
                   </p>
                   <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
                     <li class="flex items-start gap-2">
                       <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                      <span><strong>安装 yt-dlp：</strong>macOS 执行 <CommandCopy text="brew install yt-dlp" />，Windows 执行 <CommandCopy text="winget install yt-dlp.yt-dlp" />，装好后重启应用。未安装时点「开始转写」会直接弹出这条提示，不会静默失败。</span>
+                      <span><strong>无需安装任何东西：</strong>转写组件随包提供，装好应用即可直接粘贴链接转写；未装浏览器时链接解析会失败并给出可见提示，此时改用「本地文件」上传。</span>
                     </li>
                     <li class="flex items-start gap-2">
                       <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
@@ -169,7 +169,7 @@
                     </li>
                   </ul>
                   <div class="mt-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-sm text-gray-600 dark:text-gray-400">
-                    浏览器只用于打开您粘贴的那个页面，用的是系统在临时目录里新建的一份独立空白配置，<strong>不会读取您的账号登录状态、密码、书签或浏览记录</strong>。Windows 不出现上面那个授权弹窗，装好 yt-dlp 即可直接用。
+                    浏览器只用于打开您粘贴的那个页面，用的是系统在临时目录里新建的一份独立空白配置，<strong>不会读取您的账号登录状态、密码、书签或浏览记录</strong>。Windows 不出现上面那个授权弹窗，装好应用即可直接用。
                   </div>
                 </div>
 
@@ -416,8 +416,8 @@ const faqs = [
     a: '点「允许…」就行，每台 Mac 只需授权一次。链接转写要启动本机的 Chrome/Edge 打开您粘贴的页面来完成站点校验，macOS 把这类操作归进「App 管理」权限，所以会弹窗确认。授权后系统会自动重启应用；如果当初点了拒绝，去「系统设置 → 隐私与安全性 → App 管理」打开 Vv Transcribe 的开关再重启应用即可。这一步不会读取您的浏览器账号、密码或浏览记录。',
   },
   {
-    q: '链接转写失败，提示未检测到 yt-dlp？',
-    a: '链接转写靠本机的 yt-dlp 解析下载，安装包里没有内置。macOS 执行 brew install yt-dlp，Windows 执行 winget install yt-dlp.yt-dlp，装完重启应用。若站点有防盗链或需要登录，仍可能解析失败，此时请改用「本地文件」上传下载好的音视频。',
+    q: '链接转写失败怎么办？',
+    a: 'v1.0.2 起 yt-dlp 已内置在安装包，不用再自行安装，所以失败基本不是「缺组件」。若提示内置转写组件没能启动，请完全退出 Vv Transcribe 再重新打开，仍不行就重装一次；若提示权限问题（macOS 未在「隐私与安全性」放行），按弹窗里的「打开隐私设置」按钮授权。部分站点有防盗链或需要登录，仍可能解析失败，此时请改用「本地文件」上传下载好的音视频。',
   },
   {
     q: '转写准确率如何？',
@@ -442,6 +442,10 @@ const faqs = [
   {
     q: '怎么获取新版本？',
     a: '应用不会自动安装更新（未做代码签名）。在「设置 → 关于与更新」点「检查更新」可看到是否有新版，按提示前往发布页下载新安装包覆盖安装即可。',
+  },
+  {
+    q: '从官网/GitHub 下载特别慢怎么办？',
+    a: '安装包放在 GitHub Releases，国内访问 GitHub 的资源域名没有 CDN 加速，有时只有几十 KB/s，几百 MB 的包要等很久。我们不提供第三方镜像站——来路不明的镜像可能被改动过，无法保证安全。最稳妥的做法：开网络加速后用浏览器直接下载本页的链接；macOS 也可以用 Homebrew 安装（同样走 GitHub，但支持断点续传、失败重试比浏览器稳定）。「设置 → 检查更新」连不上时，会把发布页地址复制到剪贴板，方便您在浏览器里粘贴下载。',
   },
 ]
 
