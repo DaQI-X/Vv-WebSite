@@ -34,7 +34,8 @@
 
       <div class="relative max-w-4xl mx-auto">
         <div class="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl border border-brand-100 dark:border-gray-800 shadow-xl shadow-brand-100/20 dark:shadow-black/20 p-6 md:p-8">
-          <div class="flex items-center gap-3 mb-6">
+          <!-- 窄屏允许换行：文件名+状态徽章一行，进度条自动落到下一行，避免撑破卡片 -->
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-2 mb-6">
             <img src="/logo.png" alt="Vv Transcribe" class="h-8 w-auto" />
             <div class="flex items-center gap-2">
               <span class="text-sm font-medium text-gray-700 dark:text-gray-300">{{ t('hero.demoFile') }}</span>

@@ -7,7 +7,7 @@
           <img src="/logo.png" alt="Vv Transcribe" class="h-7 w-auto" />
           <span class="text-white font-semibold">Vv Transcribe</span>
         </NuxtLink>
-        <div class="flex items-center gap-6 text-sm">
+        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm">
           <a :href="homeHash('features')" class="hover:text-white transition-colors">{{ t('footer.features') }}</a>
           <a :href="homeHash('how-it-works')" class="hover:text-white transition-colors">{{ t('footer.flow') }}</a>
           <a :href="homeHash('use-cases')" class="hover:text-white transition-colors">{{ t('footer.scenes') }}</a>

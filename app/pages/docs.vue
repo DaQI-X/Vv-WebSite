@@ -202,7 +202,8 @@
                   <h3 class="font-semibold text-gray-900 dark:text-white mb-3">{{ t('docs.reference.diffTitle') }}</h3>
                   <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">{{ t('docs.reference.diffLead') }}</p>
                   <div class="space-y-2 text-sm">
-                    <div class="flex items-center gap-3">
+                    <!-- 英文下「改前 → 改后 + 说明」一行放不下，允许换行 -->
+                    <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
                       <span class="px-3 py-1 bg-red-50 dark:bg-red-950/50 text-red-600 rounded line-through">{{ t('docs.reference.diffFrom') }}</span>
                       <span class="text-gray-400">→</span>
                       <span class="px-3 py-1 bg-green-50 dark:bg-green-950/50 text-green-600 rounded">{{ t('docs.reference.diffTo') }}</span>
