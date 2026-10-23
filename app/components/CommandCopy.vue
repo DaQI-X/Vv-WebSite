@@ -4,7 +4,7 @@
     <button
       type="button"
       class="px-2.5 py-1 text-xs shrink-0 border-l border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-      :aria-label="`复制命令：${text}`"
+      :aria-label="t('common.copyCommandAria', { text })"
       @click="copy"
     >{{ label }}</button>
   </span>
@@ -12,19 +12,23 @@
 
 <script setup lang="ts">
 const props = defineProps<{ text: string }>()
+const { t } = useI18n()
 
-const label = ref('复制')
+const state = ref<'idle' | 'copied' | 'failed'>('idle')
+const label = computed(() =>
+  state.value === 'copied' ? t('common.copied') : state.value === 'failed' ? t('common.copyFailed') : t('common.copy')
+)
 let timer: ReturnType<typeof setTimeout> | undefined
 
 async function copy() {
   try {
     await navigator.clipboard.writeText(props.text)
-    label.value = '已复制'
+    state.value = 'copied'
   } catch {
-    label.value = '复制失败'
+    state.value = 'failed'
   }
   clearTimeout(timer)
-  timer = setTimeout(() => { label.value = '复制' }, 2000)
+  timer = setTimeout(() => { state.value = 'idle' }, 2000)
 }
 
 onUnmounted(() => clearTimeout(timer))

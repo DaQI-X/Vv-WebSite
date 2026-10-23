@@ -9,7 +9,7 @@
       v-if="visible"
       class="fixed bottom-8 right-8 z-40 w-12 h-12 bg-brand-600 hover:bg-brand-700 text-white rounded-full shadow-lg shadow-brand-600/25 flex items-center justify-center transition-all duration-200 hover:-translate-y-1"
       @click="scrollToTop"
-      aria-label="回到顶部"
+      :aria-label="t('common.toTop')"
     >
       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
@@ -19,6 +19,7 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
 const visible = ref(false)
 
 function handleScroll() {

@@ -1,7 +1,7 @@
 <template>
   <button
     class="p-2 rounded-lg text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-    aria-label="切换暗色模式"
+    :aria-label="t('common.toggleDark')"
     @click="toggle"
   >
     <svg v-if="isDark" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -14,5 +14,6 @@
 </template>
 
 <script setup lang="ts">
+const { t } = useI18n()
 const { isDark, toggle } = useDarkMode()
 </script>

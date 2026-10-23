@@ -1,0 +1,407 @@
+{
+  "meta": {
+    "home": {
+      "title": "Vv Transcribe - Subtitle transcription and proofreading for broadcasters",
+      "description": "Vv Transcribe is an AI subtitle transcription and proofreading tool for media professionals. It diffs captions against your broadcast script so TV and radio teams can catch errors before air.",
+      "keywords": "subtitle transcription,speech recognition,AI proofreading,broadcast captions,broadcasting,Whisper,local transcription",
+      "ogDescription": "AI-driven subtitle transcription and proofreading. Diff captions against the script, catch errors before air. Runs locally, free forever.",
+      "twitterDescription": "AI-driven subtitle transcription and proofreading. Diff captions against the script, catch errors before air."
+    },
+    "docs": {
+      "title": "Documentation - Vv Transcribe",
+      "description": "Vv Transcribe documentation: installation and first launch, audio and video transcription, reference script diffing, AI correction, subtitle export, API setup, and frequently asked questions."
+    },
+    "privacy": {
+      "title": "Privacy Policy - Vv Transcribe",
+      "description": "Vv Transcribe privacy policy: in local mode all transcription and comparison runs on your machine and no file is uploaded. Data leaves your device only after you configure a third-party API yourself."
+    }
+  },
+  "common": {
+    "backHome": "Back to home",
+    "recommended": "Recommended",
+    "partial": "Partial",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyFailed": "Copy failed",
+    "copyCommandAria": "Copy command: {text}",
+    "toTop": "Back to top",
+    "toggleDark": "Toggle dark mode",
+    "switchLang": "Change language"
+  },
+  "nav": {
+    "features": "Features",
+    "flow": "Workflow",
+    "scenes": "Use cases",
+    "docs": "Docs",
+    "privacy": "Privacy",
+    "download": "Download now"
+  },
+  "footer": {
+    "features": "Features",
+    "flow": "Workflow",
+    "scenes": "Use cases",
+    "docs": "Docs",
+    "download": "Download",
+    "contact": "Contact",
+    "copyright": "© {year} Vv Transcribe. All rights reserved.",
+    "version": "Current version v{version}",
+    "changelog": "Changelog"
+  },
+  "hero": {
+    "badge": "Built for media professionals",
+    "titleLead": "AI-driven",
+    "titleAccent": "subtitle transcription and proofreading",
+    "subtitleLead": "Diff captions against the broadcast script, let AI fix what speech recognition got wrong,",
+    "subtitleTail": "so nothing reaches air with a typo in it",
+    "download": "Download free",
+    "learnMore": "Learn more",
+    "demoFile": "Transcribing: interview_clip_01.mp4",
+    "demoStatus": "Running",
+    "line1": "Good evening, and welcome to today's program.",
+    "line2Wrong": "Invited today",
+    "line2Right": "Joining us today",
+    "line2Badge": "Fixed by AI",
+    "line3": "a senior expert in the field."
+  },
+  "features": {
+    "title": "Core capabilities",
+    "desc": "Built for the way media teams actually work, feature by feature",
+    "items": {
+      "transcribe": {
+        "title": "AI transcription",
+        "desc": "Powered by Whisper, transcription of Chinese (Mandarin) audio and video runs on your own machine, line by line, with no upload and no waiting."
+      },
+      "reference": {
+        "title": "Reference script diff",
+        "desc": "Upload the broadcast or reference script and it is diffed word by word against the transcript, so every difference stands out."
+      },
+      "correction": {
+        "title": "AI correction",
+        "desc": "AI explains why each difference occurred and proposes a fix, so you can locate and correct subtitle errors quickly."
+      },
+      "privacy": {
+        "title": "Local by default",
+        "desc": "In local mode transcription and comparison stay on your machine. Files never go to the cloud, so your material stays confidential."
+      },
+      "download": {
+        "title": "Video download",
+        "desc": "Paste a public video link and the media is fetched and transcribed for you. Some sites block hotlinking; if that happens, import the local file instead."
+      },
+      "export": {
+        "title": "Multi-format export",
+        "desc": "Export to SRT, TXT, JSON or Markdown so the result drops straight into your post-production pipeline."
+      }
+    }
+  },
+  "flow": {
+    "title": "Three steps, that is all",
+    "desc": "From raw audio-video to clean subtitles in minutes",
+    "steps": {
+      "import": {
+        "title": "Import media",
+        "desc": "Drag in a local audio or video file, pick one from disk, or paste a URL to download it first. Mainstream formats such as mp4, mp3 and wav are supported."
+      },
+      "run": {
+        "title": "Let AI transcribe",
+        "desc": "The local Whisper engine transcribes at full speed with live progress. When it finishes you can upload a reference script to compare against."
+      },
+      "review": {
+        "title": "Compare and correct",
+        "desc": "Subtitles are diffed against the reference automatically. Click AI correction for the analysis and proposed fixes, then export."
+      }
+    }
+  },
+  "scenes": {
+    "title": "Where it fits",
+    "desc": "Whatever your stage of production, Vv Transcribe has a place there",
+    "items": {
+      "broadcast": {
+        "title": "Broadcast television",
+        "desc": "Proofread subtitles before air so they match the approved script exactly and no on-screen mistake reaches the audience.",
+        "points": {
+          "a": "Automatic comparison against the approved script",
+          "b": "AI flags every difference with a proposed fix",
+          "c": "Batch processing to get through the queue"
+        }
+      },
+      "news": {
+        "title": "News gathering and editing",
+        "desc": "Turn interview material into text in minutes and speed up the whole news production flow.",
+        "points": {
+          "a": "One click from interview audio or video to text",
+          "b": "An editable draft produced automatically",
+          "c": "Export in the formats your editing system expects"
+        }
+      },
+      "podcast": {
+        "title": "Podcasts and creators",
+        "desc": "Generate subtitles from your episodes quickly, whether you publish a transcript or a caption track.",
+        "points": {
+          "a": "Efficient transcription of long recordings",
+          "b": "Ready-to-use SRT subtitle files",
+          "c": "Local processing keeps unreleased material private"
+        }
+      },
+      "enterprise": {
+        "title": "Enterprise and meetings",
+        "desc": "Convert meeting recordings into a written record you can archive, search and share.",
+        "points": {
+          "a": "Batch transcription of meeting recordings",
+          "b": "Clear timestamps for every line",
+          "c": "A text record that is easy to file and search"
+        }
+      }
+    }
+  },
+  "compare": {
+    "title": "Why Vv Transcribe",
+    "desc": "Set against the usual options, the difference is obvious",
+    "thFeature": "Capability",
+    "thOnline": "Online transcription",
+    "thManual": "Manual proofreading",
+    "rows": {
+      "local": "Data stays on your machine",
+      "asr": "Automatic AI transcription",
+      "diff": "Diff against a reference script",
+      "correction": "AI correction",
+      "api": "Bring-your-own API configuration",
+      "export": "Multi-format subtitle export",
+      "free": "Free forever",
+      "offline": "Transcribe without a network"
+    },
+    "costVvVal": "¥0",
+    "costVv": "Vv Transcribe is free forever",
+    "costOnlineVal": "¥99+/mo",
+    "costOnline": "Online transcription subscription",
+    "costManualVal": "¥200+/hr",
+    "costManual": "Manual proofreading service"
+  },
+  "cta": {
+    "badge": "Free forever · Runs locally · v{version}",
+    "title": "Get started with Vv Transcribe",
+    "subtitle": "Download it free, run it locally, keep your material yours",
+    "winBtn": "Download for Windows",
+    "macArmBtn": "Download for macOS (Apple silicon)",
+    "macIntelLead": "On an Intel Mac?",
+    "macIntelLink": "Download the Intel build (.dmg)",
+    "notice": "If the first launch warns that the developer cannot be verified (macOS) or that Windows protected your PC, that is expected — the app is not code-signed yet, nothing about its features or your data is affected, and you only have to do this once. macOS: dismiss the dialog, open **System Settings → Privacy & Security**, click **\"Open Anyway\"** at the very bottom. Windows: click **More info** then **Run anyway**.",
+    "noticeLink": "See the full illustrated install guide",
+    "statLocal": "Local",
+    "statLocalLabel": "Transcription and diffing never upload",
+    "statFree": "¥0",
+    "statFreeLabel": "Free forever",
+    "statFormats": "4 formats",
+    "statFormatsLabel": "Subtitle export",
+    "footnoteLead": "The app is free with no subscription, and local transcription costs nothing in API fees. AI correction needs your own third-party key, billed by the vendor you choose. The source code is open on",
+    "footnoteLink": "GitHub"
+  },
+  "docs": {
+    "title": "Vv Transcribe documentation",
+    "subtitle": "From install to mastery - every part of Vv Transcribe explained",
+    "nav": {
+      "overview": "Overview",
+      "install": "Install and launch",
+      "transcribe": "Audio and video transcription",
+      "reference": "Reference script diff",
+      "correction": "AI correction",
+      "export": "Export subtitles",
+      "api": "API configuration",
+      "faq": "FAQ"
+    },
+    "overview": {
+      "intro": "Vv Transcribe is an AI subtitle transcription and proofreading tool for media professionals. It runs the local Whisper speech recognition engine to transcribe audio and video quickly, then adds reference script comparison and AI correction, so broadcast teams can proofread captions precisely and keep mistakes off air.",
+      "card1Title": "Runs locally",
+      "card1Desc": "Files never go to the cloud",
+      "card2Title": "Zero API cost",
+      "card2Desc": "Open-source engine, no paid API needed",
+      "card3Title": "Many formats",
+      "card3Desc": "Export SRT / TXT / JSON / Markdown"
+    },
+    "install": {
+      "reqTitle": "System requirements",
+      "winLabel": "Windows: ",
+      "winText": "Windows 10 or 11, 64-bit. 8GB of RAM or more is recommended.",
+      "macLabel": "macOS: ",
+      "macText": "macOS 12 or later, on both Intel and Apple Silicon (any M-series chip).",
+      "diskLabel": "Disk space: ",
+      "diskText": "The installer is about 308MB (Apple silicon) / 349MB (Intel Mac) / 413MB (Windows) and already includes the link transcription component. The first transcription downloads about 150MB of model files.",
+      "stepsTitle": "Installation",
+      "step1": "Download the installer for your system from this site (Windows .exe / macOS .dmg).",
+      "step2": "Run the installer and follow the prompts.",
+      "step3": "On the first transcription the app downloads the Whisper model (base, about 150MB) - please wait for it.",
+      "step4": "Once the model is cached you are ready to work.",
+      "brewLead": "On macOS you can also install it with Homebrew: ",
+      "brewNoteLead": "Since Homebrew 7 you must trust a tap before third-party formula files can be loaded; to pick up a later version use ",
+      "brewNoteTail": " - the cask tracks latest, so brew upgrade will not offer it.",
+      "warnTitle": "First launch says the developer cannot be verified, the app is damaged, or Windows protected your PC?",
+      "warnIntro": "This is expected. Vv Transcribe is a personal open-source project and does not yet have a paid code-signing certificate, so the system blocks the first launch. The app itself is safe and complete, and in local mode transcription and comparison never leave this computer. Work through the steps below in order - each is a one-time action:",
+      "warn1Label": "macOS, preferred: ",
+      "warn1Text": "Dismiss the cannot-open dialog, then open **System Settings → Privacy & Security**. Scroll to the very bottom, find the line saying Vv Transcribe was blocked, and click **\"Open Anyway\"** next to it. You may need your login password.",
+      "warn2Label": "macOS, alternative: ",
+      "warn2Text": "Open the Applications folder, **right-click** Vv Transcribe, choose Open, then click Open in the dialog.",
+      "warn3Label": "If it says the app is damaged and cannot be opened: ",
+      "warn3Text": "That comes from the quarantine attribute the download added. Copy the line below into Terminal, press Return (no output means success), then open the app again:",
+      "warn4Label": "Windows: ",
+      "warn4Text": "In the blue SmartScreen dialog click More info, then Run anyway."
+    },
+    "transcribe": {
+      "importTitle": "Importing media",
+      "importLead": "You can bring audio and video in three ways:",
+      "dragLabel": "Drag and drop: ",
+      "dragText": "drop the file straight into the app window",
+      "pickLabel": "File picker: ",
+      "pickText": "click Import file and choose it from disk",
+      "urlLabel": "Link import: ",
+      "urlText": "paste a public video link and the app downloads it for you. Some sites block hotlinking, so if it fails, use a local file instead. For the first time, read \"Getting link transcription ready\" below.",
+      "urlPrepTitle": "Getting link transcription ready",
+      "urlPrepIntro": "**yt-dlp**, which resolves and downloads the media, is already bundled in the installer, so there is nothing for you to install. Link transcription also borrows a browser on your machine (Chrome / Edge / Chromium) to pass the site's front-end checks, so macOS asks for permission the first time you use it.",
+      "urlPrep1Label": "Nothing to install: ",
+      "urlPrep1Text": "the transcription component ships with the app, so you can paste a link as soon as it is installed. If no browser is present, link resolution fails with a visible message - upload the local file in that case.",
+      "urlPrep2Label": "macOS asks once: ",
+      "urlPrep2Text": "after you submit a link the system asks **\"Vv Transcribe\" wants to modify apps on this Mac.** - click **Allow…**. The app needs to launch your browser to complete the site check, and each Mac only has to allow it once. macOS restarts the app after you allow it; if it does not restart, quit it completely and open it again.",
+      "urlPrep3Label": "If you clicked Deny: ",
+      "urlPrep3Text": "link transcription keeps failing. Open **System Settings → Privacy & Security → App Management**, find Vv Transcribe and switch it on, then restart the app.",
+      "urlPrepNote": "The browser only opens the page you pasted, using a fresh blank profile that the system creates in a temporary directory. **It does not read your account sign-in, passwords, bookmarks or browsing history.** Windows shows no such permission dialog - install the app and go.",
+      "formatsTitle": "Supported formats",
+      "processTitle": "During transcription",
+      "processText": "After you click Start transcription, the Whisper engine runs speech recognition on your CPU, lines appear as they are produced, and progress follows the real position in the audio. You can cancel at any time. Speed depends on the length of the audio and your CPU, and the file is never uploaded to any server.",
+      "tipLabel": "Note: ",
+      "tipText": "the first transcription downloads the AI model, so make sure you have network access. Later transcriptions use the locally cached model and need no network."
+    },
+    "reference": {
+      "uploadTitle": "Uploading a reference script",
+      "uploadLead": "When transcription finishes, upload the broadcast or reference script to compare against it. The reference is used for a word-by-word comparison with the transcript so differences surface immediately.",
+      "upload1": "Click Upload reference and choose a TXT / Markdown / SRT / DOCX / PDF file (for legacy .doc, save it as .docx first)",
+      "upload2": "Only one reference script at a time; the button is disabled once one is uploaded",
+      "upload3": "To replace it, first click the clear button on the reference bubble",
+      "diffTitle": "Reading the diff",
+      "diffLead": "Differences are marked by colour:",
+      "diffFrom": "Transcript",
+      "diffTo": "Reference script",
+      "diffNote": "- differences are highlighted"
+    },
+    "correction": {
+      "lead": "Click AI correction to run it; a reference script is not a precondition. With one uploaded, AI treats the reference as the source of truth, walks through each difference and explains it. Without one, AI reads the transcript and uses the built-in Chinese dictionary to propose fixes. Correction needs an API key in Settings → Correction.",
+      "item1Title": "Difference analysis",
+      "item1Desc": "AI reviews each difference one by one and judges whether the transcript is wrong or the script is simply worded differently",
+      "item2Title": "Correction proposals",
+      "item2Desc": "For real transcription errors AI proposes a fix; accept it with one click to update the subtitle",
+      "item3Title": "Problems in the script",
+      "item3Desc": "If the reference script itself contains a mistake, such as a typo, AI flags that too",
+      "noteLabel": "Heads up: ",
+      "noteText": "while AI correction is running the clear button on the reference script is disabled, so an accidental click cannot interrupt the analysis."
+    },
+    "export": {
+      "lead": "When proofreading is done, click Export and the system Save dialog lets you pick the format and location:",
+      "srtTitle": "SRT",
+      "srtDesc": "The standard subtitle format, with timing, ready to import into video editing software",
+      "txtTitle": "TXT",
+      "txtDesc": "Plain text, easy to copy, paste and edit further",
+      "jsonTitle": "JSON",
+      "jsonDesc": "Keeps timing and per-line structure for automated pipelines",
+      "mdTitle": "Markdown",
+      "mdDesc": "A script with time markers, good for archiving and review"
+    },
+    "api": {
+      "aboutTitle": "How it works",
+      "aboutText": "Transcription uses the local Whisper engine bundled inside the app; in local mode it needs no network and produces no API cost. AI correction depends on a third-party model: fill in your own API key under Correction configuration and it will not run without one - clicking correction with no key takes you straight to settings. You can also switch the transcription mode to cloud under Transcription configuration and use a third-party ASR API instead of the local engine.",
+      "vendorsTitle": "Supported API vendors",
+      "vendor1Name": "OpenAI",
+      "vendor1Desc": "GPT-4o / Whisper API",
+      "vendor2Name": "Qwen",
+      "vendor2Desc": "Alibaba Cloud DashScope",
+      "vendor3Name": "DeepSeek",
+      "vendor3Desc": "DeepSeek API",
+      "vendor4Name": "Custom OpenAI-compatible",
+      "vendor4Desc": "Any API that speaks the OpenAI format",
+      "stepsTitle": "Configuration steps",
+      "step1": "Open the app and go to Settings → Correction (for cloud transcription, use Transcription instead)",
+      "step2": "Choose the provider, enter the API key and API base URL, and change the model if needed",
+      "step3": "Click Save settings - nothing takes effect until you save, and switching provider does not change the endpoint on its own",
+      "step4": "Back on the home screen, import a file and transcribe it, then click AI correction to verify the configuration; a missing key or a failed call both show a visible message",
+      "noteLabel": "Heads up: ",
+      "noteText": "third-party APIs charge their own fees, billed by the vendor and unrelated to Vv Transcribe. With no API configured, local transcription, reference comparison and export all still work; only AI correction requires a key."
+    },
+    "faq": {
+      "net": {
+        "q": "Do I need a network connection the first time?",
+        "a": "Once: the first transcription downloads the Whisper model, about 150MB (in China this goes through the hf-mirror.com mirror). After the model is cached, local transcription, comparison and export need no network at all. AI correction calls the third-party API you configured, so it always needs a connection."
+      },
+      "language": {
+        "q": "Which languages does transcription support?",
+        "a": "Transcription is currently fixed to Chinese (Mandarin). English and other languages are planned for later versions."
+      },
+      "appManagement": {
+        "q": "My Mac asks \"Vv Transcribe\" wants to modify apps on this Mac. when I transcribe a link - what do I do?",
+        "a": "Click Allow… - each Mac only has to do this once. Link transcription launches your local Chrome or Edge to open the page you pasted so the site check can pass, and macOS classifies that as App Management, hence the dialog. After you allow it the system restarts the app; if you denied it earlier, switch Vv Transcribe on under System Settings → Privacy & Security → App Management and restart the app. This step does not read your browser accounts, passwords or history."
+      },
+      "urlFailed": {
+        "q": "Link transcription failed - what now?",
+        "a": "Since v1.0.2 yt-dlp is bundled in the installer, so you no longer have to install it and a failure is rarely a missing component. If the message says the built-in transcription component did not start, quit Vv Transcribe completely and open it again; if that still fails, reinstall it. If it is a permission problem (macOS has not allowed it under Privacy & Security), use the Open privacy settings button in the dialog. Some sites block hotlinking or require a login, so resolution can still fail - in that case upload the media you downloaded as a local file."
+      },
+      "accuracy": {
+        "q": "How accurate is the transcription?",
+        "a": "Accuracy depends heavily on audio quality, accent and how many proper nouns appear, so we do not publish a percentage we have not measured. For zero-tolerance use such as broadcast captions, always run reference comparison plus AI correction as a second pass instead of trusting the raw recognition result."
+      },
+      "security": {
+        "q": "Is my file data safe?",
+        "a": "Transcription and reference comparison run entirely on your machine; audio and video are never uploaded to any server. If you enable cloud transcription or AI correction, the audio or caption text is sent to the third-party API you configured yourself, under that provider's privacy policy."
+      },
+      "speed": {
+        "q": "Why is transcription sometimes slow?",
+        "a": "The local engine runs int8 inference on your CPU and does not use a GPU, so speed is mostly a function of audio length and CPU performance. The first transcription also waits for the model to download and load; the splash screen and the transcription card show which stage you are in."
+      },
+      "cancel": {
+        "q": "Can I stop a transcription partway?",
+        "a": "Yes. The transcription card has a Cancel button; clicking it aborts the job and releases the engine, so you can start again with another file or another mode."
+      },
+      "referenceFormat": {
+        "q": "Which reference script formats are supported?",
+        "a": "Five: TXT, Markdown, SRT, DOCX and PDF. For legacy .doc, save it as .docx in Word first. Only one script at a time; to change it, click the clear button on the reference bubble first."
+      },
+      "update": {
+        "q": "How do I get a new version?",
+        "a": "The app does not install updates by itself (it is not code-signed). In Settings → About and update, click Check for updates to see whether a newer build exists, then follow the link to the release page and install over the top."
+      },
+      "slowDownload": {
+        "q": "Downloading from the site or GitHub is very slow - what can I do?",
+        "a": "The installers live in GitHub Releases, and from China the GitHub asset domain has no CDN acceleration, so throughput can drop to a few tens of KB/s and a several-hundred-MB package takes a long time. We do not offer third-party mirrors - a mirror of unknown origin may have been modified and we cannot vouch for its safety. The reliable approach: turn on network acceleration and download the links on this page with your browser. On macOS, Homebrew works too (it also goes through GitHub, but it resumes interrupted downloads and retries more reliably than a browser). When Check for updates cannot reach the release page, it copies the release URL to your clipboard so you can paste it into a browser."
+      }
+    }
+  },
+  "privacy": {
+    "title": "Privacy policy",
+    "updated": "Last updated: 21 October 2026",
+    "overviewTitle": "Overview",
+    "overviewText": "Vv Transcribe (\"the App\") is a local subtitle transcription and proofreading tool for media professionals. This policy explains what information we collect and how we protect it. The core principle: **everything is processed locally by default**, and data goes to a provider you chose only after you configure a third-party API yourself.",
+    "localTitle": "Data processed on your machine",
+    "local1": "Audio and video transcription in local mode runs entirely on your machine; files are never uploaded to any server",
+    "local2": "Reference comparison runs locally and does not upload the contents of your broadcast script",
+    "local3": "Transcripts and subtitle files are stored only on your device",
+    "apiTitle": "API configuration (optional)",
+    "apiLead": "AI correction only runs once you configure a third-party AI API (such as OpenAI or Qwen); if you also switch the transcription mode under Transcription configuration to cloud, transcription requests your chosen endpoint as well. In that case:",
+    "api1": "Caption text (AI correction) or audio (cloud transcription) is sent to the third-party API provider you configured",
+    "api2": "Processing of that data is governed by that provider's own privacy policy",
+    "api3": "Your API key is stored only on your own device and is never uploaded",
+    "collectTitle": "Information we collect",
+    "collectLead": "The App collects no personal information. The following is stored locally only:",
+    "collect1": "App settings and preferences",
+    "collect2": "API configuration (if you configured one)",
+    "collect3": "Usage logs, kept locally for troubleshooting",
+    "modelTitle": "Model download",
+    "modelText": "On the first transcription the App downloads the Whisper model files from Hugging Face (the base model, about 150MB, accelerated through the hf-mirror.com mirror in China). That exchange carries model files only and uploads no user data. Once downloaded the model is cached locally, so later use needs no repeat download.",
+    "contactTitle": "Contact us",
+    "contactLead": "If you have any question about this policy, open an issue on ",
+    "contactIssues": "GitHub Issues",
+    "contactMid": " or write to ",
+    "contactTail": "."
+  },
+  "error": {
+    "notFoundTitle": "Page not found",
+    "errorTitle": "Something went wrong",
+    "notFoundDesc": "This address may have moved or been removed. Start again from the home page.",
+    "errorDesc": "Please try again later.",
+    "backHome": "Back to home",
+    "openDocs": "Read the documentation"
+  }
+}
