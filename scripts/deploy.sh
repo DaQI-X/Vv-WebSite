@@ -38,7 +38,8 @@ echo "==> pnpm run generate"
 pnpm run generate
 
 echo "==> 上传 .output/public 到 $BRANCH（$TARGET）"
-npx --yes wrangler pages deploy .output/public \
+# 版本与 CI 的 deploy.yml 对齐（同一版本才不会出现「本地能传、CI 传不出」的分裂）
+npx --yes wrangler@4.152.0 pages deploy .output/public \
   --project-name=vv-transcribe \
   --branch="$BRANCH" \
   --commit-dirty=true
