@@ -168,12 +168,39 @@
                 </div>
 
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">{{ t('docs.transcribe.langTitle') }}</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                    <RichText :text="t('docs.transcribe.langText')" />
+                  </p>
+                  <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span><strong>{{ t('docs.transcribe.langNoAutoLabel') }}</strong>{{ t('docs.transcribe.langNoAutoText') }}</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span><strong>{{ t('docs.transcribe.langProofreadLabel') }}</strong>{{ t('docs.transcribe.langProofreadText') }}</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
                   <h3 class="font-semibold text-gray-900 dark:text-white mb-3">{{ t('docs.transcribe.processTitle') }}</h3>
                   <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
                     {{ t('docs.transcribe.processText') }}
                   </p>
                   <div class="bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 rounded-lg p-4 text-sm text-amber-800 dark:text-amber-300">
                     <strong>{{ t('docs.transcribe.tipLabel') }}</strong>{{ t('docs.transcribe.tipText') }}
+                  </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">{{ t('docs.transcribe.engineTitle') }}</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    <RichText :text="t('docs.transcribe.engineText')" />
+                  </p>
+                  <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-sm text-gray-600 dark:text-gray-400">
+                    <strong>{{ t('docs.transcribe.engineNoteLabel') }}</strong>{{ t('docs.transcribe.engineNoteText') }}
                   </div>
                 </div>
               </div>
@@ -358,7 +385,7 @@ const sections = [
   { id: 'faq', key: 'faq' },
 ]
 
-const faqIds = ['net', 'language', 'appManagement', 'urlFailed', 'accuracy', 'security', 'speed', 'cancel', 'referenceFormat', 'update', 'slowDownload']
+const faqIds = ['net', 'language', 'engine', 'appManagement', 'urlFailed', 'accuracy', 'security', 'speed', 'cancel', 'referenceFormat', 'update', 'slowDownload']
 
 onMounted(() => {
   const observer = new IntersectionObserver(

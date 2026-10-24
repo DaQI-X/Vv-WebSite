@@ -69,7 +69,7 @@
     "items": {
       "transcribe": {
         "title": "AI transcription",
-        "desc": "Powered by Whisper, transcription of Chinese (Mandarin) audio and video runs on your own machine, line by line, with no upload and no waiting."
+        "desc": "Powered by Whisper, transcription runs on your own machine, line by line, with no upload and no waiting. 12 languages are available, including Chinese (Mandarin), English and Japanese."
       },
       "reference": {
         "title": "Reference script diff",
@@ -266,7 +266,17 @@
       "processTitle": "During transcription",
       "processText": "After you click Start transcription, the Whisper engine runs speech recognition on your CPU, lines appear as they are produced, and progress follows the real position in the audio. You can cancel at any time. Speed depends on the length of the audio and your CPU, and the file is never uploaded to any server.",
       "tipLabel": "Note: ",
-      "tipText": "the first transcription downloads the AI model, so make sure you have network access. Later transcriptions use the locally cached model and need no network."
+      "tipText": "the first transcription downloads the AI model, so make sure you have network access. Later transcriptions use the locally cached model and need no network.",
+      "langTitle": "Transcription language",
+      "langText": "Pick it in the **Transcription language** dropdown under **Settings → Transcription**; it applies to every transcription after you save it, and the local engine and a cloud ASR API share the same setting. 12 languages are offered: Chinese (Mandarin), English, Japanese, Korean, Thai, Vietnamese, Indonesian, French, German, Spanish, Russian and Arabic. Chinese is the default.",
+      "langNoAutoLabel": "Why there is no auto-detect: ",
+      "langNoAutoText": "language detection picks the wrong language on accented or mixed-language material, and when it does the whole passage comes back translated - far harder to notice than a few wrong characters. So the app asks you to choose one language explicitly.",
+      "langProofreadLabel": "One caveat when you switch language: ",
+      "langProofreadText": "local proofreading works from the misheard-homophone list and the Chinese dictionary, which only make sense for Chinese audio. Pick another language and one of two things happens: with a proofread model configured, the mode dialog still opens but \"local proofreading\" is greyed out and labelled \"Chinese only\"; with no model configured, no dialog appears at all - the app says this route does not apply and takes you straight to Settings → Proofread.",
+      "engineTitle": "When the local engine fails to start",
+      "engineText": "The app starts the local transcription engine itself, once, when the app boots. The first run downloads the model, so a network problem can make startup fail; the engine process can also be killed from outside - Activity Monitor, a cleanup script - and later transcriptions then get no answer. You do not have to quit the app: open **Settings → Transcription**, press **Check engine status** to see the current state, then press **Restart local engine** — the app reaps the engine that stopped answering and starts a fresh one. The button reads \"Restarting...\" while it works, which can take a minute or two on the first run while the model downloads.",
+      "engineNoteLabel": "Note: ",
+      "engineNoteText": "Both buttons only exist while the transcription mode is set to local - switch it to cloud-first and they are replaced by a Test connection button that really calls the ASR endpoint. Pressing Restart local engine during a transcription is refused: stopping the engine would cut the stream the job is still reading, so the app tells you to let it finish or cancel first. Both buttons are also unclickable while a check or a restart is in flight. If restarts keep failing, collect the logs from Settings → About and updates → Open log folder, then reinstall the app."
     },
     "reference": {
       "uploadTitle": "Uploading a reference script",
@@ -281,9 +291,9 @@
       "diffNote": "- differences are highlighted"
     },
     "correction": {
-      "lead": "Click \"Proofread\" once the transcript is ready. If a model is configured, a dialog lets you pick \"local proofreading\" or \"AI proofreading\". With no key configured the dialog is skipped: local proofreading runs straight away and the button reads \"本地校对中\" (proofreading locally). A reference script is not a precondition - both modes work with or without one.",
+      "lead": "Click \"Proofread\" once the transcript is ready. If a proofread model is configured, a dialog lets you pick \"local proofreading\" or \"AI proofreading\". With no model and a Chinese transcript the dialog is skipped: local proofreading runs straight away and the button reads \"本地校对中\" (proofreading locally). A transcript in another language goes the other way - local proofreading does not apply there, see the language note under Transcription. A reference script is not a precondition - both modes work with or without one.",
       "item1Title": "Local proofreading (no setup)",
-      "item1Desc": "No network, no tokens. It walks the transcript with the built-in list of misheard homophones (for example 以经 to 已经) and looks each result up in the bundled Chinese dictionary, so you can tell a recognition error from wording that was always correct.",
+      "item1Desc": "No network, no tokens. It walks the transcript with the built-in list of misheard homophones (for example 以经 to 已经) and looks each result up in the bundled Chinese dictionary, so you can tell a recognition error from wording that was always correct. Those rules only hold for Chinese: pick another transcription language and, if a model is configured, \"local proofreading\" greys out in the dialog labelled \"Chinese only\"; with no model the dialog never opens and the app sends you to Settings → Proofread instead.",
       "item2Title": "AI proofreading (in context)",
       "item2Desc": "Calls the third-party model you filled in under Settings → Proofread and reads the sentence in context: with a reference script it explains every difference against it, without one it scans the transcript for suspicious spots. Needs a connection and spends a few tokens.",
       "item3Title": "Suggestions only - you approve each one",
@@ -304,7 +314,7 @@
     },
     "api": {
       "aboutTitle": "How it works",
-      "aboutText": "Transcription uses the local Whisper engine bundled inside the app; in local mode it needs no network and produces no API cost. Local proofreading is the same - it only consults the built-in misheard-word list and dictionary, so it works without a key. AI proofreading depends on a third-party model: fill in your own API key under Proofread configuration, and with no key filled in, clicking Proofread simply runs the local pass and tells you where to configure it. You can also switch the transcription mode to cloud under Transcription configuration and use a third-party ASR API instead of the local engine.",
+      "aboutText": "Transcription uses the local Whisper engine bundled inside the app; while the transcription mode stays on local it needs no network and produces no API cost. Local proofreading is the same - it only consults the built-in misheard-word list and the Chinese dictionary, so it works without a key. AI proofreading depends on a third-party model: fill in your own API key under Settings → Proofread. For a Chinese transcript with no key, clicking Proofread simply runs the local pass and tells you where to configure it; for another language that route does not apply, so the app points you at the proofread settings instead. You can also switch the transcription mode to cloud under Settings → Transcription and use a third-party ASR API in place of the local engine. That same tab holds the transcription language and the engine's health: if the engine stops answering, press Check engine status and then Restart local engine - no need to quit the app.",
       "vendorsTitle": "Supported API vendors",
       "vendor1Name": "OpenAI",
       "vendor1Desc": "GPT-4o / Whisper API",
@@ -330,7 +340,11 @@
       },
       "language": {
         "q": "Which languages does transcription support?",
-        "a": "Transcription is currently fixed to Chinese (Mandarin). English and other languages are planned for later versions."
+        "a": "Twelve: Chinese (Mandarin), English, Japanese, Korean, Thai, Vietnamese, Indonesian, French, German, Spanish, Russian and Arabic. Choose one explicitly in the Transcription language dropdown under Settings → Transcription and save it; Chinese is the default. There is no auto-detect - it picks the wrong language on accented or mixed-language material, and when it does the whole passage comes back translated. Remember that local proofreading only covers Chinese, so for other languages use AI proofreading."
+      },
+      "engine": {
+        "q": "The local engine did not start and transcription keeps failing - what now?",
+        "a": "You do not have to quit the app. Open Settings → Transcription and press Check engine status - it tells you whether the engine answers normally, does not answer at all, or is online but on an older protocol (usually a leftover engine from the previous generation still holding port 8000). Then press Restart local engine: the app reaps the dead process and starts a fresh one, showing \"Restarting...\" while it works (a minute or two on the first run, when the model still has to download). Press it during a transcription and it is refused - stopping the engine would cut off the job that is still streaming, so the app asks you to wait for it or cancel. If restarts keep failing, take the logs from Settings → About and updates → Open log folder and reinstall the app."
       },
       "appManagement": {
         "q": "My Mac asks \"Vv Transcribe\" wants to modify apps on this Mac. when I transcribe a link - what do I do?",
@@ -338,7 +352,7 @@
       },
       "urlFailed": {
         "q": "Link transcription failed - what now?",
-        "a": "Since v1.0.2 yt-dlp is bundled in the installer, so you no longer have to install it and a failure is rarely a missing component. If the message says the built-in transcription component did not start, quit Vv Transcribe completely and open it again; if that still fails, reinstall it. If it is a permission problem (macOS has not allowed it under Privacy & Security), use the Open privacy settings button in the dialog. Some sites block hotlinking or require a login, so resolution can still fail - in that case upload the media you downloaded as a local file."
+        "a": "Since v1.0.2 yt-dlp is bundled in the installer, so you no longer have to install it and a failure is rarely a missing component. If the message says the link-resolution process was interrupted by the system, the bundled yt-dlp has not been allowed to run - permit Vv Transcribe under System Settings → Privacy & Security and try again. If it is another permission problem, use the Open privacy settings button in the dialog. Some sites block hotlinking or require a login, so resolution can still fail - in that case upload the media you downloaded as a local file. A link that downloads fine but then fails to transcribe is an engine problem; see the \"The local engine did not start\" question above."
       },
       "accuracy": {
         "q": "How accurate is the transcription?",
