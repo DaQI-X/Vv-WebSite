@@ -1,0 +1,89 @@
+name: Deploy
+
+# 官网发布 CI：push main → 静态构建 → wrangler 直传 Cloudflare Pages 生产分支。
+# 与本地 scripts/deploy.sh 用的是同一条上传命令（不走 Cloudflare 的 Git 集成，产物由这里构建后直接上传）。
+# 需要在仓库 Settings → Secrets and variables → Actions 里放 CLOUDFLARE_API_TOKEN（Pages:Edit 权限）；
+# CF_ACCOUNT_ID 可选，Token 能唯一确定账号时不用填。缺 Token 会在上传步骤报 70000，而不是静默不部署。
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+# 部署不互相取消：中途 cancel 会留下只传了一半的 Pages 版本
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Generate & publish to Cloudflare Pages
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: bash
+    env:
+      APP_REPO: DaQI-X/Vv-Transcribe
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 官网 runtimeConfig.public.appVersion 是全站版本号的唯一来源（页脚、下载文案都读它）。
+      # 它写了一个 GitHub Release 里还不存在的版本，就等于官网在宣传没发出去的东西；
+      # 落后于最新发布只告警——发版后补文档的那几个提交不该被版本号卡住。
+      - name: Verify appVersion against latest app release
+        run: |
+          site_ver=$(sed -nE "s/^[[:space:]]*appVersion:[[:space:]]*'([^']*)'.*/\1/p" nuxt.config.ts | head -1)
+          if [ -z "${site_ver}" ]; then
+            echo "::error::没能从 nuxt.config.ts 读出 runtimeConfig.public.appVersion"
+            exit 1
+          fi
+          echo "官网声称的应用版本：v${site_ver}"
+
+          body=$(curl -s --max-time 20 -H 'Accept: application/vnd.github+json' \
+            "https://api.github.com/repos/${APP_REPO}/releases/latest") || body=""
+          latest_tag=$(printf '%s' "${body}" | sed -nE 's/^[[:space:]]*"tag_name":[[:space:]]*"([^"]*)".*/\1/p' | head -1)
+          if [ -z "${latest_tag}" ]; then
+            echo "::warning::取不到 ${APP_REPO} 的最新 Release（API 不可用或被限流），本次跳过版本核对"
+            exit 0
+          fi
+          latest_ver=${latest_tag#v}
+          echo "${APP_REPO} 已发布的最新版本：${latest_tag}"
+
+          if [ "${latest_ver}" = "${site_ver}" ]; then
+            echo "版本一致，继续部署"
+          elif [ "$(printf '%s\n%s\n' "${latest_ver}" "${site_ver}" | sort -V | head -1)" = "${site_ver}" ]; then
+            echo "::warning::官网写的 v${site_ver} 落后于已发布的 ${latest_tag}，本次照发，记得随后同步文案与版本号"
+          else
+            echo "::error::官网声称的 v${site_ver} 在 ${APP_REPO} 上还没有对应 Release（最新只有 ${latest_tag}）。这样上线会让官网写着一个根本没发出去的版本：先发布应用，或把 appVersion 改回 ${latest_ver}"
+            exit 1
+          fi
+
+      - name: Generate static site
+        run: pnpm run generate
+
+      - name: Deploy to Cloudflare Pages (production)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        run: |
+          npx --yes wrangler@4 pages deploy .output/public \
+            --project-name=vv-transcribe \
+            --branch=main \
+            --commit-dirty=true
