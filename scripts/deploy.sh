@@ -38,8 +38,9 @@ echo "==> pnpm run generate"
 pnpm run generate
 
 echo "==> 上传 .output/public 到 $BRANCH（$TARGET）"
-# 版本与 CI 的 deploy.yml 对齐（同一版本才不会出现「本地能传、CI 传不出」的分裂）
-npx --yes wrangler@4.152.0 pages deploy .output/public \
+# 与 CI 的 deploy.yml 用同一个来源：wrangler 是 devDependency，版本钉在 package.json、
+# 完整性哈希钉在 pnpm-lock.yaml。别改回 npx —— 那样只钉版本号、不校验内容，且本地能传 CI 传不出的分裂更难查。
+pnpm exec wrangler pages deploy .output/public \
   --project-name=vv-transcribe \
   --branch="$BRANCH" \
   --commit-dirty=true

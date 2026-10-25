@@ -86,9 +86,11 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
         run: |
-          # 版本写死：这一步的环境里正好有 CLOUDFLARE_API_TOKEN，`wrangler@4` 这种浮动 tag
-          # 一旦飘到被投毒的版本，Token 就在它手里过了一遍。升级时先在本地同版本跑通 deploy.sh。
-          npx --yes wrangler@4.152.0 pages deploy .output/public \
+          # 走 pnpm exec 而不是 npx：这一步的环境里正好有 CLOUDFLARE_API_TOKEN，未经校验的第三方
+          # 代码不能在这里执行。npx 每次现从 registry 拉包，只钉版本号、不校验内容；wrangler 现在是
+          # devDependency，版本钉在 package.json、完整性哈希钉在 pnpm-lock.yaml，浮动和被换掉的都进不来。
+          # 升级 wrangler：本地 pnpm add -D -E wrangler@<新版> 并跑通 deploy.sh，再一起提交 lockfile。
+          pnpm exec wrangler pages deploy .output/public \
             --project-name=vv-transcribe \
             --branch=main \
             --commit-dirty=true
