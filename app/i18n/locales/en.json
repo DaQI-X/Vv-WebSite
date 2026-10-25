@@ -69,7 +69,7 @@
     "items": {
       "transcribe": {
         "title": "AI transcription",
-        "desc": "Powered by Whisper, transcription runs on your own machine, line by line, with no upload and no waiting. 12 languages are available, including Chinese (Mandarin), English and Japanese."
+        "desc": "Powered by Whisper, transcription runs on your own machine, line by line, with no upload and no waiting. 12 languages are available, including Chinese (Mandarin), English and Japanese, and the model tier is your call - Fast for speed, Precise when a wrong character costs you."
       },
       "reference": {
         "title": "Reference script diff",
@@ -224,11 +224,11 @@
       "macLabel": "macOS: ",
       "macText": "macOS 12 or later, on both Intel and Apple Silicon (any M-series chip).",
       "diskLabel": "Disk space: ",
-      "diskText": "The installer is about 308MB (Apple silicon) / 349MB (Intel Mac) / 413MB (Windows) and already includes the link transcription component. The first transcription downloads about 150MB of model files.",
+      "diskText": "The installer is about 310MB (Apple silicon) / 351MB (Intel Mac) / 414MB (Windows) and already includes the link transcription component. The first transcription then downloads the model weights for the tier you picked - about 138MB for the default Fast tier, about 461MB for Precise.",
       "stepsTitle": "Installation",
       "step1": "Download the installer for your system from this site (Windows .exe / macOS .dmg).",
       "step2": "Run the installer and follow the prompts.",
-      "step3": "On the first transcription the app downloads the Whisper model (base, about 150MB) - please wait for it.",
+      "step3": "On the first transcription the app downloads the Whisper model (by default the Fast tier, base, about 138MB; if you switch to the Precise tier small under Settings → Transcription it is about 461MB) - please wait for it.",
       "step4": "Once the model is cached you are ready to work.",
       "brewLead": "On macOS you can also install it with Homebrew: ",
       "brewNoteLead": "Since Homebrew 7 you must trust a tap before third-party formula files can be loaded; to pick up a later version use ",
@@ -254,7 +254,7 @@
       "urlLabel": "Link import: ",
       "urlText": "paste a public video link and the app downloads it for you. Some sites block hotlinking, so if it fails, use a local file instead. For the first time, read \"Getting link transcription ready\" below.",
       "urlPrepTitle": "Getting link transcription ready",
-      "urlPrepIntro": "**yt-dlp**, which resolves and downloads the media, is already bundled in the installer, so there is nothing for you to install. Link transcription also borrows a browser on your machine (Chrome / Edge / Chromium) to pass the site's front-end checks, so macOS asks for permission the first time you use it.",
+      "urlPrepIntro": "**yt-dlp**, which resolves and downloads the media, is already bundled in the installer, so there is nothing for you to install. When a site changes its rules you can fetch a newer component inside the app instead of reinstalling - see the \"Can the link-resolution component update itself inside the app?\" question in the FAQ. Link transcription also borrows a browser on your machine (Chrome / Edge / Chromium) to pass the site's front-end checks, so macOS asks for permission the first time you use it.",
       "urlPrep1Label": "Nothing to install: ",
       "urlPrep1Text": "the transcription component ships with the app, so you can paste a link as soon as it is installed. If no browser is present, link resolution fails with a visible message - upload the local file in that case.",
       "urlPrep2Label": "macOS asks once: ",
@@ -266,7 +266,17 @@
       "processTitle": "During transcription",
       "processText": "After you click Start transcription, the Whisper engine runs speech recognition on your CPU, lines appear as they are produced, and progress follows the real position in the audio. You can cancel at any time. Speed depends on the length of the audio and your CPU, and the file is never uploaded to any server.",
       "tipLabel": "Note: ",
-      "tipText": "the first transcription downloads the AI model, so make sure you have network access. Later transcriptions use the locally cached model and need no network.",
+      "tipText": "the first transcription downloads the AI model weights for the tier you picked (Fast about 138MB, Precise about 461MB), so make sure you have network access. Later transcriptions use the locally cached model and need no network.",
+      "tierTitle": "Local model tiers: Fast and Precise",
+      "tierLead": "Transcription quality is now something you can choose. The tier only affects local transcription, and switching it leaves every other setting you have saved untouched.",
+      "tierWhereLabel": "Where to change it: ",
+      "tierWhereText": "**Settings → Transcription → Local model tier** - the option is only there while the transcription mode is set to local. After you save, the engine restarts once and every later transcription uses the new tier.",
+      "tierFastLabel": "Fast (base, default): ",
+      "tierFastText": "about 138MB of weights; on our machine one minute of audio takes about 5-9 seconds. The price is Chinese homophone errors that change the meaning - the line 「英雄觉醒在即」 came back as 「英雄绝性在急」.",
+      "tierExactLabel": "Precise (small): ",
+      "tierExactText": "about 461MB of weights; on the same machine it takes about 2.8x the Fast tier (one minute of audio in about 15-17 seconds) and hears that line correctly. If your captions go straight into a broadcast workflow where a wrong character costs you, use this tier.",
+      "tierNoteLabel": "Before you switch: ",
+      "tierNoteText": "each tier downloads its own weights the first time it is used (through hf-mirror.com in China), and switching does not delete the other tier, so plan disk space for both sizes above. When a switch or a first download fails, the splash screen and the transcription card show which stage you are in; if the engine does not come up, follow the \"When the local engine fails to start\" section below.",
       "langTitle": "Transcription language",
       "langText": "Pick it in the **Transcription language** dropdown under **Settings → Transcription**; it applies to every transcription after you save it, and the local engine and a cloud ASR API share the same setting. 12 languages are offered: Chinese (Mandarin), English, Japanese, Korean, Thai, Vietnamese, Indonesian, French, German, Spanish, Russian and Arabic. Chinese is the default.",
       "langNoAutoLabel": "Why there is no auto-detect: ",
@@ -336,7 +346,7 @@
     "faq": {
       "net": {
         "q": "Do I need a network connection the first time?",
-        "a": "Once: the first transcription downloads the Whisper model, about 150MB (in China this goes through the hf-mirror.com mirror). After the model is cached, local transcription, comparison, local proofreading and export need no network at all. AI proofreading calls the third-party API you configured, so it always needs a connection."
+        "a": "Once: the first transcription downloads the Whisper model weights for the tier you picked - about 138MB for Fast, about 461MB for Precise (in China this goes through the hf-mirror.com mirror). After the model is cached, local transcription, comparison, local proofreading and export need no network at all. AI proofreading calls the third-party API you configured, so it always needs a connection."
       },
       "language": {
         "q": "Which languages does transcription support?",
@@ -354,6 +364,10 @@
         "q": "Link transcription failed - what now?",
         "a": "Since v1.0.2 yt-dlp is bundled in the installer, so you no longer have to install it and a failure is rarely a missing component. If the message says the link-resolution process was interrupted by the system, the bundled yt-dlp has not been allowed to run - permit Vv Transcribe under System Settings → Privacy & Security and try again. If it is another permission problem, use the Open privacy settings button in the dialog. Some sites block hotlinking or require a login, so resolution can still fail - in that case upload the media you downloaded as a local file. A link that downloads fine but then fails to transcribe is an engine problem; see the \"The local engine did not start\" question above."
       },
+      "component": {
+        "q": "Can the link-resolution component update itself inside the app?",
+        "a": "Yes - since v1.0.4 you do not have to reinstall the whole package for it. Open Settings → About and updates; the link-resolution row shows the version and size this machine is using. Press Check for updates, and when the manifest lists a newer version an \"Update to X\" button appears - press it and the download starts. The update only replaces the app's own copy, the version bundled in the installer stays untouched, and if the download or the checksum fails it falls back to the copy you had, keeps showing the old version and tells you in a visible message. The manifest is maintained by this project itself, every entry checked against the upstream file fingerprint, and it is only ever fetched from our own repository."
+      },
       "accuracy": {
         "q": "How accurate is the transcription?",
         "a": "Accuracy depends heavily on audio quality, accent and how many proper nouns appear, so we do not publish a percentage we have not measured. For zero-tolerance use such as broadcast captions, always run reference comparison together with local or AI proofreading as a second pass instead of trusting the raw recognition result."
@@ -364,7 +378,11 @@
       },
       "speed": {
         "q": "Why is transcription sometimes slow?",
-        "a": "The local engine runs int8 inference on your CPU and does not use a GPU, so speed is mostly a function of audio length and CPU performance. The first transcription also waits for the model to download and load; the splash screen and the transcription card show which stage you are in."
+        "a": "The local engine runs int8 inference on your CPU and does not use a GPU, so speed is mostly a function of audio length, CPU performance and the tier you picked: on our machine one minute of audio takes about 5-9 seconds on Fast and about 15-17 seconds on Precise (about 2.8x). The first transcription also waits for the model to download and load; the splash screen and the transcription card show which stage you are in. If it feels too slow, switch the tier back down under Settings → Transcription - no reinstall needed."
+      },
+      "feedback": {
+        "q": "How do I report a problem?",
+        "a": "Open Settings → About and updates → Feedback and press Send feedback email: your mail client opens with the recipient, the app version, your system information and where the logs live already filled in, so all you have to write is which step failed, what media you used and what you expected. Copy email address is there too if you would rather write it yourself. On the same tab, Open log folder shows you the .log files - attaching them tells us far more than the words \"the transcription is wrong\"."
       },
       "cancel": {
         "q": "Can I stop a transcription partway?",
@@ -376,7 +394,7 @@
       },
       "update": {
         "q": "How do I get a new version?",
-        "a": "The app does not install updates by itself (it is not code-signed). In Settings → About and update, click Check for updates to see whether a newer build exists, then follow the link to the release page and install over the top."
+        "a": "The app does not install updates by itself (it is not code-signed). In Settings → About and updates, click Check for updates to see whether a newer build exists, then follow the link to the release page and install over the top. Only the link-resolution component can be refreshed without reinstalling the whole package - see the \"Can the link-resolution component update itself inside the app?\" question above."
       },
       "slowDownload": {
         "q": "Downloading from the site or GitHub is very slow - what can I do?",
@@ -386,7 +404,7 @@
   },
   "privacy": {
     "title": "Privacy policy",
-    "updated": "Last updated: 21 October 2026",
+    "updated": "Last updated: 25 October 2026",
     "overviewTitle": "Overview",
     "overviewText": "Vv Transcribe (\"the App\") is a local subtitle transcription and proofreading tool for media professionals. This policy explains what information we collect and how we protect it. The core principle: **everything is processed locally by default**, and data goes to a provider you chose only after you configure a third-party API yourself.",
     "localTitle": "Data processed on your machine",
@@ -397,14 +415,14 @@
     "apiLead": "AI proofreading only runs once you configure a third-party AI API (such as OpenAI or Qwen); local proofreading needs no API configuration at all. If you also switch the transcription mode under Transcription configuration to cloud, transcription requests your chosen endpoint as well. In that case:",
     "api1": "Caption text (AI proofreading) or audio (cloud transcription) is sent to the third-party API provider you configured",
     "api2": "Processing of that data is governed by that provider's own privacy policy",
-    "api3": "Your API key is stored only on your own device and is never uploaded",
+    "api3": "Your API key is stored only on your own device and is never uploaded; before it is written to disk it is encrypted with your system keystore (the macOS Keychain / Windows DPAPI), and only if that keystore is unavailable does it fall back to plain text - in which case Settings says so explicitly, marking whether the key is currently encrypted or not",
     "collectTitle": "Information we collect",
     "collectLead": "The App collects no personal information. The following is stored locally only:",
     "collect1": "App settings and preferences",
     "collect2": "API configuration (if you configured one)",
     "collect3": "Usage logs, kept locally for troubleshooting",
     "modelTitle": "Model download",
-    "modelText": "On the first transcription the App downloads the Whisper model files from Hugging Face (the base model, about 150MB, accelerated through the hf-mirror.com mirror in China). That exchange carries model files only and uploads no user data. Once downloaded the model is cached locally, so later use needs no repeat download.",
+    "modelText": "On the first transcription the App downloads the Whisper weights for the tier you chose from the hf-mirror.com mirror: about 138MB for Fast (base) and about 461MB for Precise (small). Each tier downloads only when it is first used, and the files then stay in the local Hugging Face cache (~/.cache/huggingface/hub on macOS and Linux), so there is no repeat download. That exchange carries model files only and uploads no user data.",
     "contactTitle": "Contact us",
     "contactLead": "If you have any question about this policy, open an issue on ",
     "contactIssues": "GitHub Issues",

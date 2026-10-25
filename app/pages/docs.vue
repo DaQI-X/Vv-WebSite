@@ -185,6 +185,31 @@
                 </div>
 
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">{{ t('docs.transcribe.tierTitle') }}</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                    <RichText :text="t('docs.transcribe.tierLead')" />
+                  </p>
+                  <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span><strong>{{ t('docs.transcribe.tierWhereLabel') }}</strong><RichText :text="t('docs.transcribe.tierWhereText')" /></span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span><strong>{{ t('docs.transcribe.tierFastLabel') }}</strong><RichText :text="t('docs.transcribe.tierFastText')" /></span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span><strong>{{ t('docs.transcribe.tierExactLabel') }}</strong><RichText :text="t('docs.transcribe.tierExactText')" /></span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span><strong>{{ t('docs.transcribe.tierNoteLabel') }}</strong><RichText :text="t('docs.transcribe.tierNoteText')" /></span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
                   <h3 class="font-semibold text-gray-900 dark:text-white mb-3">{{ t('docs.transcribe.processTitle') }}</h3>
                   <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
                     {{ t('docs.transcribe.processText') }}
@@ -385,7 +410,7 @@ const sections = [
   { id: 'faq', key: 'faq' },
 ]
 
-const faqIds = ['net', 'language', 'engine', 'appManagement', 'urlFailed', 'accuracy', 'security', 'speed', 'cancel', 'referenceFormat', 'update', 'slowDownload']
+const faqIds = ['net', 'language', 'engine', 'appManagement', 'urlFailed', 'component', 'accuracy', 'security', 'speed', 'feedback', 'cancel', 'referenceFormat', 'update', 'slowDownload']
 
 onMounted(() => {
   const observer = new IntersectionObserver(
