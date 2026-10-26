@@ -9,7 +9,7 @@
     },
     "docs": {
       "title": "Documentation - Vv Transcribe",
-      "description": "Vv Transcribe documentation: installation and first launch, audio and video transcription, reference script diffing, local and AI proofreading, subtitle export, API setup, and frequently asked questions."
+      "description": "Vv Transcribe documentation: installation and first launch, audio and video transcription, reference script diffing, local and AI proofreading, subtitle voice-over, subtitle export, API setup, and frequently asked questions."
     },
     "privacy": {
       "title": "Privacy Policy - Vv Transcribe",
@@ -78,6 +78,10 @@
       "correction": {
         "title": "Two ways to proofread",
         "desc": "Local proofreading runs on the built-in misheard-word list and Chinese dictionary: no setup, no network, no tokens. AI proofreading calls the model you configure and explains each difference in context. Both only propose fixes - you accept them one by one."
+      },
+      "voice": {
+        "title": "Subtitle voice-over",
+        "desc": "Turn finished subtitles into a ready-to-use voice track: audition one line first, synthesize segment by segment, then lay the clips onto the subtitle timeline as a single MP3. A clip longer than its subtitle slot shifts later — nothing is cut or mixed on top of each other, and your subtitles and timing stay untouched."
       },
       "privacy": {
         "title": "Local by default",
@@ -204,6 +208,7 @@
       "transcribe": "Audio and video transcription",
       "reference": "Reference script diff",
       "correction": "Proofreading",
+      "voice": "Subtitle voice-over",
       "export": "Export subtitles",
       "api": "API configuration",
       "faq": "FAQ"
@@ -318,6 +323,19 @@
       "noteLabel": "Heads up: ",
       "noteText": "while a proofreading run is in progress the clear button on the reference script is disabled, so an accidental click cannot interrupt the analysis."
     },
+    "voice": {
+      "lead": "The whole script is synthesized segment by segment, then assembled on your machine with FFmpeg along the subtitle timeline. This step only reads text and writes audio — subtitles and their timing are never modified.",
+      "item1Title": "Audition one line first",
+      "item1Desc": "A wrong API base, voice model or voice id surfaces here instead of at segment 20 of a long script. The preview box starts with the first segment, and you can type any line you want to hear.",
+      "item2Title": "One request per segment",
+      "item2Desc": "Calls run serially and your provider bills each request, so the dialog states the segment count and character count before you start. Empty segments are skipped, three consecutive failures stop the batch, and cancelling still keeps everything already synthesized.",
+      "item3Title": "Laid out on the subtitle timeline",
+      "item3Desc": "Each clip starts where its subtitle starts. If a clip is longer than its slot it is pushed later and the rest of the track follows — nothing is truncated, nothing is layered on top of each other. The result screen reports how much longer the track is and how many segments were pushed.",
+      "item4Title": "A separate audio track",
+      "item4Desc": "The output is a 44.1 kHz mono MP3, saved wherever you choose through the system Save dialog. If you do not save it, closing the dialog deletes this batch of intermediates.",
+      "noteLabel": "Heads up: ",
+      "noteText": "Voice-over uses the OpenAI-standard audio endpoint (/v1/audio/speech). It reuses the API base and key from the proofreading settings, with a separate voice model and voice id. Providers that only offer chat usually do not have this endpoint — check their documentation. Each segment sends subtitle text (not your audio or video) to the address you configured."
+    },
     "export": {
       "lead": "When proofreading is done, click Export and the system Save dialog lets you pick the format and location:",
       "srtTitle": "SRT",
@@ -377,7 +395,7 @@
       },
       "tempFiles": {
         "q": "Does the media stay on my computer while I transcribe or download?",
-        "a": "Only briefly, and every piece has a defined cleanup point. Link imports land in the system temp folder: site cookies are deleted the moment the audio is extracted; the temporary audio stays while the player replays it and is removed when the next clip starts or the app quits; a downloaded video is removed as soon as you pick where to save it, or cancel the save. Changing the link, switching back to the local file tab, or closing the uploader releases that folder immediately. If the app is force-quit and misses the cleanup, the next start sweeps temp folders older than 24 hours. Nothing is ever uploaded."
+        "a": "Only briefly, and every piece has a defined cleanup point. Link imports land in the system temp folder: site cookies are deleted the moment the audio is extracted; the temporary audio stays while the player replays it and is removed when the next clip starts or the app quits; a downloaded video is removed as soon as you pick where to save it, or cancel the save. Changing the link, switching back to the local file tab, or closing the uploader releases that folder immediately. Voice-over clips and the assembled track get their own temp folder too, removed when the voice dialog closes - a copy you already saved elsewhere is untouched. If the app is force-quit and misses the cleanup, the next start sweeps temp folders older than 24 hours. Nothing is ever uploaded."
       },
       "accuracy": {
         "q": "How accurate is the transcription?",
@@ -385,7 +403,7 @@
       },
       "security": {
         "q": "Is my file data safe?",
-        "a": "Transcription, reference comparison and local proofreading run entirely on your machine; audio and video are never uploaded to any server. If you enable cloud transcription or AI proofreading, the audio or caption text is sent to the third-party API you configured yourself, under that provider's privacy policy."
+        "a": "Transcription, reference comparison and local proofreading run entirely on your machine; audio and video are never uploaded to any server. If you enable cloud transcription, AI proofreading or subtitle voice-over, the audio or the caption text is sent to the third-party API you configured yourself, under that provider's privacy policy - voice-over sends subtitle text segment by segment, never the media file."
       },
       "speed": {
         "q": "Why is transcription sometimes slow?",
@@ -415,7 +433,7 @@
   },
   "privacy": {
     "title": "Privacy policy",
-    "updated": "Last updated: 25 October 2026",
+    "updated": "Last updated: 26 October 2026",
     "overviewTitle": "Overview",
     "overviewText": "Vv Transcribe (\"the App\") is a local subtitle transcription and proofreading tool for media professionals. This policy explains what information we collect and how we protect it. The core principle: **everything is processed locally by default**, and data goes to a provider you chose only after you configure a third-party API yourself.",
     "localTitle": "Data processed on your machine",
@@ -423,8 +441,8 @@
     "local2": "Reference comparison and local proofreading run on your machine and never upload your broadcast script or caption text",
     "local3": "Transcripts and subtitle files are stored only on your device",
     "apiTitle": "API configuration (optional)",
-    "apiLead": "AI proofreading only runs once you configure a third-party AI API (such as OpenAI or Qwen); local proofreading needs no API configuration at all. If you also switch the transcription mode under Transcription configuration to cloud, transcription requests your chosen endpoint as well. In that case:",
-    "api1": "Caption text (AI proofreading) or audio (cloud transcription) is sent to the third-party API provider you configured",
+    "apiLead": "AI proofreading only runs once you configure a third-party AI API (such as OpenAI or Qwen); local proofreading needs no API configuration at all. Subtitle voice-over reuses that same API base and key and only adds a voice model and a voice id - whether your provider has the endpoint is up to its own documentation. If you also switch the transcription mode under Transcription configuration to cloud, transcription requests your chosen endpoint as well. In that case:",
+    "api1": "Caption text (AI proofreading, subtitle voice-over) or audio (cloud transcription) is sent to the third-party API provider you configured; voice-over sends caption text segment by segment and never the media file",
     "api2": "Processing of that data is governed by that provider's own privacy policy",
     "api3": "Your API key is stored only on your own device and is never uploaded; before it is written to disk it is encrypted with your system keystore (the macOS Keychain / Windows DPAPI), and only if that keystore is unavailable does it fall back to plain text - in which case Settings says so explicitly, marking whether the key is currently encrypted or not",
     "collectTitle": "Information we collect",

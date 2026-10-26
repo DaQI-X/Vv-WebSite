@@ -322,9 +322,54 @@
               </div>
             </section>
 
-            <section id="export" class="scroll-mt-24">
+            <section id="voice" class="scroll-mt-24">
               <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
                 <span class="w-8 h-8 bg-brand-100 dark:bg-brand-900 rounded-lg flex items-center justify-center text-brand-600 dark:text-brand-400 text-sm">06</span>
+                {{ t('docs.nav.voice') }}
+              </h2>
+              <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                  {{ t('docs.voice.lead') }}
+                </p>
+                <div class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                  <div class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <span class="text-lg">🎧</span>
+                    <div>
+                      <strong class="text-gray-900 dark:text-white">{{ t('docs.voice.item1Title') }}</strong>
+                      <p class="mt-1">{{ t('docs.voice.item1Desc') }}</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <span class="text-lg">📝</span>
+                    <div>
+                      <strong class="text-gray-900 dark:text-white">{{ t('docs.voice.item2Title') }}</strong>
+                      <p class="mt-1">{{ t('docs.voice.item2Desc') }}</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <span class="text-lg">⏱️</span>
+                    <div>
+                      <strong class="text-gray-900 dark:text-white">{{ t('docs.voice.item3Title') }}</strong>
+                      <p class="mt-1">{{ t('docs.voice.item3Desc') }}</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                    <span class="text-lg">💾</span>
+                    <div>
+                      <strong class="text-gray-900 dark:text-white">{{ t('docs.voice.item4Title') }}</strong>
+                      <p class="mt-1">{{ t('docs.voice.item4Desc') }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-4 bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800 rounded-lg p-4 text-sm text-blue-800 dark:text-blue-300">
+                  <strong>{{ t('docs.voice.noteLabel') }}</strong>{{ t('docs.voice.noteText') }}
+                </div>
+              </div>
+            </section>
+
+            <section id="export" class="scroll-mt-24">
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+                <span class="w-8 h-8 bg-brand-100 dark:bg-brand-900 rounded-lg flex items-center justify-center text-brand-600 dark:text-brand-400 text-sm">07</span>
                 {{ t('docs.nav.export') }}
               </h2>
               <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
@@ -340,7 +385,7 @@
 
             <section id="api-config" class="scroll-mt-24">
               <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
-                <span class="w-8 h-8 bg-brand-100 dark:bg-brand-900 rounded-lg flex items-center justify-center text-brand-600 dark:text-brand-400 text-sm">07</span>
+                <span class="w-8 h-8 bg-brand-100 dark:bg-brand-900 rounded-lg flex items-center justify-center text-brand-600 dark:text-brand-400 text-sm">08</span>
                 {{ t('docs.nav.api') }}
               </h2>
               <div class="space-y-6">
@@ -379,7 +424,7 @@
 
             <section id="faq" class="scroll-mt-24">
               <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
-                <span class="w-8 h-8 bg-brand-100 dark:bg-brand-900 rounded-lg flex items-center justify-center text-brand-600 dark:text-brand-400 text-sm">08</span>
+                <span class="w-8 h-8 bg-brand-100 dark:bg-brand-900 rounded-lg flex items-center justify-center text-brand-600 dark:text-brand-400 text-sm">09</span>
                 {{ t('docs.nav.faq') }}
               </h2>
               <div class="space-y-4">
@@ -423,6 +468,7 @@ const sections = [
   { id: 'transcribe', key: 'transcribe' },
   { id: 'reference', key: 'reference' },
   { id: 'ai-correction', key: 'correction' },
+  { id: 'voice', key: 'voice' },
   { id: 'export', key: 'export' },
   { id: 'api-config', key: 'api' },
   { id: 'faq', key: 'faq' },
