@@ -224,7 +224,7 @@
       "macLabel": "macOS: ",
       "macText": "macOS 12 or later, on both Intel and Apple Silicon (any M-series chip).",
       "diskLabel": "Disk space: ",
-      "diskText": "The installer is about 310MB (Apple silicon) / 351MB (Intel Mac) / 414MB (Windows) and already includes the link transcription component. The first transcription then downloads the model weights for the tier you picked - about 138MB for the default Fast tier, about 461MB for Precise.",
+      "diskText": "The installer is about 310MB (Apple silicon) / 352MB (Intel Mac) / 415MB (Windows) and already includes the link transcription component. The first transcription then downloads the model weights for the tier you picked - about 138MB for the default Fast tier, about 461MB for Precise.",
       "stepsTitle": "Installation",
       "step1": "Download the installer for your system from this site (Windows .exe / macOS .dmg).",
       "step2": "Run the installer and follow the prompts.",

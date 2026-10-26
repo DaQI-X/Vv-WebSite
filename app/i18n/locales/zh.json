@@ -224,7 +224,7 @@
       "macLabel": "macOS：",
       "macText": "macOS 12+，支持 Intel 和 Apple Silicon（M 系列全系）",
       "diskLabel": "磁盘空间：",
-      "diskText": "安装包约 310MB（Apple 芯片）/ 351MB（Intel Mac）/ 414MB（Windows），已内置链接转写组件；首次转写再按档位下载模型——默认「快速」档约 138MB，「精准」档约 461MB",
+      "diskText": "安装包约 310MB（Apple 芯片）/ 352MB（Intel Mac）/ 415MB（Windows），已内置链接转写组件；首次转写再按档位下载模型——默认「快速」档约 138MB，「精准」档约 461MB",
       "stepsTitle": "安装步骤",
       "step1": "从官网下载对应系统的安装包（Windows .exe / macOS .dmg）",
       "step2": "运行安装程序，按提示完成安装",
