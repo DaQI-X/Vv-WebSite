@@ -85,7 +85,7 @@
       },
       "download": {
         "title": "Video download",
-        "desc": "Paste a public video link and the media is fetched and transcribed for you. Some sites block hotlinking; if that happens, import the local file instead."
+        "desc": "Paste a public video link: once the app resolves the duration and the available qualities, choose between transcribing the audio and downloading the video. Some sites block hotlinking; if that happens, import the local file instead."
       },
       "export": {
         "title": "Multi-format export",
@@ -252,7 +252,7 @@
       "pickLabel": "File picker: ",
       "pickText": "click Import file and choose it from disk",
       "urlLabel": "Link import: ",
-      "urlText": "paste a public video link and the app downloads it for you. Some sites block hotlinking, so if it fails, use a local file instead. For the first time, read \"Getting link transcription ready\" below.",
+      "urlText": "paste a public video link and the app first resolves the title, duration and available qualities, then lets you choose between transcribing the audio and downloading the video. Some sites block hotlinking, so if it fails, use a local file instead. For the first time, read \"Getting link transcription ready\" below.",
       "urlPrepTitle": "Getting link transcription ready",
       "urlPrepIntro": "**yt-dlp**, which resolves and downloads the media, is already bundled in the installer, so there is nothing for you to install. When a site changes its rules you can fetch a newer component inside the app instead of reinstalling - see the \"Can the link-resolution component update itself inside the app?\" question in the FAQ. Link transcription also borrows a browser on your machine (Chrome / Edge / Chromium) to pass the site's front-end checks, so macOS asks for permission the first time you use it.",
       "urlPrep1Label": "Nothing to install: ",
@@ -262,6 +262,13 @@
       "urlPrep3Label": "If you clicked Deny: ",
       "urlPrep3Text": "link transcription keeps failing. Open **System Settings → Privacy & Security → App Management**, find Vv Transcribe and switch it on, then restart the app.",
       "urlPrepNote": "The browser only opens the page you pasted, using a fresh blank profile that the system creates in a temporary directory. **It does not read your account sign-in, passwords, bookmarks or browsing history.** Windows shows no such permission dialog - install the app and go.",
+      "pickTitle": "After resolving: transcribe the audio or download the video",
+      "pickLead": "A resolved link stops at a two-way choice, so you can read the quality list before committing - picking the wrong tier no longer means re-downloading the whole clip.",
+      "pickAudioLabel": "Transcribe the audio: ",
+      "pickAudioText": "Only the audio track is fetched, usually a fraction of the same clip's size as a video, and it goes straight into transcription. Site cookies are deleted as soon as the audio is extracted; the temporary audio stays in the system temp folder so the player can replay each sentence, and is removed when the next clip starts or the app quits.",
+      "pickVideoLabel": "Download the video: ",
+      "pickVideoText": "The video and audio tracks are merged into mp4 at the quality you picked, with progress measured from real bytes and a cancel button throughout. The system Save As dialog only appears once the download is complete, so cancelling never leaves a half-written file in your own folders; whether you save or cancel, the temporary copy is cleaned up.",
+      "pickNote": "The size on the card is the site's own estimate, so the real figure moves up or down. Videos behind a login or a paywall cannot be fetched, and live streams are refused outright. Download only material you are allowed to use - site terms and copyright are yours to judge.",
       "formatsTitle": "Supported formats",
       "processTitle": "During transcription",
       "processText": "After you click Start transcription, the Whisper engine runs speech recognition on your CPU, lines appear as they are produced, and progress follows the real position in the audio. You can cancel at any time. Speed depends on the length of the audio and your CPU, and the file is never uploaded to any server.",
@@ -367,6 +374,10 @@
       "component": {
         "q": "Can the link-resolution component update itself inside the app?",
         "a": "Yes - since v1.0.4 you do not have to reinstall the whole package for it. Open Settings → About and updates; the link-resolution row shows the version and size this machine is using. Press Check for updates, and when the manifest lists a newer version an \"Update to X\" button appears - press it and the download starts. The update only replaces the app's own copy, the version bundled in the installer stays untouched, and if the download or the checksum fails it falls back to the copy you had, keeps showing the old version and tells you in a visible message. The manifest is maintained by this project itself, every entry checked against the upstream file fingerprint, and it is only ever fetched from our own repository."
+      },
+      "tempFiles": {
+        "q": "Does the media stay on my computer while I transcribe or download?",
+        "a": "Only briefly, and every piece has a defined cleanup point. Link imports land in the system temp folder: site cookies are deleted the moment the audio is extracted; the temporary audio stays while the player replays it and is removed when the next clip starts or the app quits; a downloaded video is removed as soon as you pick where to save it, or cancel the save. Changing the link, switching back to the local file tab, or closing the uploader releases that folder immediately. If the app is force-quit and misses the cleanup, the next start sweeps temp folders older than 24 hours. Nothing is ever uploaded."
       },
       "accuracy": {
         "q": "How accurate is the transcription?",
