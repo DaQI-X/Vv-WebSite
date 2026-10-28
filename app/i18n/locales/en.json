@@ -81,7 +81,7 @@
       },
       "voice": {
         "title": "Subtitle voice-over",
-        "desc": "Turn finished subtitles into a ready-to-use voice track: audition one line first, synthesize segment by segment, then lay the clips onto the subtitle timeline as a single MP3. A clip longer than its subtitle slot shifts later — nothing is cut or mixed on top of each other, and your subtitles and timing stay untouched."
+        "desc": "Turn finished subtitles into a ready-to-use voice track: audition one line first, synthesize segment by segment, then lay the clips onto the subtitle timeline as a single MP3. A clip longer than its subtitle slot shifts later — nothing is cut or mixed on top of each other, and your subtitles and timing stay untouched. Synthesis can go through the API you configured, or through the on-device tier, which calls no API and never leaves your machine."
       },
       "privacy": {
         "title": "Local by default",
@@ -324,17 +324,21 @@
       "noteText": "while a proofreading run is in progress the clear button on the reference script is disabled, so an accidental click cannot interrupt the analysis."
     },
     "voice": {
-      "lead": "The whole script is synthesized segment by segment, then assembled on your machine with FFmpeg along the subtitle timeline. This step only reads text and writes audio — subtitles and their timing are never modified.",
-      "item1Title": "Audition one line first",
-      "item1Desc": "A wrong API base, voice model or voice id surfaces here instead of at segment 20 of a long script. The preview box starts with the first segment, and you can type any line you want to hear.",
-      "item2Title": "One request per segment",
-      "item2Desc": "Calls run serially and your provider bills each request, so the dialog states the segment count and character count before you start. Empty segments are skipped, three consecutive failures stop the batch, and cancelling still keeps everything already synthesized.",
-      "item3Title": "Laid out on the subtitle timeline",
-      "item3Desc": "Each clip starts where its subtitle starts. If a clip is longer than its slot it is pushed later and the rest of the track follows — nothing is truncated, nothing is layered on top of each other. The result screen reports how much longer the track is and how many segments were pushed.",
-      "item4Title": "A separate audio track",
-      "item4Desc": "The output is a 44.1 kHz mono MP3, saved wherever you choose through the system Save dialog. If you do not save it, closing the dialog deletes this batch of intermediates.",
+      "lead": "Voice-over is the third tab at the top of the home screen, and this release puts an \"Experimental\" badge on it (the reason is at the end of this section). Inside it is two panels: the left one handles what to read, which model, which voice and how fast; the right one carries a single state - idle, synthesizing, done. The script is synthesized segment by segment, then assembled into one track by FFmpeg on your machine. This step only reads text and writes audio - subtitles and their timing are never modified.",
+      "item1Title": "Two ways to feed it",
+      "item1Desc": "\"Plain text\" takes whatever you type or paste, and a long script is split at sentence boundaries into several calls - the panel spells it out as \"N characters · K calls\". \"From transcription\" uses the non-empty segments of the current transcript and shows the segment and character counts as they are; edit the wording on the transcription page, because this panel reads them unchanged. The header also has a \"Clear script\" button that empties only this page's text box - the transcript itself stays put.",
+      "item2Title": "Audition one line first",
+      "item2Desc": "Press \"Audition first line\" before running the whole batch: it reads the first segment of that batch. A wrong API base, voice model or voice id surfaces here instead of at segment 20 of a long script - by then the cloud tier has spent your quota and the local tier has spent your afternoon.",
+      "item3Title": "Cloud API, or synthesis on your machine",
+      "item3Desc": "Both tiers share the same page and the same assembly path. The cloud tier uses the OpenAI-standard audio endpoint you configured; you type the model and the voice id yourself (which values exist is up to the provider - the app refuses to guess for you), and the provider bills each call. The local tier synthesizes on your machine: no API call, no cost. In this release it ships the Chinese-first VITS model, and its voices are a dropdown numbered from 1 - upstream publishes no names, so you tell them apart by ear. Which tier to use is saved under Settings → Voice-over, and the \"Voice engine\" line at the bottom of the page shows that saved choice.",
+      "item4Title": "One call per segment, with the tally on screen",
+      "item4Desc": "Calls run serially and the progress follows real segment numbers (\"X of N synthesized\"), and the page states the count before you press start: \"N calls to your provider (billed by them)\" on the cloud tier, \"N segments synthesized on this machine (no API, no cost)\" on the local tier. Empty segments are skipped and cost nothing; three consecutive failures stop the batch; you can cancel mid-run and everything already synthesized still assembles into a track. The segment in flight, or the request already sent, cannot be recalled, and once assembly starts the cancel button disappears - that step has no interrupt point.",
+      "item5Title": "Laid out on the subtitle timeline",
+      "item5Desc": "With \"From transcription\", each clip starts where its subtitle starts. If a clip is longer than its slot it is pushed later and the rest of the track follows - nothing is truncated, nothing is layered on top of each other. The result panel reports how much longer the track is than the original timeline, how many segments were pushed and how many decoded as empty audio. \"Plain text\" has no timeline: the clips are read one after another, end to end, and those two counters never appear.",
+      "item6Title": "A separate audio track",
+      "item6Desc": "The output is a 44.1 kHz mono MP3 you can play back on the page before pressing \"Save track\" to write it anywhere through the system Save dialog. This batch stays playable until you clear it or start another; if you never save it, pressing Clear or starting a new batch (which recycles the previous one first) deletes the intermediates and the assembled track together. A copy already saved elsewhere is untouched, and the subtitle file itself is unaffected - export works exactly as before.",
       "noteLabel": "Heads up: ",
-      "noteText": "Voice-over uses the OpenAI-standard audio endpoint (/v1/audio/speech). It reuses the API base and key from the proofreading settings, with a separate voice model and voice id. Providers that only offer chat usually do not have this endpoint — check their documentation. Each segment sends subtitle text (not your audio or video) to the address you configured."
+      "noteText": "Three things to know. (1) On the cloud tier, the API base and key are filled in under Settings → Voice-over; leave them empty and it reuses what Proofread already saved. Providers that only offer chat usually do not have this audio endpoint - check their documentation. Each segment sends caption text (never your media file) to the address you configured. (2) The local tier needs two on-demand components the first time: the engine program and the roughly 135MB Chinese model, both downloaded under Settings → About and updates → On-demand components. Only that step touches the network - afterwards, synthesis never leaves your machine, because the engine only listens on 127.0.0.1. Neither ships inside the installer, so the first run needs some download time, and the first synthesis waits a little longer while the engine process starts and the model loads into memory. (3) The \"Experimental\" badge sits on the tab rather than only on the local tier: this release moved voice-over out of a dialog into its own page and added on-device synthesis, and the assembly path both tiers share has not been walked end to end on packaged Intel Mac and Windows builds yet. \"Subtitles and their timing are never modified\" is the line this release holds; if the track does not line up, use \"Audition first line\" and the counters on the result panel to find out why."
     },
     "export": {
       "lead": "When proofreading is done, click Export and the system Save dialog lets you pick the format and location:",
@@ -349,7 +353,7 @@
     },
     "api": {
       "aboutTitle": "How it works",
-      "aboutText": "Transcription uses the local Whisper engine bundled inside the app; while the transcription mode stays on local it needs no network and produces no API cost. Local proofreading is the same - it only consults the built-in misheard-word list and the Chinese dictionary, so it works without a key. AI proofreading depends on a third-party model: fill in your own API key under Settings → Proofread. For a Chinese transcript with no key, clicking Proofread simply runs the local pass and tells you where to configure it; for another language that route does not apply, so the app points you at the proofread settings instead. You can also switch the transcription mode to cloud under Settings → Transcription and use a third-party ASR API in place of the local engine. That same tab holds the transcription language and the engine's health: if the engine stops answering, press Check engine status and then Restart local engine - no need to quit the app.",
+      "aboutText": "Transcription uses the local Whisper engine bundled inside the app; while the transcription mode stays on local it needs no network and produces no API cost. Local proofreading is the same - it only consults the built-in misheard-word list and the Chinese dictionary, so it works without a key. AI proofreading depends on a third-party model: fill in your own API key under Settings → Proofread. For a Chinese transcript with no key, clicking Proofread simply runs the local pass and tells you where to configure it; for another language that route does not apply, so the app points you at the proofread settings instead. You can also switch the transcription mode to cloud under Settings → Transcription and use a third-party ASR API in place of the local engine. That same tab holds the transcription language and the engine's health: if the engine stops answering, press Check engine status and then Restart local engine - no need to quit the app. Voice-over has its own tab, Settings → Voice-over, where you first pick \"Cloud API (default)\" or \"Local voice-over (needs the engine and model downloaded)\": the cloud tier fills in a voice model and a voice id here (the base URL and key can be set here too - leave them empty and it reuses the proofreading ones), while the local tier needs no key because it synthesizes on your machine. Both tiers have Test connection: the cloud one speaks a ten-character sentence to prove the base, model and voice all work, and the local one speaks it through the tier you picked, telling you which piece is missing if the engine or the model is not downloaded yet.",
       "vendorsTitle": "Supported API vendors",
       "vendor1Name": "OpenAI",
       "vendor1Desc": "GPT-4o / Whisper API",
@@ -360,18 +364,18 @@
       "vendor4Name": "Custom OpenAI-compatible",
       "vendor4Desc": "Any API that speaks the OpenAI format",
       "stepsTitle": "Configuration steps",
-      "step1": "Open the app and go to Settings → Proofread (for cloud transcription, use Transcription instead)",
+      "step1": "Open the app and go to Settings → Proofread (for cloud transcription, use Transcription instead; for voice-over, use Voice-over)",
       "step2": "Choose the provider, enter the API key and API base URL, and change the model if needed",
       "step3": "Click Test connection first - it sends a real request with what you have typed, before saving, so you know the key works",
       "step4": "Then click Save settings - nothing takes effect until you save, and switching provider does not change the endpoint on its own",
       "step5": "Back on the home screen, import a file and transcribe it, then click Proofread and pick AI to verify the configuration; a missing key or a failed call both show a visible message",
       "noteLabel": "Heads up: ",
-      "noteText": "third-party APIs charge their own fees, billed by the vendor and unrelated to Vv Transcribe. With no API configured, local transcription, reference comparison, local proofreading and export all still work; only AI proofreading (and cloud transcription) requires a key."
+      "noteText": "third-party APIs charge their own fees, billed by the vendor and unrelated to Vv Transcribe. With no API configured, local transcription, reference comparison, local proofreading, on-device voice-over and export all still work; only AI proofreading, cloud transcription and cloud-tier voice-over require a key."
     },
     "faq": {
       "net": {
         "q": "Do I need a network connection the first time?",
-        "a": "Once: the first transcription downloads the Whisper model weights for the tier you picked - about 138MB for Fast, about 461MB for Precise (in China this goes through the hf-mirror.com mirror). After the model is cached, local transcription, comparison, local proofreading and export need no network at all. AI proofreading calls the third-party API you configured, so it always needs a connection."
+        "a": "Once: the first transcription downloads the Whisper model weights for the tier you picked - about 138MB for Fast, about 461MB for Precise (in China this goes through the hf-mirror.com mirror). If you want on-device voice-over, the first use downloads the voice engine and the Chinese model too, under Settings → About and updates → On-demand components - neither is inside the installer. After those are cached, local transcription, comparison, local proofreading and export need no network at all, and offline voice-over synthesis never leaves the machine either (the engine only listens on 127.0.0.1). AI proofreading and cloud-tier voice-over call the third-party API you configured, so they always need a connection."
       },
       "language": {
         "q": "Which languages does transcription support?",
@@ -391,11 +395,11 @@
       },
       "component": {
         "q": "Can the link-resolution component update itself inside the app?",
-        "a": "Yes - since v1.0.4 you do not have to reinstall the whole package for it. Open Settings → About and updates; the link-resolution row shows the version and size this machine is using. Press Check for updates, and when the manifest lists a newer version an \"Update to X\" button appears - press it and the download starts. The update only replaces the app's own copy, the version bundled in the installer stays untouched, and if the download or the checksum fails it falls back to the copy you had, keeps showing the old version and tells you in a visible message. The manifest is maintained by this project itself, every entry checked against the upstream file fingerprint, and it is only ever fetched from our own repository."
+        "a": "Yes - since v1.0.4 you do not have to reinstall the whole package for it. Open Settings → About and updates; the link-resolution row shows the version and size this machine is using. Press Check for updates, and when the manifest lists a newer version an \"Update to X\" button appears - press it and the download starts. The update only replaces the app's own copy, the version bundled in the installer stays untouched, and if the download or the checksum fails it falls back to the copy you had, keeps showing the old version and tells you in a visible message. The manifest is maintained by this project itself, every entry checked against the upstream file fingerprint, and it is only ever fetched from our own repository. Since v1.0.6 this list also carries the two voice-over pieces - the engine program and the Chinese model. They are not bundled in the installer, so the first offline voice-over downloads them here, and you can delete them again to reclaim the space. When one is missing, the voice-over page says exactly which piece is missing instead of failing after the fact."
       },
       "tempFiles": {
         "q": "Does the media stay on my computer while I transcribe or download?",
-        "a": "Only briefly, and every piece has a defined cleanup point. Link imports land in the system temp folder: site cookies are deleted the moment the audio is extracted; the temporary audio stays while the player replays it and is removed when the next clip starts or the app quits; a downloaded video is removed as soon as you pick where to save it, or cancel the save. Changing the link, switching back to the local file tab, or closing the uploader releases that folder immediately. Voice-over clips and the assembled track get their own temp folder too, removed when the voice dialog closes - a copy you already saved elsewhere is untouched. If the app is force-quit and misses the cleanup, the next start sweeps temp folders older than 24 hours. Nothing is ever uploaded."
+        "a": "Only briefly, and every piece has a defined cleanup point. Link imports land in the system temp folder: site cookies are deleted the moment the audio is extracted; the temporary audio stays while the player replays it and is removed when the next clip starts or the app quits; a downloaded video is removed as soon as you pick where to save it, or cancel the save. Changing the link, switching back to the local file tab, or closing the uploader releases that folder immediately. Voice-over clips and the assembled track get their own temp folder too: pressing Clear on the result panel, or starting a new batch (which recycles the previous batch first), deletes it - a copy you already saved elsewhere is untouched. If the app is force-quit and misses the cleanup, the next start sweeps temp folders older than 24 hours. Nothing is ever uploaded."
       },
       "accuracy": {
         "q": "How accurate is the transcription?",
@@ -403,7 +407,7 @@
       },
       "security": {
         "q": "Is my file data safe?",
-        "a": "Transcription, reference comparison and local proofreading run entirely on your machine; audio and video are never uploaded to any server. If you enable cloud transcription, AI proofreading or subtitle voice-over, the audio or the caption text is sent to the third-party API you configured yourself, under that provider's privacy policy - voice-over sends subtitle text segment by segment, never the media file."
+        "a": "Transcription, reference comparison, local proofreading and on-device voice-over run entirely on your machine; audio and video are never uploaded to any server. If you enable cloud transcription, AI proofreading or cloud-tier voice-over, the audio or the caption text is sent to the third-party API you configured yourself, under that provider's privacy policy - voice-over sends caption text segment by segment, never the media file. The local voice-over tier calls no API at all: your caption text stays on the machine, and only the one-time engine and model download touches the network."
       },
       "speed": {
         "q": "Why is transcription sometimes slow?",
@@ -433,16 +437,16 @@
   },
   "privacy": {
     "title": "Privacy policy",
-    "updated": "Last updated: 26 October 2026",
+    "updated": "Last updated: 28 October 2026",
     "overviewTitle": "Overview",
     "overviewText": "Vv Transcribe (\"the App\") is a local subtitle transcription and proofreading tool for media professionals. This policy explains what information we collect and how we protect it. The core principle: **everything is processed locally by default**, and data goes to a provider you chose only after you configure a third-party API yourself.",
     "localTitle": "Data processed on your machine",
     "local1": "Audio and video transcription in local mode runs entirely on your machine; files are never uploaded to any server",
-    "local2": "Reference comparison and local proofreading run on your machine and never upload your broadcast script or caption text",
+    "local2": "Reference comparison, local proofreading and on-device voice-over run on your machine and never upload your broadcast script or caption text",
     "local3": "Transcripts and subtitle files are stored only on your device",
     "apiTitle": "API configuration (optional)",
-    "apiLead": "AI proofreading only runs once you configure a third-party AI API (such as OpenAI or Qwen); local proofreading needs no API configuration at all. Subtitle voice-over reuses that same API base and key and only adds a voice model and a voice id - whether your provider has the endpoint is up to its own documentation. If you also switch the transcription mode under Transcription configuration to cloud, transcription requests your chosen endpoint as well. In that case:",
-    "api1": "Caption text (AI proofreading, subtitle voice-over) or audio (cloud transcription) is sent to the third-party API provider you configured; voice-over sends caption text segment by segment and never the media file",
+    "apiLead": "AI proofreading only runs once you configure a third-party AI API (such as OpenAI or Qwen); local proofreading needs no API configuration at all. Cloud-tier voice-over reuses that same API base and key (you can also set them separately under Voice-over - leaving them empty means reuse), and only adds a voice model and a voice id - whether your provider has the endpoint is up to its own documentation. Voice-over also has an on-device tier that calls no API at all. If you also switch the transcription mode under Transcription configuration to cloud, transcription requests your chosen endpoint as well. In that case:",
+    "api1": "Caption text (AI proofreading, cloud-tier voice-over) or audio (cloud transcription) is sent to the third-party API provider you configured; voice-over sends caption text segment by segment and never the media file",
     "api2": "Processing of that data is governed by that provider's own privacy policy",
     "api3": "Your API key is stored only on your own device and is never uploaded; before it is written to disk it is encrypted with your system keystore (the macOS Keychain / Windows DPAPI), and only if that keystore is unavailable does it fall back to plain text - in which case Settings says so explicitly, marking whether the key is currently encrypted or not",
     "collectTitle": "Information we collect",
@@ -451,7 +455,7 @@
     "collect2": "API configuration (if you configured one)",
     "collect3": "Usage logs, kept locally for troubleshooting",
     "modelTitle": "Model download",
-    "modelText": "On the first transcription the App downloads the Whisper weights for the tier you chose from the hf-mirror.com mirror: about 138MB for Fast (base) and about 461MB for Precise (small). Each tier downloads only when it is first used, and the files then stay in the local Hugging Face cache (~/.cache/huggingface/hub on macOS and Linux), so there is no repeat download. That exchange carries model files only and uploads no user data.",
+    "modelText": "On the first transcription the App downloads the Whisper weights for the tier you chose from the hf-mirror.com mirror: about 138MB for Fast (base) and about 461MB for Precise (small). Each tier downloads only when it is first used, and the files then stay in the local Hugging Face cache (~/.cache/huggingface/hub on macOS and Linux), so there is no repeat download. That exchange carries model files only and uploads no user data. The two on-demand voice-over components work the same way: the engine binary comes from this repository’s publicly released assets and the Chinese model is fetched from hf-mirror.com by the commit and per-file sha256 pinned in the code - files come down, nothing of yours goes up.",
     "contactTitle": "Contact us",
     "contactLead": "If you have any question about this policy, open an issue on ",
     "contactIssues": "GitHub Issues",

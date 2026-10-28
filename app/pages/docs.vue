@@ -332,32 +332,16 @@
                   {{ t('docs.voice.lead') }}
                 </p>
                 <div class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
-                  <div class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                    <span class="text-lg">🎧</span>
+                  <!-- 条目数由语言包里的 itemN 决定，这里只给图标；两边数不齐就会出现空白卡 -->
+                  <div
+                    v-for="(icon, index) in voiceIcons"
+                    :key="index"
+                    class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
+                  >
+                    <span class="text-lg">{{ icon }}</span>
                     <div>
-                      <strong class="text-gray-900 dark:text-white">{{ t('docs.voice.item1Title') }}</strong>
-                      <p class="mt-1">{{ t('docs.voice.item1Desc') }}</p>
-                    </div>
-                  </div>
-                  <div class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                    <span class="text-lg">📝</span>
-                    <div>
-                      <strong class="text-gray-900 dark:text-white">{{ t('docs.voice.item2Title') }}</strong>
-                      <p class="mt-1">{{ t('docs.voice.item2Desc') }}</p>
-                    </div>
-                  </div>
-                  <div class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                    <span class="text-lg">⏱️</span>
-                    <div>
-                      <strong class="text-gray-900 dark:text-white">{{ t('docs.voice.item3Title') }}</strong>
-                      <p class="mt-1">{{ t('docs.voice.item3Desc') }}</p>
-                    </div>
-                  </div>
-                  <div class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                    <span class="text-lg">💾</span>
-                    <div>
-                      <strong class="text-gray-900 dark:text-white">{{ t('docs.voice.item4Title') }}</strong>
-                      <p class="mt-1">{{ t('docs.voice.item4Desc') }}</p>
+                      <strong class="text-gray-900 dark:text-white">{{ t(`docs.voice.item${index + 1}Title`) }}</strong>
+                      <p class="mt-1">{{ t(`docs.voice.item${index + 1}Desc`) }}</p>
                     </div>
                   </div>
                 </div>
@@ -460,6 +444,8 @@ const activeSection = ref('overview')
 const xattrCommand = 'xattr -cr "/Applications/Vv Transcribe.app"'
 const formats = ['MP4', 'MOV', 'MKV', 'AVI', 'WEBM', 'FLV', 'MP3', 'WAV', 'M4A', 'FLAC', 'OGG', 'WMA']
 const exportFormats = ['srt', 'txt', 'json', 'md']
+// 配音那一节的条目图标：文案在两份语言包的 docs.voice.itemN* 里，这里只保证「有几条、配什么图」
+const voiceIcons = ['📝', '🎧', '☁️', '🧮', '📐', '💾']
 
 // id 是页面锚点（中英共用），key 对应语言包里的导航文案
 const sections = [
