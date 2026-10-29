@@ -443,7 +443,7 @@ const activeSection = ref('overview')
 // 命令与扩展名与语言无关
 const xattrCommand = 'xattr -cr "/Applications/Vv Transcribe.app"'
 const formats = ['MP4', 'MOV', 'MKV', 'AVI', 'WEBM', 'FLV', 'MP3', 'WAV', 'M4A', 'FLAC', 'OGG', 'WMA']
-const exportFormats = ['srt', 'txt', 'json', 'md']
+const exportFormats = ['srt', 'vtt', 'tsv', 'txt', 'json', 'md']
 // 配音那一节的条目图标：文案在两份语言包的 docs.voice.itemN* 里，这里只保证「有几条、配什么图」
 const voiceIcons = ['📝', '🎧', '☁️', '🧮', '📐', '💾']
 

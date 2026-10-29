@@ -4,8 +4,9 @@
       <h2 class="section-title">{{ t('features.title') }}</h2>
       <p class="section-desc">{{ t('features.desc') }}</p>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div v-for="feature in features" :key="feature.id" class="group p-6 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-brand-200 dark:hover:border-brand-800 hover:shadow-lg hover:shadow-brand-100/50 dark:hover:shadow-brand-900/20 transition-all duration-300 bg-white dark:bg-gray-900">
+      <!-- 9 张卡在 lg 是 3×3；md 也走 3 列，否则 9 个数在 2 列下最后一行落单 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div v-for="feature in features" :key="feature.id" class="group p-6 rounded-2xl border border-gray-100 dark:border-gray-800 hover:border-brand-200 dark:hover:border-brand-800 hover:shadow-lg hover:shadow-brand-100/50 dark:hover:shadow-brand-900/20 transition-[border-color,box-shadow] duration-300 bg-white dark:bg-gray-900">
           <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-transform group-hover:scale-110" :class="feature.bgClass">
             <component :is="feature.icon" :class="feature.iconClass" />
           </div>
@@ -29,10 +30,15 @@ const LockIcon = { render: () => h('svg', { class: 'w-6 h-6', fill: 'none', stro
 const VideoIcon = { render: () => h('svg', { class: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' }, [h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z' })]) }
 const SubtitleIcon = { render: () => h('svg', { class: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' }, [h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z' })]) }
 const VoiceIcon = { render: () => h('svg', { class: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' }, [h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M11 5L6 9H2v6h4l5 4V5zM15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728' })]) }
+const PlayIcon = { render: () => h('svg', { class: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' }, [h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M14.752 11.168l-3.197-2.13A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.13a1 1 0 000-1.664z' }), h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M21 12a9 9 0 11-18 0 9 9 0 0118 0z' })]) }
+const ProgressIcon = { render: () => h('svg', { class: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' }, [h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M22 12h-4l-3 9L9 3l-3 9H2' })]) }
 
 // 文案在语言包里，这里只保留与语言无关的图标与配色
+// 顺序按工作流排：转写三张（转写→回放→进度）、比对与校对与配音三张、隐私与下载与导出三张
 const features = [
   { id: 'transcribe', icon: MicIcon, bgClass: 'bg-brand-50', iconClass: 'text-brand-600' },
+  { id: 'playback', icon: PlayIcon, bgClass: 'bg-teal-50', iconClass: 'text-teal-600' },
+  { id: 'progress', icon: ProgressIcon, bgClass: 'bg-orange-50', iconClass: 'text-orange-600' },
   { id: 'reference', icon: DiffIcon, bgClass: 'bg-amber-50', iconClass: 'text-amber-600' },
   { id: 'correction', icon: AIIcon, bgClass: 'bg-purple-50', iconClass: 'text-purple-600' },
   { id: 'voice', icon: VoiceIcon, bgClass: 'bg-cyan-50', iconClass: 'text-cyan-600' },

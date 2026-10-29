@@ -69,7 +69,15 @@
     "items": {
       "transcribe": {
         "title": "AI transcription",
-        "desc": "Powered by Whisper, transcription runs on your own machine, line by line, with no upload and no waiting. 12 languages are available, including Chinese (Mandarin), English and Japanese, and the model tier is your call - Fast for speed, Precise when a wrong character costs you."
+        "desc": "Whisper runs on your own machine: the text appears line by line, with no upload and no waiting. 12 languages, and the fast/precise tier is your call."
+      },
+      "playback": {
+        "title": "Line-by-line playback",
+        "desc": "Click a subtitle and playback starts at that line; the line being spoken highlights itself. Drag the seek bar, edit the wording right in the row."
+      },
+      "progress": {
+        "title": "Progress and cancel",
+        "desc": "Transcription reports a real percentage, voice-over counts segments (\"X of N synthesized\"), and both can be stopped halfway. A call already sent cannot be recalled."
       },
       "reference": {
         "title": "Reference script diff",
@@ -77,11 +85,11 @@
       },
       "correction": {
         "title": "Two ways to proofread",
-        "desc": "Local proofreading runs on the built-in misheard-word list and Chinese dictionary: no setup, no network, no tokens. AI proofreading calls the model you configure and explains each difference in context. Both only propose fixes - you accept them one by one."
+        "desc": "Local proofreading runs on the built-in misheard-word list and Chinese dictionary: no setup, no network. AI proofreading explains each difference in context. Both only propose fixes - you accept them one by one."
       },
       "voice": {
         "title": "Subtitle voice-over",
-        "desc": "Turn finished subtitles into a ready-to-use voice track: audition one line first, synthesize segment by segment, then lay the clips onto the subtitle timeline as a single MP3. A clip longer than its subtitle slot shifts later — nothing is cut or mixed on top of each other, and your subtitles and timing stay untouched. Synthesis can go through the API you configured, or through the on-device tier, which calls no API and never leaves your machine."
+        "desc": "Turn finished subtitles into a voice track you can actually use: synthesized segment by segment, laid onto the subtitle timeline as a single MP3. Your subtitles and their timing stay untouched."
       },
       "privacy": {
         "title": "Local by default",
@@ -89,11 +97,11 @@
       },
       "download": {
         "title": "Video download",
-        "desc": "Paste a public video link: once the app resolves the duration and the available qualities, choose between transcribing the audio and downloading the video. Some sites block hotlinking; if that happens, import the local file instead."
+        "desc": "Paste a public video link: once the app resolves the duration and the available qualities, choose between transcribing the audio and downloading the video. Some sites block hotlinking."
       },
       "export": {
         "title": "Multi-format export",
-        "desc": "Export to SRT, TXT, JSON or Markdown so the result drops straight into your post-production pipeline."
+        "desc": "Export to SRT, VTT, TSV, TXT, JSON or Markdown - six formats that drop straight into your post-production pipeline."
       }
     }
   },
@@ -220,7 +228,7 @@
       "card2Title": "Zero API cost",
       "card2Desc": "Open-source engine, no paid API needed",
       "card3Title": "Many formats",
-      "card3Desc": "Export SRT / TXT / JSON / Markdown"
+      "card3Desc": "Export SRT / VTT / TSV / TXT / JSON / Markdown"
     },
     "install": {
       "reqTitle": "System requirements",
@@ -324,19 +332,19 @@
       "noteText": "while a proofreading run is in progress the clear button on the reference script is disabled, so an accidental click cannot interrupt the analysis."
     },
     "voice": {
-      "lead": "Voice-over is the third tab at the top of the home screen, and this release puts an \"Experimental\" badge on it (the reason is at the end of this section). Inside it is two panels: the left one handles what to read, which model, which voice and how fast; the right one carries a single state - idle, synthesizing, done. The script is synthesized segment by segment, then assembled into one track by FFmpeg on your machine. This step only reads text and writes audio - subtitles and their timing are never modified.",
+      "lead": "Voice-over is the third tab at the top of the home screen. Inside it is two panels: the left one handles what to read, which model, which voice and how fast; the right one carries a single state - idle, synthesizing, done. The script is synthesized segment by segment, then assembled into one track by FFmpeg on your machine - subtitles and their timing are never modified.",
       "item1Title": "Two ways to feed it",
-      "item1Desc": "\"Plain text\" takes whatever you type or paste, and a long script is split at sentence boundaries into several calls - the panel spells it out as \"N characters · K calls\". \"From transcription\" uses the non-empty segments of the current transcript and shows the segment and character counts as they are; edit the wording on the transcription page, because this panel reads them unchanged. The header also has a \"Clear script\" button that empties only this page's text box - the transcript itself stays put.",
+      "item1Desc": "\"Plain text\" takes whatever you type or paste. \"From transcription\" uses the non-empty segments of the current transcript and shows the segment and character counts as they are; edit the wording on the transcription page, because this panel reads them unchanged.",
       "item2Title": "Audition one line first",
-      "item2Desc": "Press \"Audition first line\" before running the whole batch: it reads the first segment of that batch. A wrong API base, voice model or voice id surfaces here instead of at segment 20 of a long script - by then the cloud tier has spent your quota and the local tier has spent your afternoon.",
+      "item2Desc": "Press \"Audition first line\" before running the whole batch: it reads the first segment of that batch. A wrong API base, voice model or voice id surfaces here instead of at segment 20 of a long script.",
       "item3Title": "Cloud API, or synthesis on your machine",
-      "item3Desc": "Both tiers share the same page and the same assembly path. The cloud tier uses the OpenAI-standard audio endpoint you configured; you type the model and the voice id yourself (which values exist is up to the provider - the app refuses to guess for you), and the provider bills each call. The local tier synthesizes on your machine: no API call, no cost. In this release it ships the Chinese-first VITS model, and its voices are a dropdown numbered from 1 - upstream publishes no names, so you tell them apart by ear. Which tier to use is saved under Settings → Voice-over, and the \"Voice engine\" line at the bottom of the page shows that saved choice.",
+      "item3Desc": "Both tiers share the same page and the same assembly path. The cloud tier uses the OpenAI-standard audio endpoint you configured; you type the model and the voice id yourself (which values exist is up to the provider), and the provider bills each call. The local tier synthesizes on your machine: no API call, no cost. In this release it is the VITS model - about 135MB with 5 voices, and upstream publishes no voice names, so you tell them apart by ear. Which tier to use is saved under Settings → Voice-over.",
       "item4Title": "One call per segment, with the tally on screen",
-      "item4Desc": "Calls run serially and the progress follows real segment numbers (\"X of N synthesized\"), and the page states the count before you press start: \"N calls to your provider (billed by them)\" on the cloud tier, \"N segments synthesized on this machine (no API, no cost)\" on the local tier. Empty segments are skipped and cost nothing; three consecutive failures stop the batch; you can cancel mid-run and everything already synthesized still assembles into a track. The segment in flight, or the request already sent, cannot be recalled, and once assembly starts the cancel button disappears - that step has no interrupt point.",
+      "item4Desc": "Calls run serially and the progress follows real segment numbers (\"X of N synthesized\"), and the page states the count before you press start, along with whether your provider bills it. Empty segments are skipped; three consecutive failures stop the batch; you can cancel mid-run and everything already synthesized still assembles into a track. But cancel only stops the segments after it - the one in flight and the request already sent cannot be recalled, and once assembly starts the cancel button disappears.",
       "item5Title": "Laid out on the subtitle timeline",
-      "item5Desc": "With \"From transcription\", each clip starts where its subtitle starts. If a clip is longer than its slot it is pushed later and the rest of the track follows - nothing is truncated, nothing is layered on top of each other. The result panel reports how much longer the track is than the original timeline, how many segments were pushed and how many decoded as empty audio. \"Plain text\" has no timeline: the clips are read one after another, end to end, and those two counters never appear.",
+      "item5Desc": "With \"From transcription\", each clip starts where its subtitle starts. If a clip is longer than its slot it is pushed later and the rest of the track follows - nothing is truncated, nothing is layered on top of each other. The result panel reports how much longer the track is than the original timeline and how many segments were pushed. \"Plain text\" has no timeline: the clips are read one after another.",
       "item6Title": "A separate audio track",
-      "item6Desc": "The output is a 44.1 kHz mono MP3 you can play back on the page before pressing \"Save track\" to write it anywhere through the system Save dialog. This batch stays playable until you clear it or start another; if you never save it, pressing Clear or starting a new batch (which recycles the previous one first) deletes the intermediates and the assembled track together. A copy already saved elsewhere is untouched, and the subtitle file itself is unaffected - export works exactly as before.",
+      "item6Desc": "The output is a 44.1 kHz mono MP3 you can play back on the page before pressing \"Save track\" to write it anywhere through the system Save dialog. If you never save it, clearing the batch or starting a new one deletes it; a copy already saved elsewhere is untouched. The subtitle file itself is unaffected - export works exactly as before.",
       "noteLabel": "Heads up: ",
       "noteText": "Three things to know. (1) On the cloud tier, the API base and key are filled in under Settings → Voice-over; leave them empty and it reuses what Proofread already saved. Providers that only offer chat usually do not have this audio endpoint - check their documentation. Each segment sends caption text (never your media file) to the address you configured. (2) The local tier needs two on-demand components - the engine program and the roughly 135MB Chinese model - and neither ships inside the installer. In this release (1.0.6) only the Chinese model can actually be downloaded under Settings → About and updates → On-demand components: the engine row says it has no package in this version, and its download arrives with the next release (1.0.7). So on-device synthesis cannot be completed on 1.0.6 yet. Once both pieces are installed, only the download touches the network - afterwards synthesis never leaves your machine, because the engine only listens on 127.0.0.1 - and the first synthesis waits a little longer while the engine process starts and the model loads into memory. (3) The \"Experimental\" badge sits on the tab rather than only on the local tier: this release moved voice-over out of a dialog into its own page and added on-device synthesis, and the assembly path both tiers share has not been walked end to end on packaged Intel Mac and Windows builds yet. \"Subtitles and their timing are never modified\" is the line this release holds; if the track does not line up, use \"Audition first line\" and the counters on the result panel to find out why."
     },
@@ -344,6 +352,10 @@
       "lead": "When proofreading is done, click Export and the system Save dialog lets you pick the format and location:",
       "srtTitle": "SRT",
       "srtDesc": "The standard subtitle format, with timing, ready to import into video editing software",
+      "vttTitle": "VTT",
+      "vttDesc": "The WebVTT subtitle format, read directly by browser players and YouTube",
+      "tsvTitle": "TSV script table",
+      "tsvDesc": "One line per sentence with its timecode in front - handy as a voice-over script and it opens in any spreadsheet",
       "txtTitle": "TXT",
       "txtDesc": "Plain text, easy to copy, paste and edit further",
       "jsonTitle": "JSON",
