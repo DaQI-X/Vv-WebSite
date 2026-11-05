@@ -367,9 +367,38 @@
               </div>
             </section>
 
-            <section id="api-config" class="scroll-mt-24">
+            <section id="history" class="scroll-mt-24">
               <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
                 <span class="w-8 h-8 bg-brand-100 dark:bg-brand-900 rounded-lg flex items-center justify-center text-brand-600 dark:text-brand-400 text-sm">08</span>
+                {{ t('docs.nav.history') }}
+              </h2>
+              <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
+                <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                  {{ t('docs.history.lead') }}
+                </p>
+                <div class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                  <!-- 条目数由语言包里的 itemN 决定，这里只给图标；两边数不齐就会出现空白卡 -->
+                  <div
+                    v-for="(icon, index) in historyIcons"
+                    :key="index"
+                    class="flex items-start gap-3 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
+                  >
+                    <span class="text-lg">{{ icon }}</span>
+                    <div>
+                      <strong class="text-gray-900 dark:text-white">{{ t(`docs.history.item${index + 1}Title`) }}</strong>
+                      <p class="mt-1">{{ t(`docs.history.item${index + 1}Desc`) }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-4 bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800 rounded-lg p-4 text-sm text-blue-800 dark:text-blue-300">
+                  <strong>{{ t('docs.history.noteLabel') }}</strong>{{ t('docs.history.noteText') }}
+                </div>
+              </div>
+            </section>
+
+            <section id="api-config" class="scroll-mt-24">
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+                <span class="w-8 h-8 bg-brand-100 dark:bg-brand-900 rounded-lg flex items-center justify-center text-brand-600 dark:text-brand-400 text-sm">09</span>
                 {{ t('docs.nav.api') }}
               </h2>
               <div class="space-y-6">
@@ -378,6 +407,19 @@
                   <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
                     {{ t('docs.api.aboutText') }}
                   </p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">{{ t('docs.api.profilesTitle') }}</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
+                    {{ t('docs.api.profilesText') }}
+                  </p>
+                  <div class="grid sm:grid-cols-2 gap-3 text-sm">
+                    <div v-for="i in 4" :key="i" class="border border-gray-200 dark:border-gray-700 rounded-lg p-3">
+                      <div class="font-medium text-gray-900 dark:text-white">{{ t(`docs.api.profile${i}Name`) }}</div>
+                      <div class="text-xs text-gray-500 mt-1 leading-relaxed">{{ t(`docs.api.profile${i}Desc`) }}</div>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
@@ -408,7 +450,7 @@
 
             <section id="faq" class="scroll-mt-24">
               <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
-                <span class="w-8 h-8 bg-brand-100 dark:bg-brand-900 rounded-lg flex items-center justify-center text-brand-600 dark:text-brand-400 text-sm">09</span>
+                <span class="w-8 h-8 bg-brand-100 dark:bg-brand-900 rounded-lg flex items-center justify-center text-brand-600 dark:text-brand-400 text-sm">10</span>
                 {{ t('docs.nav.faq') }}
               </h2>
               <div class="space-y-4">
@@ -446,6 +488,8 @@ const formats = ['MP4', 'MOV', 'MKV', 'AVI', 'WEBM', 'FLV', 'MP3', 'WAV', 'M4A',
 const exportFormats = ['srt', 'vtt', 'tsv', 'txt', 'json', 'md']
 // 配音那一节的条目图标：文案在两份语言包的 docs.voice.itemN* 里，这里只保证「有几条、配什么图」
 const voiceIcons = ['📝', '🎧', '☁️', '🧮', '📐', '💾']
+// 历史记录那一节同理，条目数与两份语言包的 docs.history.itemN* 对齐
+const historyIcons = ['🧾', 'ℹ️', '📌', '🧮', '👁️', '🔁']
 
 // id 是页面锚点（中英共用），key 对应语言包里的导航文案
 const sections = [
@@ -456,6 +500,7 @@ const sections = [
   { id: 'ai-correction', key: 'correction' },
   { id: 'voice', key: 'voice' },
   { id: 'export', key: 'export' },
+  { id: 'history', key: 'history' },
   { id: 'api-config', key: 'api' },
   { id: 'faq', key: 'faq' },
 ]
