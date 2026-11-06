@@ -477,7 +477,7 @@
   },
   "privacy": {
     "title": "Privacy policy",
-    "updated": "Last updated: 5 November 2026",
+    "updated": "Last updated: 6 November 2026",
     "overviewTitle": "Overview",
     "overviewText": "Vv Transcribe (\"the App\") is a local subtitle transcription and proofreading tool for media professionals. This policy explains what information we collect and how we protect it. The core principle: **everything is processed locally by default**, and data goes to a provider you chose only after you configure a third-party API yourself.",
     "localTitle": "Data processed on your machine",
