@@ -425,7 +425,7 @@
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
                   <h3 class="font-semibold text-gray-900 dark:text-white mb-3">{{ t('docs.api.vendorsTitle') }}</h3>
                   <div class="grid sm:grid-cols-2 gap-3 text-sm">
-                    <div v-for="i in 4" :key="i" class="border border-gray-200 dark:border-gray-700 rounded-lg p-3">
+                    <div v-for="i in 6" :key="i" class="border border-gray-200 dark:border-gray-700 rounded-lg p-3">
                       <div class="font-medium text-gray-900 dark:text-white">{{ t(`docs.api.vendor${i}Name`) }}</div>
                       <div class="text-xs text-gray-500 mt-1">{{ t(`docs.api.vendor${i}Desc`) }}</div>
                     </div>
@@ -505,7 +505,7 @@ const sections = [
   { id: 'faq', key: 'faq' },
 ]
 
-const faqIds = ['net', 'language', 'engine', 'appManagement', 'urlFailed', 'component', 'tempFiles', 'accuracy', 'security', 'speed', 'feedback', 'cancel', 'referenceFormat', 'update', 'slowDownload']
+const faqIds = ['net', 'language', 'engine', 'appManagement', 'urlFailed', 'component', 'ttsVendor', 'tempFiles', 'accuracy', 'security', 'speed', 'feedback', 'cancel', 'referenceFormat', 'update', 'slowDownload']
 
 onMounted(() => {
   const observer = new IntersectionObserver(
