@@ -425,7 +425,8 @@
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 dark:border-gray-700 p-6">
                   <h3 class="font-semibold text-gray-900 dark:text-white mb-3">{{ t('docs.api.vendorsTitle') }}</h3>
                   <div class="grid sm:grid-cols-2 gap-3 text-sm">
-                    <div v-for="i in 6" :key="i" class="border border-gray-200 dark:border-gray-700 rounded-lg p-3">
+                    <!-- 厂商卡数与两份语言包的 docs.api.vendorN* 对齐：1.1.2 起配音四家、转写三家，卡上是这八家 -->
+                    <div v-for="i in 8" :key="i" class="border border-gray-200 dark:border-gray-700 rounded-lg p-3">
                       <div class="font-medium text-gray-900 dark:text-white">{{ t(`docs.api.vendor${i}Name`) }}</div>
                       <div class="text-xs text-gray-500 mt-1">{{ t(`docs.api.vendor${i}Desc`) }}</div>
                     </div>
@@ -487,7 +488,7 @@ const xattrCommand = 'xattr -cr "/Applications/Vv Transcribe.app"'
 const formats = ['MP4', 'MOV', 'MKV', 'AVI', 'WEBM', 'FLV', 'MP3', 'WAV', 'M4A', 'FLAC', 'OGG', 'WMA']
 const exportFormats = ['srt', 'vtt', 'tsv', 'txt', 'json', 'md']
 // 配音那一节的条目图标：文案在两份语言包的 docs.voice.itemN* 里，这里只保证「有几条、配什么图」
-const voiceIcons = ['📝', '🎧', '☁️', '🧮', '📐', '💾']
+const voiceIcons = ['📝', '🎧', '☁️', '🧮', '📐', '💾', '🎙']
 // 历史记录那一节同理，条目数与两份语言包的 docs.history.itemN* 对齐
 const historyIcons = ['🧾', 'ℹ️', '📌', '🧮', '👁️', '🔁']
 
@@ -505,7 +506,7 @@ const sections = [
   { id: 'faq', key: 'faq' },
 ]
 
-const faqIds = ['net', 'language', 'engine', 'appManagement', 'urlFailed', 'component', 'ttsVendor', 'tempFiles', 'accuracy', 'security', 'speed', 'feedback', 'cancel', 'referenceFormat', 'update', 'slowDownload']
+const faqIds = ['net', 'language', 'engine', 'appManagement', 'urlFailed', 'component', 'ttsVendor', 'voiceClone', 'tempFiles', 'accuracy', 'security', 'speed', 'feedback', 'referenceFormat', 'cancel', 'update', 'slowDownload']
 
 onMounted(() => {
   const observer = new IntersectionObserver(
