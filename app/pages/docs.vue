@@ -238,6 +238,34 @@
                 </div>
 
                 <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
+                  <h3 class="font-semibold text-gray-900 dark:text-white mb-3">{{ t('docs.transcribe.timelineTitle') }}</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                    {{ t('docs.transcribe.timelineLead') }}
+                  </p>
+                  <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span><strong>{{ t('docs.transcribe.timelineShiftLabel') }}</strong><RichText :text="t('docs.transcribe.timelineShiftText')" /></span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span><strong>{{ t('docs.transcribe.timelineSingleLabel') }}</strong><RichText :text="t('docs.transcribe.timelineSingleText')" /></span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span><strong>{{ t('docs.transcribe.timelineUnitLabel') }}</strong><RichText :text="t('docs.transcribe.timelineUnitText')" /></span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span><strong>{{ t('docs.transcribe.timelineGateLabel') }}</strong><RichText :text="t('docs.transcribe.timelineGateText')" /></span>
+                    </li>
+                  </ul>
+                  <div class="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-sm text-gray-600 dark:text-gray-400 mt-4">
+                    <strong>{{ t('docs.transcribe.timelineNoteLabel') }}</strong>{{ t('docs.transcribe.timelineNoteText') }}
+                  </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
                   <h3 class="font-semibold text-gray-900 dark:text-white mb-3">{{ t('docs.transcribe.engineTitle') }}</h3>
                   <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
                     <RichText :text="t('docs.transcribe.engineText')" />
@@ -488,7 +516,7 @@ const xattrCommand = 'xattr -cr "/Applications/Vv Transcribe.app"'
 const formats = ['MP4', 'MOV', 'MKV', 'AVI', 'WEBM', 'FLV', 'MP3', 'WAV', 'M4A', 'FLAC', 'OGG', 'WMA']
 const exportFormats = ['srt', 'vtt', 'tsv', 'txt', 'json', 'md']
 // 配音那一节的条目图标：文案在两份语言包的 docs.voice.itemN* 里，这里只保证「有几条、配什么图」
-const voiceIcons = ['📝', '🎧', '☁️', '🧮', '📐', '💾', '🎙']
+const voiceIcons = ['📝', '🎧', '☁️', '🧮', '📐', '💾', '🎙', '♻️']
 // 历史记录那一节同理，条目数与两份语言包的 docs.history.itemN* 对齐
 const historyIcons = ['🧾', 'ℹ️', '📌', '🧮', '👁️', '🔁']
 
