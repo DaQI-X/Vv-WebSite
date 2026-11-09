@@ -6,7 +6,7 @@
     leave-to-class="opacity-0"
   >
     <button
-      v-if="visible"
+      v-if="visible && !bannerOpen"
       class="fixed bottom-8 right-8 z-40 w-12 h-12 bg-brand-600 hover:bg-brand-700 text-white rounded-full shadow-lg shadow-brand-600/25 flex items-center justify-center transition-all duration-200 hover:-translate-y-1"
       @click="scrollToTop"
       :aria-label="t('common.toTop')"
@@ -20,6 +20,8 @@
 
 <script setup lang="ts">
 const { t } = useI18n()
+// 同意横幅压在同一角上（z-50 vs 这里的 z-40），它开着的时候这颗按钮就该让位
+const { bannerOpen } = useSiteAds()
 const visible = ref(false)
 
 function handleScroll() {

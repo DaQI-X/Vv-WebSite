@@ -28,7 +28,8 @@
             </nav>
           </aside>
 
-          <main class="lg:col-span-3 space-y-16">
+          <!-- min-w-0：广告位的 ins 有固定最小宽度，grid 列默认 min-width:auto 会被它顶宽、整页横向溢出 -->
+          <main class="lg:col-span-3 min-w-0 space-y-16">
             <section id="overview" class="scroll-mt-24">
               <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
                 <span class="w-8 h-8 bg-brand-100 dark:bg-brand-900 rounded-lg flex items-center justify-center text-brand-600 dark:text-brand-400 text-sm">01</span>
@@ -369,7 +370,7 @@
                     <span class="text-lg">{{ icon }}</span>
                     <div>
                       <strong class="text-gray-900 dark:text-white">{{ t(`docs.voice.item${index + 1}Title`) }}</strong>
-                      <p class="mt-1">{{ t(`docs.voice.item${index + 1}Desc`) }}</p>
+                      <p class="mt-1"><RichText :text="t(`docs.voice.item${index + 1}Desc`)" /></p>
                     </div>
                   </div>
                 </div>
@@ -489,6 +490,9 @@
                 </div>
               </div>
             </section>
+
+            <!-- 长文页底部的广告位：没同意/没建广告位时整块不渲染，见 components/AdSlot.vue -->
+            <AdSlot name="docsBottom" />
           </main>
         </div>
       </div>
@@ -534,7 +538,7 @@ const sections = [
   { id: 'faq', key: 'faq' },
 ]
 
-const faqIds = ['net', 'language', 'engine', 'appManagement', 'urlFailed', 'component', 'ttsVendor', 'voiceClone', 'tempFiles', 'accuracy', 'security', 'speed', 'feedback', 'referenceFormat', 'cancel', 'update', 'slowDownload']
+const faqIds = ['net', 'language', 'engine', 'appManagement', 'urlFailed', 'component', 'ttsVendor', 'voiceClone', 'tempFiles', 'accuracy', 'security', 'speed', 'feedback', 'ads', 'referenceFormat', 'cancel', 'update', 'slowDownload']
 
 onMounted(() => {
   const observer = new IntersectionObserver(

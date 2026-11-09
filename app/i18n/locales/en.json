@@ -43,9 +43,20 @@
     "docs": "Docs",
     "download": "Download",
     "contact": "Contact",
+    "cookieSettings": "Cookie settings",
     "copyright": "© {year} Vv Transcribe. All rights reserved.",
     "version": "Current version v{version}",
     "changelog": "Changelog"
+  },
+  "consent": {
+    "title": "About the ads on this page",
+    "body": "This site is funded by page advertising; the slots come from Google AdSense, on the web page only and never in the app. The ad script loads only after you accept, and Google then stores and reads its own cookies in your browser; \"Necessary only\" never loads it, so there are no ad cookies. Your choice is kept in this browser alone.",
+    "accept": "Accept ads",
+    "necessary": "Necessary only",
+    "more": "Full policy"
+  },
+  "ads": {
+    "label": "Advertisement"
   },
   "hero": {
     "badge": "Built for media professionals",
@@ -489,6 +500,10 @@
         "q": "Can I stop a transcription partway?",
         "a": "Yes. The transcription card has a Cancel button; clicking it aborts the job and releases the engine, so you can start again with another file or another mode."
       },
+      "ads": {
+        "q": "How does the website make money? Are there ads or tracking in the app?",
+        "a": "There are no ads in the app, and no tracking or telemetry - you can check that claim: the repository is public, and the app only ever makes three kinds of outbound request while running: the API provider you configure yourself in Settings, the model download source (hf-mirror.com), and the public GitHub endpoints used for update checks and on-demand components (api.github.com / raw.githubusercontent.com / github.com). Nothing leaves your machine outside those three, and there is no \"send it back to us\" category, because we run no server that receives user data. The website is funded by page advertising: the ad slots on vvscribe.com come from Google AdSense, and ads stay on the web page - never in the app. Once this site starts serving ads, the first time you visit you are asked once whether you accept ad cookies; if you decline or choose \"Necessary only\", the page never loads the ad script, and the Cookie settings link in the footer lets you change your mind at any time. The full wording is in the \"This website and advertising\" section of the privacy policy."
+      },
       "referenceFormat": {
         "q": "Which reference script formats are supported?",
         "a": "Five: TXT, Markdown, SRT, DOCX and PDF. For legacy .doc, save it as .docx in Word first. Only one script at a time; to change it, click the clear button on the reference bubble first."
@@ -509,9 +524,9 @@
   },
   "privacy": {
     "title": "Privacy policy",
-    "updated": "Last updated: 9 November 2026",
+    "updated": "Last updated: 10 November 2026",
     "overviewTitle": "Overview",
-    "overviewText": "Vv Transcribe (\"the App\") is a local subtitle transcription and proofreading tool for media professionals. This policy explains what information we collect and how we protect it. The core principle: **everything is processed locally by default**, and data goes to a provider you chose only after you configure a third-party API yourself.",
+    "overviewText": "Vv Transcribe (\"the App\") is a local subtitle transcription and proofreading tool for media professionals. This policy has two halves, because they describe two completely different things. **1. The App** - the program installed on your computer. Its core principle is that **everything is processed locally by default**, and data leaves your machine only for a provider you chose yourself, after you configure a third-party API; the four sections below (\"Data processed on your machine\", \"API configuration\", \"Information we collect\" and \"Model download\") are all about it. **2. This website, vvscribe.com** - the page you are reading in a browser. Once it starts serving ads it places ad cookies in the visitor's browser, which has nothing to do with the app, so it is written up separately in the \"This website and advertising\" section. Merging the two into one sentence that says \"we collect no personal information\" would be false, so we do not write it that way.",
     "localTitle": "Data processed on your machine",
     "local1": "Audio and video transcription in local mode runs entirely on your machine; files are never uploaded to any server",
     "local2": "Reference comparison, local proofreading and on-device voice-over run on your machine and never upload your broadcast script or caption text",
@@ -522,13 +537,20 @@
     "api2": "Processing of that data is governed by that provider's own privacy policy",
     "api3": "Your API key and, for iFlytek, the APISecret are stored only on your own device and are never uploaded; before they are written to disk they are encrypted with your system keystore (the macOS Keychain / Windows DPAPI), and only if that keystore is unavailable does it fall back to plain text - in which case Settings says so explicitly, marking whether the secret is currently encrypted or not. The iFlytek AppID and the Doubao voice-over resource id are parameters the request sends rather than credentials, so they are stored in plain text",
     "collectTitle": "Information we collect",
-    "collectLead": "The App collects no personal information. The following is stored locally only:",
+    "collectLead": "This section is about the App. The App collects no personal information and runs no server of ours that receives user data (the website is a different matter - see \"This website and advertising\" below). The following is stored on your own device only:",
     "collect1": "App settings and preferences",
     "collect2": "API configuration (if you configured one)",
     "collect3": "Usage logs (stored on this machine only, for troubleshooting; since 1.0.8 they go through a single write path that, before anything reaches disk, strips credentials such as API keys, tokens and cookies and the fields carrying your transcript text, and reduces absolute paths to file names; each file is capped at 5MB with at most 4 kept, so the log cannot grow without bound)",
     "collect4": "History records (stored on this machine only since 1.0.9: finishing a transcription, download or voice-over job writes one row of metadata - tier, cloud or which local model, segment count, durations, product size - into records/history.json inside your user data directory, at most 200 rows. The script text and the audio track are copied into records/keep/ only when you tick \"Keep\" on that row; unticked products disappear with the 24-hour temp sweep. Nothing leaves your machine and there is no reporting of any kind)",
     "modelTitle": "Model download",
     "modelText": "On the first transcription the App downloads the Whisper weights for the tier you chose from the hf-mirror.com mirror: about 138MB for Fast (base) and about 461MB for Precise (small). Each tier downloads only when it is first used, and the files then stay in the local Hugging Face cache (~/.cache/huggingface/hub on macOS and Linux), so there is no repeat download. That exchange carries model files only and uploads no user data. The two on-demand voice-over components work the same way: each model tier is fetched from hf-mirror.com by the commit and per-file sha256 pinned in the code, and the engine program comes from this repository's publicly released assets, listed in a component manifest we maintain and verified per file against SHA2-256. Either way files come down, nothing of yours goes up.",
+    "siteTitle": "This website and advertising (vvscribe.com)",
+    "siteLead": "Everything above is about the app installed on your computer. This section is only about **the page you are on**: it has no accounts, no forms and no backend, and these are the only things it does inside a visitor's browser.",
+    "site1": "Visit statistics: the page loads the Cloudflare Web Analytics counting script (from static.cloudflareinsights.com). It counts from the browser's own performance metrics, **sets no cookie** and does no cross-site tracking; what we see is aggregate numbers such as pageviews, referrer and an approximate region - never who you are",
+    "site2": "Advertising: this site is funded by page advertising, and the ad slots come from Google AdSense - ads appear on this web page only, never inside the app. Once the ad script is loaded, Google stores and reads its own cookies in your browser (identifiers such as IDE and test_cookie) to serve, deduplicate and measure those ads, and the request also carries the address of the page you are viewing together with browser information. Google processes those cookies under its own policy; this site cannot read those values out of your browser and never sells visitor data to anyone",
+    "site3": "Consent and withdrawal: until you see the banner and choose \"Accept ads\", the page **does not load the ad script**, so no ad cookie exists; choosing \"Necessary only\" also leaves it unloaded. That choice lives in this browser's localStorage only, and the site sets no cookie for it. The Cookie settings link in the footer lets you change your mind at any time - the banner and the ad slot only ever appear once this site actually starts serving ads",
+    "site4": "One limitation we should state plainly: that banner is something this site implements itself. It only decides whether the ad script is loaded; it is **not a Google-certified consent management platform (CMP) and produces no IAB TCF consent string**. So in the European Economic Area and the United Kingdom, even when a visitor accepts, Google only serves non-personalised ads, which pay less than personalised ones. That is not a breach of policy, but without a certified CMP that revenue is simply out of reach; running personalised ads would mean integrating a certified CMP first, which is a later commercial decision - if we take it, we will correct this section before anything changes",
+    "site5": "Hosting and transport: the site is hosted on Cloudflare Pages, and the domain and DNS are with Cloudflare too. As the host, Cloudflare processes a visitor's IP address as far as providing the service requires (routing, abuse prevention, rate limiting and its own access logs). Apart from the items above, this site sends no visitor information to any service of ours - we have no such service",
     "contactTitle": "Contact us",
     "contactLead": "If you have any question about this policy, open an issue on ",
     "contactIssues": "GitHub Issues",

@@ -59,6 +59,14 @@ export default defineNuxtConfig({
       contactEmail: 'hi@vvscribe.com',
       /** 发版时只改这一行，页面上的版本号都取自这里 */
       appVersion: '1.1.4',
+      /**
+       * AdSense 变现开关（#357）。空字符串＝整层不生效：同意横幅、页脚「Cookie 设置」、所有广告位
+       * 一律不渲染，页面与今天逐像素相同。这层代码先落地不代表线上开始放广告——过审后由作者本人
+       * 把 `ca-pub-…` 填进来、并在 `adsenseSlots` 里对上控制台建好的广告位 id，广告才真的出现。
+       * 键名与 <AdSlot :name> 一一对应；某个位置没填 id 就那一格不渲染（宁可没有，不挂一个空框）。
+       */
+      adsenseClientId: '',
+      adsenseSlots: {} as Record<string, string>,
       downloadWinX64: 'https://github.com/DaQI-X/Vv-Transcribe/releases/latest/download/Vv-Transcribe-win-x64.exe',
       downloadMacArm64: 'https://github.com/DaQI-X/Vv-Transcribe/releases/latest/download/Vv-Transcribe-mac-arm64.dmg',
       downloadMacX64: 'https://github.com/DaQI-X/Vv-Transcribe/releases/latest/download/Vv-Transcribe-mac-x64.dmg',

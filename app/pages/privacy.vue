@@ -62,6 +62,20 @@
             </p>
           </section>
 
+          <!-- #357：上面几节写的都是装在访客电脑上的应用；这一节专门写网站自己在访客浏览器里做的事 -->
+          <section id="site-ads" class="scroll-mt-24">
+            <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">{{ t('privacy.siteTitle') }}</h2>
+            <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-3">
+              <RichText :text="t('privacy.siteLead')" />
+            </p>
+            <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+              <li v-for="i in 5" :key="i" class="flex items-start gap-2">
+                <svg class="w-4 h-4 text-gray-400 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <RichText :text="t(`privacy.site${i}`)" />
+              </li>
+            </ul>
+          </section>
+
           <section>
             <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">{{ t('privacy.contactTitle') }}</h2>
             <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
