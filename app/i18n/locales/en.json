@@ -549,7 +549,7 @@
   },
   "privacy": {
     "title": "Privacy policy",
-    "updated": "Last updated: 10 November 2026",
+    "updated": "Last updated: 11 November 2026",
     "overviewTitle": "Overview",
     "overviewText": "Vv Transcribe (\"the App\") is a local subtitle transcription and proofreading tool for media professionals. This policy has two halves, because they describe two completely different things. **1. The App** - the program installed on your computer. Its core principle is that **everything is processed locally by default**, and data leaves your machine only for a provider you chose yourself, after you configure a third-party API; the four sections below (\"Data processed on your machine\", \"API configuration\", \"Information we collect\" and \"Model download\") are all about it. **2. This website, vvscribe.com** - the page you are reading in a browser. Once it starts serving ads it places ad cookies in the visitor's browser, which has nothing to do with the app, so it is written up separately in the \"This website and advertising\" section. Merging the two into one sentence that says \"we collect no personal information\" would be false, so we do not write it that way.",
     "localTitle": "Data processed on your machine",
