@@ -575,7 +575,7 @@ const sections = [
   { id: 'faq', key: 'faq' },
 ]
 
-const faqIds = ['net', 'language', 'engine', 'appManagement', 'urlFailed', 'component', 'ttsVendor', 'voiceClone', 'tempFiles', 'accuracy', 'security', 'speed', 'feedback', 'ads', 'referenceFormat', 'cancel', 'update', 'slowDownload']
+const faqIds = ['net', 'language', 'engine', 'appManagement', 'urlFailed', 'component', 'ttsVendor', 'voiceClone', 'agentCli', 'tempFiles', 'accuracy', 'security', 'speed', 'feedback', 'ads', 'referenceFormat', 'cancel', 'update', 'slowDownload']
 
 onMounted(() => {
   const observer = new IntersectionObserver(

@@ -14,6 +14,19 @@
           <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">{{ t(`features.items.${feature.id}.desc`) }}</p>
         </div>
       </div>
+
+      <!-- 进阶那条单独成横条，不是第 10 张卡：人群不同（技术集成 vs 日常使用），排在 3×3 之后更像「另外一回事」。
+           文案自带那四条边界（仅 macOS / 默认关 / 只绑 127.0.0.1 / 关着时端口不存在），少一条就是过头话。 -->
+      <div class="mt-10 md:mt-12 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+        <div class="min-w-0">
+          <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">{{ t('features.advanced.title') }}</h3>
+          <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed max-w-3xl">{{ t('features.advanced.desc') }}</p>
+        </div>
+        <NuxtLink
+          :to="docsCliPath"
+          class="shrink-0 inline-flex items-center justify-center px-5 py-3 rounded-xl bg-brand-600 text-white text-sm font-medium hover:bg-brand-700 transition-colors"
+        >{{ t('features.advanced.cta') }}</NuxtLink>
+      </div>
     </div>
   </section>
 </template>
@@ -22,6 +35,8 @@
 import { h } from 'vue'
 
 const { t } = useI18n()
+const localePath = useLocalePath()
+const docsCliPath = computed(() => `${localePath('/docs')}#cli`)
 
 const MicIcon = { render: () => h('svg', { class: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' }, [h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z' })]) }
 const DiffIcon = { render: () => h('svg', { class: 'w-6 h-6', fill: 'none', stroke: 'currentColor', viewBox: '0 0 24 24' }, [h('path', { 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'stroke-width': '2', d: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2' })]) }
