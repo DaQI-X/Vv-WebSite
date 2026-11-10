@@ -482,9 +482,34 @@
               </div>
             </section>
 
-            <section id="faq" class="scroll-mt-24">
+            <section id="cli" class="scroll-mt-24">
               <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
                 <span class="w-8 h-8 bg-brand-100 dark:bg-brand-900 rounded-lg flex items-center justify-center text-brand-600 dark:text-brand-400 text-sm">10</span>
+                {{ t('docs.nav.cli') }}
+              </h2>
+              <div class="space-y-6">
+                <div class="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
+                  <!-- overflow-wrap:anywhere：那句里有一整串没空格的 .app 绝对路径，浏览器不在斜杠处断行，窄屏会把段落顶出去 -->
+                  <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed [overflow-wrap:anywhere]">{{ t('docs.cli.lead') }}</p>
+                </div>
+                <!-- 命令本身不进语言包：路径与参数是产品事实，两边同一条；卡片顺序与语言包的 cmdN 对齐 -->
+                <!-- min-w-0：那条 ln -s 里有一整串没空格的绝对路径，grid 项默认 min-width:auto 会被它的 min-content 顶宽、窄屏整页横向溢出 -->
+                <div class="grid sm:grid-cols-2 gap-3 text-sm">
+                  <div v-for="(command, index) in cliCommands" :key="index" class="min-w-0 border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-900">
+                    <div class="font-medium text-gray-900 dark:text-white mb-1">{{ t(`docs.cli.cmd${index + 1}Name`) }}</div>
+                    <div class="text-xs text-gray-500 leading-relaxed mb-3">{{ t(`docs.cli.cmd${index + 1}Desc`) }}</div>
+                    <CommandCopy :text="command" />
+                  </div>
+                </div>
+                <div class="bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 rounded-lg p-4 text-sm text-amber-800 dark:text-amber-300">
+                  <strong>{{ t('docs.cli.noteLabel') }}</strong>{{ t('docs.cli.noteText') }}
+                </div>
+              </div>
+            </section>
+
+            <section id="faq" class="scroll-mt-24">
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+                <span class="w-8 h-8 bg-brand-100 dark:bg-brand-900 rounded-lg flex items-center justify-center text-brand-600 dark:text-brand-400 text-sm">11</span>
                 {{ t('docs.nav.faq') }}
               </h2>
               <div class="space-y-4">
@@ -527,6 +552,13 @@ const exportFormats = ['srt', 'vtt', 'tsv', 'txt', 'json', 'md']
 const voiceIcons = ['📝', '🎧', '☁️', '🧮', '📐', '💾', '🎙', '♻️']
 // 历史记录那一节同理，条目数与两份语言包的 docs.history.itemN* 对齐
 const historyIcons = ['🧾', 'ℹ️', '📌', '🧮', '👁️', '🔁']
+// 命令行那一节：示例命令是产品事实，与语言无关，卡片顺序对上语言包里的 cmdN
+const cliCommands = [
+  'ln -s "/Applications/Vv Transcribe.app/Contents/Resources/bin/vv" /usr/local/bin/vv',
+  'vv check interview.srt --preset broadcast-cn',
+  'vv transcribe interview.m4a -o interview.srt',
+  'vv mcp',
+]
 
 // id 是页面锚点（中英共用），key 对应语言包里的导航文案
 const sections = [
@@ -539,6 +571,7 @@ const sections = [
   { id: 'export', key: 'export' },
   { id: 'history', key: 'history' },
   { id: 'api-config', key: 'api' },
+  { id: 'cli', key: 'cli' },
   { id: 'faq', key: 'faq' },
 ]
 

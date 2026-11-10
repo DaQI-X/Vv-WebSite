@@ -58,7 +58,7 @@ export default defineNuxtConfig({
       githubRepo: 'https://github.com/DaQI-X/Vv-Transcribe',
       contactEmail: 'hi@vvscribe.com',
       /** 发版时只改这一行，页面上的版本号都取自这里 */
-      appVersion: '1.1.5',
+      appVersion: '1.2.0',
       /**
        * AdSense 变现开关（#357）。空字符串＝整层不生效：同意横幅、页脚「Cookie 设置」、所有广告位
        * 一律不渲染，页面与今天逐像素相同。这层代码先落地不代表线上开始放广告——过审后由作者本人

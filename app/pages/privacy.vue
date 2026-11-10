@@ -24,7 +24,7 @@
           <section>
             <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3">{{ t('privacy.localTitle') }}</h2>
             <ul class="space-y-2 text-gray-600 dark:text-gray-400">
-              <li v-for="i in 3" :key="i" class="flex items-start gap-2">
+              <li v-for="i in 4" :key="i" class="flex items-start gap-2">
                 <svg class="w-4 h-4 text-green-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
                 <span>{{ t(`privacy.local${i}`) }}</span>
               </li>

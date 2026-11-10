@@ -9,7 +9,7 @@
     },
     "docs": {
       "title": "Documentation - Vv Transcribe",
-      "description": "Vv Transcribe documentation: installation and first launch, audio and video transcription, reference script diffing, local and AI proofreading, subtitle voice-over, subtitle export, API setup, and frequently asked questions."
+      "description": "Vv Transcribe documentation: installation and first launch, audio and video transcription, reference script diffing, local and AI proofreading, subtitle voice-over, subtitle export, API setup, the vv command line, and frequently asked questions."
     },
     "privacy": {
       "title": "Privacy Policy - Vv Transcribe",
@@ -231,6 +231,7 @@
       "export": "Export subtitles",
       "history": "History",
       "api": "API configuration",
+      "cli": "The vv command line",
       "faq": "FAQ"
     },
     "overview": {
@@ -449,6 +450,19 @@
       "vendor8Name": "iFlytek",
       "vendor8Desc": "Cloud transcription only since 1.1.2 (the large-model recording-file API: upload, get an order id, poll for the result), and it needs three credentials - AppID / APIKey / APISecret; voice-over is not wired up"
     },
+    "cli": {
+      "lead": "From 1.2.0 the macOS installer carries a command line called vv that takes transcription and the subtitle-rule check outside the interface - export is there too, but only as one of the three tools behind vv mcp; the command itself has exactly three verbs (transcribe, check, mcp) and there is no vv export. It exists for scripts and external agents, not for day-to-day use: no button was added to the UI for it, the binary lives at /Applications/Vv Transcribe.app/Contents/Resources/bin/vv once installed, and nothing puts it on your PATH for you.",
+      "cmd1Name": "Put it on your PATH first (once)",
+      "cmd1Desc": "Symlinking it into a directory already on your PATH is the least fuss - /usr/local/bin, say (that one normally needs admin rights, so put sudo in front of the command). A folder of your own such as ~/bin works just as well, as long as it is on your PATH. This step is yours to take: neither the installer nor the Homebrew cask touches your PATH.",
+      "cmd2Name": "vv check: will this subtitle actually render",
+      "cmd2Desc": "It does not care whether the app is running and it makes no network call - it is the very same validator the interface uses. Three built-in tiers: vv-default (the default: each layout rule comes back as one \"N lines over the limit\" line, nothing blocked), broadcast-cn (the Chinese-to-foreign-language broadcast house style) and netflix-cjk (streaming delivery - not one number in that tier is first-hand). The two delivery tiers list every line over the limit, and it reads \"this tier allows X, per the source that tier names\", never \"non-compliant\". The structural layer ignores tiers: times running backwards, overlapping cues, a VTT timestamp with a comma before the milliseconds, replacement characters - error level in every tier, and blocking. --preset also accepts a .json of your own, and such a tier must spell out all six rules with a source for each - \"not checked\" may not look like \"checked\" in the report. The frame-grid rule only runs once you pass --fps.",
+      "cmd3Name": "vv transcribe: media in, subtitles out",
+      "cmd3Desc": "This one goes through the app on your machine: keep it running, and add the line \"agentApi\": \"on\" at the root of settings.json, then restart for it to take effect. The switch is off by default, because turning it on means this machine gains a listening socket - it binds 127.0.0.1 only, on a port the operating system picks, and the credential is a token regenerated at every launch that lives solely in agent-api.json inside your application data folder (permissions 0600). Your own API keys never pass through that door; they stay resolved inside the app by profile.",
+      "cmd4Name": "vv mcp: the shell an agent client attaches to",
+      "cmd4Desc": "One JSON-RPC conversation over stdio: four methods - initialize, ping, tools/list and tools/call - and three tools, transcribe, check and export. It listens on no port and reimplements nothing: each tool forwards to the two subcommands above and to the exporter, so an agent gets word-for-word what you would get typing it in a terminal. Only the transcribe tool needs the app running.",
+      "noteLabel": "Heads up: ",
+      "noteText": "Three things worth knowing. (1) In this release the command line ships with the macOS installer only - there is no launcher for Windows yet. (2) Without -o the product goes to stdout and the progress to stderr, so vv transcribe interview.m4a > interview.srt works too; exit codes are 0 done, 1 that job failed (for check, \"something came back at error level\"), 2 the command was malformed, 3 the app could not be reached, 130 interrupted with Ctrl-C. (3) The checker reports problems and never rewrites a character for you: the rewording demands - drop punctuation, spell numbers out in characters, trim sentence-initial fillers - are named in the report as things it does not judge."
+    },
     "faq": {
       "net": {
         "q": "Do I need a network connection the first time?",
@@ -533,6 +547,7 @@
     "local1": "Audio and video transcription in local mode runs entirely on your machine; files are never uploaded to any server",
     "local2": "Reference comparison, local proofreading and on-device voice-over run on your machine and never upload your broadcast script or caption text",
     "local3": "Transcripts and subtitle files are stored only on your device",
+    "local4": "From 1.2.0 there is an optional local command line entry point on macOS (vv), and it stays off until you write one line into your settings file yourself. Even then the app only listens on 127.0.0.1, on a port the operating system picks: apart from the health-check endpoint, which answers nothing but whether it is there, every request has to carry a token that is regenerated at each launch and lives only in agent-api.json inside your own application data folder (permissions 0600), deleted when the app quits. Your configured API keys never pass through that door, and no second set of credentials was introduced for it",
     "apiTitle": "API configuration (optional)",
     "apiLead": "AI proofreading only runs once you configure a third-party AI API (such as OpenAI or Qwen); local proofreading needs no API configuration at all. Cloud-tier voice-over reuses that same API base and key (you can also set them separately under Voice-over - leaving them empty means reuse), and the profile also carries the voice model (since 1.1.2 a voice-over profile is four fields: vendor / API base URL / API key / voice model, and the vendor is OpenAI-compatible, MiniMax, Alibaba Cloud Model Studio (CosyVoice) or Doubao (Volcano Engine) - Doubao adds a resource id). The voice id is not bound to a profile - you pick it per batch on the voice-over page, where MiniMax, Model Studio and Doubao require one and the OpenAI-compatible tier leaves it optional, and whatever you type there goes out with that segment of caption text. Whether your provider has the endpoint is up to its own documentation. Voice-over also has an on-device tier that calls no API at all. If you also switch the transcription mode under Transcription configuration to cloud, transcription requests your chosen endpoint as well (that profile's vendor can be OpenAI-compatible, MiniMax or iFlytek; iFlytek asks for three credentials - AppID, APIKey and APISecret - and the secret is only used locally to sign each request, never sent). In that case:",
     "api1": "Caption text (AI proofreading, cloud-tier voice-over) or audio (cloud transcription) is sent to the third-party API provider you configured; voice-over sends caption text segment by segment and never the media file. The \"Voice cloning\" step added in 1.1.2 is the exception: there, what leaves your machine is the recording you picked - MiniMax receives it as an upload that returns a file id, Alibaba Cloud Model Studio receives it as Base64 inside the request - and only those two vendors can reach this path at all",
