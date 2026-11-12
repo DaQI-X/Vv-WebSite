@@ -1,7 +1,7 @@
 {
   "meta": {
     "home": {
-      "title": "Vv Transcribe - Subtitle transcription and proofreading for broadcasters",
+      "title": "Vv Transcribe - Free local subtitle transcription & proofreading",
       "description": "Vv Transcribe is an AI subtitle transcription and proofreading tool for media professionals. It diffs captions against your broadcast script so TV and radio teams can catch errors before air.",
       "keywords": "subtitle transcription,speech recognition,AI proofreading,broadcast captions,broadcasting,Whisper,local transcription",
       "ogDescription": "AI-driven subtitle transcription and proofreading. Diff captions against the script, catch errors before air. Runs locally, free forever.",
@@ -10,6 +10,26 @@
     "docs": {
       "title": "Documentation - Vv Transcribe",
       "description": "Vv Transcribe documentation: installation and first launch, audio and video transcription, reference script diffing, local and AI proofreading, subtitle voice-over, subtitle export, API setup, the vv command line, and frequently asked questions."
+    },
+    "guides": {
+      "title": "Guides - Vv Transcribe",
+      "description": "Practical Vv Transcribe guides: turn video into subtitles, proofread SRT files and fix subtitle timing, and transcribe podcasts into searchable transcripts - all running locally on your machine.",
+      "keywords": "video to subtitles,SRT editing,subtitle timing,podcast transcription,local transcription,Whisper"
+    },
+    "videoToSubtitles": {
+      "title": "Video to Subtitles: Local Files and Online Links, End to End - Vv Transcribe",
+      "description": "Turn video into SRT subtitles without uploading your footage or paying per minute. Three paths - local files, online links, and the vv command line - plus the proofreading pass to run before export.",
+      "keywords": "video to subtitles,video to SRT,local video transcription,online link transcription,free subtitle generator,Whisper"
+    },
+    "srtEditing": {
+      "title": "SRT Proofreading and Timeline Editing: A Practical Guide - Vv Transcribe",
+      "description": "Fix the three classic subtitle problems - wrong words, drifting timing, bad segmentation - with reference-script diffing, timeline shift, per-segment start/end editing, and split/merge/delete.",
+      "keywords": "SRT editing,subtitle proofreading,subtitle timing fix,shift subtitles,split subtitles,SRT vs VTT"
+    },
+    "podcastTranscription": {
+      "title": "Podcast Transcription: Turn Audio into a Searchable, Reusable Transcript - Vv Transcribe",
+      "description": "Transcribe a 60-minute podcast locally in minutes, for free. Turn episodes into timestamped transcripts, show notes, articles, and a searchable archive - without uploading unreleased audio.",
+      "keywords": "podcast transcription,podcast to text,audio to transcript,show notes,local audio transcription,free podcast transcript"
     },
     "privacy": {
       "title": "Privacy Policy - Vv Transcribe",
@@ -33,6 +53,7 @@
     "flow": "Workflow",
     "scenes": "Use cases",
     "docs": "Docs",
+    "guides": "Guides",
     "privacy": "Privacy",
     "download": "Download now"
   },
@@ -41,6 +62,7 @@
     "flow": "Workflow",
     "scenes": "Use cases",
     "docs": "Docs",
+    "guides": "Guides",
     "download": "Download",
     "contact": "Contact",
     "cookieSettings": "Cookie settings",
@@ -63,7 +85,7 @@
     "titleLead": "AI-driven",
     "titleAccent": "subtitle transcription and proofreading",
     "subtitleLead": "Diff captions against the broadcast script, then proofread locally or with AI,",
-    "subtitleTail": "so nothing reaches air with a typo in it",
+    "subtitleTail": "so mistakes are caught before air, not after",
     "download": "Download free",
     "learnMore": "Learn more",
     "demoFile": "Transcribing: interview_clip_01.mp4",
@@ -145,11 +167,11 @@
     "items": {
       "broadcast": {
         "title": "Broadcast television",
-        "desc": "Proofread subtitles before air so they match the approved script exactly and no on-screen mistake reaches the audience.",
+        "desc": "Proofread subtitles against the approved script word by word, and catch differences before air instead of on screen.",
         "points": {
           "a": "Automatic comparison against the approved script",
           "b": "AI flags every difference with a proposed fix",
-          "c": "Batch processing to get through the queue"
+          "c": "Segment-level timeline editing"
         }
       },
       "news": {
@@ -174,7 +196,7 @@
         "title": "Enterprise and meetings",
         "desc": "Convert meeting recordings into a written record you can archive, search and share.",
         "points": {
-          "a": "Batch transcription of meeting recordings",
+          "a": "Fast transcription of meeting recordings",
           "b": "Clear timestamps for every line",
           "c": "A text record that is easy to file and search"
         }
@@ -199,10 +221,10 @@
     },
     "costVvVal": "¥0",
     "costVv": "Vv Transcribe is free forever",
-    "costOnlineVal": "¥99+/mo",
-    "costOnline": "Online transcription subscription",
-    "costManualVal": "¥200+/hr",
-    "costManual": "Manual proofreading service"
+    "costOnlineVal": "Metered or subscription",
+    "costOnline": "Online transcription tools",
+    "costManualVal": "Hourly rates",
+    "costManual": "Manual proofreading services"
   },
   "cta": {
     "badge": "Free forever · Runs locally · v{version}",
@@ -218,7 +240,7 @@
     "statLocalLabel": "Transcription and local proofreading never upload",
     "statFree": "¥0",
     "statFreeLabel": "Free forever",
-    "statFormats": "4 formats",
+    "statFormats": "6 formats",
     "statFormatsLabel": "Subtitle export",
     "footnoteLead": "The app is free with no subscription, and local transcription plus local proofreading cost nothing in API fees. AI proofreading needs your own third-party key, billed by the vendor you choose. The source code is open on",
     "footnoteLink": "GitHub"
@@ -240,10 +262,10 @@
       "faq": "FAQ"
     },
     "overview": {
-      "intro": "Vv Transcribe is an AI subtitle transcription and proofreading tool for media professionals. It runs the local Whisper speech recognition engine to transcribe audio and video quickly, then adds reference script comparison plus both local and AI proofreading, so broadcast teams can proofread captions precisely and keep mistakes off air.",
+      "intro": "Vv Transcribe is an AI subtitle transcription and proofreading tool for media professionals. It runs the local Whisper speech recognition engine to transcribe audio and video quickly, then adds reference script comparison plus both local and AI proofreading, so broadcast teams can proofread captions precisely and catch mistakes before air.",
       "card1Title": "Runs locally",
       "card1Desc": "Files never go to the cloud",
-      "card2Title": "Zero API cost",
+      "card2Title": "Free local transcription",
       "card2Desc": "Open-source engine, no paid API needed",
       "card3Title": "Many formats",
       "card3Desc": "Export SRT / VTT / TSV / TXT / JSON / Markdown"
@@ -544,6 +566,206 @@
       "agentCli": {
         "q": "Can I call it from a script or an AI client, without opening the interface?",
         "a": "Yes, but this path only exists on macOS and it is off by default. To use it, open the local agent switch under Settings - About & updates and press Save; it takes effect immediately. While it is on, the app listens on a randomly assigned port bound to 127.0.0.1, so nothing else on your network can reach it, and it writes a one-time random token into the app's data directory (never shown in the interface, never included in a diagnostic bundle, deleted when the app quits) - only a process holding that token can connect. When it is off, that port does not exist at all. Through this door the app does exactly one thing: transcribe an audio file handed to the instance already running on this machine and return the subtitles. What crosses it is a file path, a language and \"which saved profile to use\" - your API keys are still resolved inside the app and never leave it. The other command, vv check, which judges whether a subtitle file meets your broadcast rules, does not use this door at all: it reads one subtitle file locally, so it works whether or not the app is running and without turning the switch on. The commands themselves, and how to plug the app into an MCP client, are in the \"The vv command line\" section."
+      }
+    }
+  },
+  "guides": {
+    "badge": "Practical guide",
+    "updated": "Updated {date}",
+    "minutes": "{n} min read",
+    "back": "All guides",
+    "relatedTitle": "Related guides",
+    "faqTitle": "Frequently asked questions",
+    "ctaTitle": "Run this workflow on your own footage",
+    "ctaDesc": "Vv Transcribe is a free download: transcription runs on your machine, your files are never uploaded, and local mode costs nothing.",
+    "ctaDownload": "Download free",
+    "ctaDocs": "Read the documentation",
+    "index": {
+      "title": "Practical guides",
+      "lead": "Hands-on guides around transcribe, proofread, export: every step comes from a real Vv Transcribe feature, so you can follow along and get it working.",
+      "noteTitle": "How these guides are written",
+      "noteText": "All based on features verified in **Vv Transcribe v{version}**; speed figures come from real runs on our machine. The interface evolves with each release - the documentation is the source of truth for details.",
+      "noteLink": "Go to the documentation",
+      "readMore": "Read the guide"
+    },
+    "video": {
+      "title": "Video to subtitles: the complete workflow for local files and online links",
+      "lead": "No uploads, no per-minute billing. This guide walks through the three paths for turning video into SRT subtitles with Vv Transcribe - local files, online links, and batch command line - plus the proofreading pass you should run before export.",
+      "s1Title": "Three paths - pick by where your footage lives",
+      "s1Lead": "All three paths use the same local Whisper engine and produce timecoded subtitles. The only difference is how the footage gets in.",
+      "path1Title": "Local file",
+      "path1Desc": "The footage is already on your computer: an exported edit, phone video, recorded audio. The most reliable path - use it by default.",
+      "path2Title": "Online link",
+      "path2Desc": "The footage is on a public video page: paste the link and it is parsed directly. Only the audio track is fetched for transcription - no full download needed.",
+      "path3Title": "Command-line batch",
+      "path3Desc": "A batch of files, a fixed pipeline: one vv transcribe command produces SRT, scriptable and pluggable into AI clients (macOS only for now).",
+      "s2Title": "Local file: subtitles in four steps",
+      "step1": "**Import**: drag the file into the window, or click Import file. Video: MP4 / MOV / MKV / AVI / WEBM / FLV. Audio: MP3 / WAV / M4A / FLAC / OGG / WMA.",
+      "step2": "**Pick language and tier**: in Settings - Transcription, explicitly choose the transcription language (12 available, Chinese by default). Tiers are Fast (model about 138MB) and Accurate (about 461MB), downloaded on first transcription and usable offline afterwards.",
+      "step3": "**Transcribe**: the engine runs on your CPU, sentences appear as they are recognized, progress follows the real audio position, and you can cancel at any time. Measured on our machine: 1 minute of audio takes about 5-9 seconds on Fast.",
+      "step4": "**Export**: click Export and pick SRT - the standard subtitle format every editor accepts; use VTT for web playback. TSV / TXT / JSON / Markdown are also available - six formats in total.",
+      "tipTitle": "The first run needs one network connection",
+      "tipText": "The first transcription downloads the model weights for your chosen tier (via the hf-mirror.com mirror in China). Once cached, transcription, diffing, local proofreading and export all work offline.",
+      "s3Title": "Online link: skip the full download",
+      "s3Lead": "Paste a public video link and the app first parses the title, duration and available resolutions, then lets you choose:",
+      "s3AudioLabel": "Transcribe audio",
+      "s3AudioText": "Fetches only the audio track - usually a fraction of the full video's size - and feeds it straight into transcription.",
+      "s3VideoLabel": "Download video",
+      "s3VideoText": "Merges picture and audio into an mp4 at your chosen resolution and saves it locally - for when you need to archive the footage.",
+      "s3Note1": "The yt-dlp parser is bundled in the installer - nothing to install yourself. On macOS the first use triggers a one-time \"wants to modify apps on your Mac\" authorization; click Allow (once per Mac). It is only used to open the page you pasted and **never reads your browser's logins, passwords or bookmarks**.",
+      "warnTitle": "The limits of link transcription",
+      "warnText": "Videos behind a login or membership cannot be fetched, and live streams are rejected outright; some sites use hotlink protection - if a link fails, upload a local file instead. Only download content you have the rights to use; site terms and copyright are yours to judge.",
+      "s4Title": "Before export: proofread first",
+      "s4Lead": "Do not trust recognition output as-is - especially for broadcast captions. Vv Transcribe proofreads in two layers, and neither edits your text directly:",
+      "s4LocalTitle": "Local proofreading (Chinese audio, zero setup)",
+      "s4LocalDesc": "Fixes segments against a built-in homophone table (e.g. a commonly misheard word mapped to the right one), then checks a built-in Chinese dictionary for word-sense hints. No network, no tokens.",
+      "s4AiTitle": "AI proofreading (context-aware)",
+      "s4AiDesc": "Calls the third-party model you configured in Settings to analyze each sentence, flag suspicious spots and explain them. Needs network and costs a small number of tokens.",
+      "s4Ref": "If you have a broadcast script or reference, upload it first (TXT / Markdown / SRT / DOCX / PDF): the transcript is diffed against it character by character with differences highlighted - the last gate before air.",
+      "s4NoteTitle": "Proofreading only suggests",
+      "s4NoteText": "Both layers only flag differences and explain them; every change takes effect only when you click Accept. Typos in the reference itself are flagged too, for you to judge.",
+      "s5Title": "Batch and automation: the vv command line",
+      "s5Lead": "The same engine has a command-line entry (macOS only for now): turn on the local agent switch under Settings - About & updates and save. The app listens only on 127.0.0.1 on this machine - nothing else on your network can reach it.",
+      "s5Cmd1Desc": "One command to subtitles:",
+      "s5Cmd2Desc": "Run a broadcast-rules self-check after export:",
+      "s5Note": "API keys are still resolved inside the app only - the command line and MCP clients never see them; vv check is purely local and does not need that switch on.",
+      "faq": {
+        "upload": {
+          "q": "Is my video uploaded to a server?",
+          "a": "No. In local mode, transcription, diffing, local proofreading and export all happen on this computer; no file is uploaded to any server. Network is needed only for the first model download and for cloud features you explicitly use, such as AI proofreading."
+        },
+        "free": {
+          "q": "Does it cost money to make subtitles?",
+          "a": "The app is free and local transcription costs nothing. AI proofreading calls the third-party API you configured yourself and costs a small number of tokens; if you don't use it, you don't pay."
+        },
+        "accuracy": {
+          "q": "What accuracy can I expect?",
+          "a": "Accuracy depends heavily on audio quality, accents and proper-noun density, so we don't publish percentages we haven't measured. For broadcast captions, always double-check with reference-script diffing plus proofreading - never trust recognition output directly."
+        },
+        "lang": {
+          "q": "Which languages are supported?",
+          "a": "Twelve: Chinese (Mandarin), English, Japanese, Korean, Thai, Vietnamese, Indonesian, French, German, Spanish, Russian and Arabic. You must pick one explicitly in Settings - there is no auto-detect, which often picks the wrong language for heavily accented or mixed-language audio."
+        }
+      }
+    },
+    "srt": {
+      "title": "SRT proofreading and timeline editing: a practical guide",
+      "lead": "Wrong words, drifting timing, bad segmentation - each of the three classic subtitle problems has its own fix: reference-script diffing, whole-track shift and per-segment start/end, split/merge/delete. Everything is a suggestion; you decide what changes.",
+      "s1Title": "Understand SRT in 60 seconds",
+      "s1Lead": "SRT is plain text: an index number, a line of start/end timecodes, one or more lines of subtitle text, and a blank line between segments. Timecodes are millisecond-precise and use a comma - the easiest difference to trip over versus VTT (which uses a dot).",
+      "sample1": "Good evening, and welcome to tonight's program.",
+      "sample2": "Today we are talking about subtitle production.",
+      "s1Note": "Two things go wrong when editing SRT by hand: broken timecode formats (players reject the whole segment) and text drifting out of sync with the picture. The fixes below avoid handwriting entirely - edit in the app and let it guarantee the format on export.",
+      "s2Title": "Three problems, three fixes",
+      "prob1Title": "Wrong words",
+      "prob1Desc": "Homophones and proper nouns misrecognized. Fix with proofreading: reference diffing + local / AI proofreading.",
+      "prob2Title": "Drifting timing",
+      "prob2Desc": "The whole track runs early or late, or a single segment lands off. Fix with timeline shift and per-segment start/end editing.",
+      "prob3Title": "Bad segmentation",
+      "prob3Desc": "One line too long to read, or two lines that belong together. Fix with split, merge and delete.",
+      "s3Title": "Text proofreading: let differences surface themselves",
+      "s3RefLabel": "Reference diffing:",
+      "s3RefText": "Upload a broadcast script or reference (TXT / Markdown / SRT / DOCX / PDF); the transcript is compared against it character by character with differences highlighted. One reference at a time - clear it before swapping.",
+      "s3LocalLabel": "Local proofreading:",
+      "s3LocalText": "Zero setup for Chinese audio: homophone-table fixes plus Chinese-dictionary word-sense hints, fully offline. For other languages use AI proofreading.",
+      "s3AiLabel": "AI proofreading:",
+      "s3AiText": "With a reference, it explains each difference against the reference; without one, it reads the full text and flags suspicious spots. Every change applies only when you click Accept.",
+      "s4Title": "Timing: whole track first, then single segments",
+      "s4ShiftLabel": "Shift the whole track (timeline offset)",
+      "s4ShiftText": "Click Timeline offset in the toolbar above the segment list, enter seconds and apply: **positive moves later, negative moves earlier**. All segments move at once and the gaps between them stay unchanged. Moving earlier has a floor - the earliest segment cannot be pushed before 0; if you overshoot, enter the opposite number to return exactly.",
+      "s4Example": "Example: subtitles run 2 seconds early compared to the picture, enter **2** as the offset; a silent intro was added and subtitles must follow later, enter a positive number of seconds.",
+      "s4SingleLabel": "Fix a single segment",
+      "s4SingleText": "Double-click the time cell at the start of a row to expand Start (s) and End (s) fields; only Save applies the change (Esc or Cancel discards it). The right-click menu also has Set start/end to playhead, which writes the player's current position straight into the start or end - two fewer keystrokes when aligning to a cue.",
+      "s4TipTitle": "Time only, never text",
+      "s4TipText": "Whole-track shift and per-segment start/end only change timecodes; not a single character of subtitle text changes, and the gaps between segments are preserved through a shift.",
+      "s5Title": "Segmentation: split, merge, delete",
+      "s5Lead": "Right-click any segment - all three live in the same menu (since v1.1.5). They change the number of segments, never invent words: the full text is always the rows' text joined as-is.",
+      "s5SplitLabel": "Split at the cursor:",
+      "s5SplitText": "Cuts at the cursor position you placed in the text; the original duration is apportioned between the two halves by character count. The result reports both segments' start/end; if the sentence is so short that a half would get less than 1 millisecond, the split is refused on the spot.",
+      "s5MergeLabel": "Merge with next:",
+      "s5MergeText": "Merges only with the segment below: text is joined as-is (no spaces added or trimmed) and the gap between them counts into the merged duration. To merge with the one above, right-click that row instead.",
+      "s5DeleteLabel": "Delete this segment:",
+      "s5DeleteText": "Removes only this row; the following rows do not shift forward. It is the only one of the three that asks for confirmation. The last remaining segment cannot be deleted.",
+      "s5WarnTitle": "Split / merge / delete have no undo",
+      "s5WarnText": "A timeline shift can be reversed exactly with the opposite number, and per-segment edits can be cancelled before saving; but split, merge and delete currently offer no undo - read the confirmation dialog before deleting.",
+      "s6Title": "Export and acceptance",
+      "s6Lead": "When you are done, click Export: SRT for editors, VTT for the web and YouTube, plus TSV / TXT / JSON / Markdown. Before air you can also run a rules self-check from the command line (purely local, the app does not need to be running):",
+      "s6Note": "vv check inspects the subtitle file itself against the chosen preset (e.g. the broadcast-cn broadcast preset) and reports every violation one by one.",
+      "faq": {
+        "vtt": {
+          "q": "SRT or VTT - which should I pick?",
+          "a": "SRT for editing software; VTT for web players and YouTube. The app exports both with identical content - the only differences are timecode notation (SRT separates milliseconds with a comma, VTT with a dot) and the file header."
+        },
+        "external": {
+          "q": "Can I open an SRT made by other software and edit it?",
+          "a": "Timeline editing works on the app's own transcription results. An external SRT can currently be uploaded as a reference and diffed against the transcript character by character, but it cannot be imported directly as editable segments."
+        },
+        "precision": {
+          "q": "How precise is the timeline?",
+          "a": "Milliseconds. SRT timecodes are millisecond-level by definition; when splitting, if either half would receive less than 1 millisecond the operation is refused, so an illegal timecode is never written."
+        },
+        "text": {
+          "q": "Does editing the timeline change the subtitle text?",
+          "a": "No. Shift and per-segment start/end only change timecodes; split / merge / delete only change segment count and boundaries - the text is always joined as-is, not a character added or removed."
+        }
+      }
+    },
+    "podcast": {
+      "title": "Podcast transcription: turn an episode into a searchable, reusable transcript",
+      "lead": "A 60-minute podcast transcribes locally in minutes and costs nothing. This guide covers turning audio into a timestamped transcript, then into show notes, articles and a searchable archive.",
+      "s1Title": "Why transcribe a podcast at all",
+      "value1Title": "Searchable",
+      "value1Desc": "You cannot search audio; you can search text. A timestamped transcript lets you jump from a keyword back to the exact minute and sentence.",
+      "value2Title": "Show-notes draft",
+      "value2Desc": "Episode summaries, timestamped chapters, quotable lines - all pulled from the full text instead of re-listening to the whole episode.",
+      "value3Title": "Repurposing",
+      "value3Desc": "Blog posts, newsletters, short-video scripts: one transcript, many uses - your content compounds.",
+      "value4Title": "Discoverable by search engines",
+      "value4Desc": "A text version can be indexed, so listeners searching the topic find your show - something the audio file itself can never do.",
+      "s2Title": "Transcribe an episode",
+      "s2Step1": "**Import the audio**: common formats like MP3 / M4A / WAV / FLAC drag straight into the window.",
+      "s2Step2": "**Pick the language**: explicitly choose the dominant language in Settings (12 available). For mixed Chinese-English shows pick whichever dominates - there is no auto-detect.",
+      "s2Step3": "**Pick a tier and run**: start with Fast to get through the episode; re-run on Accurate when proper nouns are dense or accents are heavy. Sentences appear as they are recognized and you can cancel at any time.",
+      "s2SpeedTitle": "How long does it take? (measured on our machine)",
+      "s2SpeedText": "Per minute of audio: about **5-9 seconds** on Fast, about **15-17 seconds** on Accurate. A 60-minute episode finishes in roughly **5-9 minutes** on Fast - depending on your CPU. The first run adds model download time; afterwards it works offline.",
+      "s3Title": "Proper nouns and guest names: prepare a reference first",
+      "s3Lead": "The things podcasts get wrong most are names, brands and show jargon. Two minutes preparing a reference before you start saves far more than fixing sentences afterwards:",
+      "s3Point1": "Collect the guest list, episode outline, brand and product names into one TXT file;",
+      "s3Point2": "After transcription, click Upload reference and pick it - the transcript is diffed against the reference character by character with differences highlighted;",
+      "s3Point3": "Then run proofreading: local proofreading catches homophones in Chinese shows, or AI proofreading explains each difference in context - accepting is always your call.",
+      "s4Title": "Reusing the transcript",
+      "s4Lead": "Pick the export format by purpose - one transcription, many artifacts:",
+      "fmtTxt": "TXT",
+      "fmtTxtDesc": "Plain text, ready to rewrite into an article or show notes.",
+      "fmtMd": "Markdown",
+      "fmtMdDesc": "A timestamped transcript, good for archiving, review and publishing a text version.",
+      "fmtJson": "JSON",
+      "fmtJsonDesc": "Keeps the timeline and per-sentence structure for automation pipelines or a searchable database.",
+      "fmtTsv": "TSV",
+      "fmtTsvDesc": "One sentence per row with timecodes - easy to filter and analyze in spreadsheet software.",
+      "s4History": "The app also records metadata for every job automatically (time, model, segment count, duration); transcript text is not persisted by default - check Keep transcript for long-term storage. For a text version you want to archive, remember to export a file.",
+      "s5Title": "Privacy and cost",
+      "s5LocalTitle": "Footage never leaves your machine",
+      "s5Local": "Unreleased episode audio stays on your machine: in local mode, transcription, diffing and local proofreading work fully offline and no file is uploaded to any server.",
+      "s5CostTitle": "Local is free",
+      "s5Cost": "Local transcription is free. Only AI proofreading calls the third-party API you configured yourself, at a small token cost; if you don't use it, you don't pay.",
+      "faq": {
+        "speakers": {
+          "q": "Can it tell different speakers apart?",
+          "a": "Speaker diarization is not supported for now: the transcript presents sentences in time order without labeling who said what. For multi-host shows, use the reference and proofreading to sort out attribution, then add speaker labels in the exported text."
+        },
+        "mixed": {
+          "q": "What about a podcast that mixes Chinese and English?",
+          "a": "Pick whichever language dominates as the transcription language. There is no auto-detect - it often picks the wrong language for heavily accented or mixed audio, and a wrong pick turns whole segments into translated text. Leave the mixed parts to AI proofreading."
+        },
+        "long": {
+          "q": "Can it handle a two-hour episode?",
+          "a": "Yes. Runtime grows linearly with audio length (estimate from the measured figures above) and you can cancel at any time; for long episodes, run Fast first to gauge overall quality, then decide whether to re-run on Accurate."
+        },
+        "free": {
+          "q": "Does podcast transcription cost money?",
+          "a": "Local transcription is free with no per-minute billing. AI proofreading uses the API you configured yourself at a small token cost."
+        }
       }
     }
   },

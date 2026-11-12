@@ -49,7 +49,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      routes: ['/en', '/en/docs', '/en/privacy'],
+      routes: ['/en', '/en/docs', '/en/privacy', '/en/guides', '/en/guides/video-to-subtitles', '/en/guides/srt-editing', '/en/guides/podcast-transcription'],
     },
   },
   runtimeConfig: {

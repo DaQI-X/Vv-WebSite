@@ -10,6 +10,7 @@
         <a :href="homeHash('how-it-works')" class="text-sm text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">{{ t('nav.flow') }}</a>
         <a :href="homeHash('use-cases')" class="text-sm text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">{{ t('nav.scenes') }}</a>
         <NuxtLink :to="localePath('/docs')" class="text-sm text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">{{ t('nav.docs') }}</NuxtLink>
+        <NuxtLink :to="localePath('/guides')" class="text-sm text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors">{{ t('nav.guides') }}</NuxtLink>
         <NuxtLink
           :to="switchLocalePath(otherLocale)"
           class="text-sm text-gray-600 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
@@ -44,6 +45,7 @@
       <a :href="homeHash('how-it-works')" class="block text-sm text-gray-600 dark:text-gray-300" @click="mobileMenuOpen = false">{{ t('nav.flow') }}</a>
       <a :href="homeHash('use-cases')" class="block text-sm text-gray-600 dark:text-gray-300" @click="mobileMenuOpen = false">{{ t('nav.scenes') }}</a>
       <NuxtLink :to="localePath('/docs')" class="block text-sm text-gray-600 dark:text-gray-300" @click="mobileMenuOpen = false">{{ t('nav.docs') }}</NuxtLink>
+      <NuxtLink :to="localePath('/guides')" class="block text-sm text-gray-600 dark:text-gray-300" @click="mobileMenuOpen = false">{{ t('nav.guides') }}</NuxtLink>
       <a :href="homeHash('download')" class="btn-primary !py-2 !px-5 !text-sm w-full text-center" @click="mobileMenuOpen = false">{{ t('nav.download') }}</a>
     </div>
   </header>

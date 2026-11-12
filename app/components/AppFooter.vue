@@ -12,6 +12,7 @@
           <a :href="homeHash('how-it-works')" class="hover:text-white transition-colors">{{ t('footer.flow') }}</a>
           <a :href="homeHash('use-cases')" class="hover:text-white transition-colors">{{ t('footer.scenes') }}</a>
           <NuxtLink :to="localePath('/docs')" class="hover:text-white transition-colors">{{ t('footer.docs') }}</NuxtLink>
+          <NuxtLink :to="localePath('/guides')" class="hover:text-white transition-colors">{{ t('footer.guides') }}</NuxtLink>
           <NuxtLink :to="localePath('/privacy')" class="hover:text-white transition-colors">{{ t('nav.privacy') }}</NuxtLink>
           <a :href="homeHash('download')" class="hover:text-white transition-colors">{{ t('footer.download') }}</a>
           <a :href="`mailto:${config.public.contactEmail}`" class="hover:text-white transition-colors">{{ t('footer.contact') }}</a>
