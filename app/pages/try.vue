@@ -47,15 +47,19 @@
           <div class="mt-5 flex flex-wrap items-end gap-4">
             <div>
               <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2" for="try-lang">{{ t('try.language') }}</label>
-              <select
-                id="try-lang"
-                v-model="lang"
-                :disabled="busy"
-                class="rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm text-gray-900 dark:text-white"
-              >
-                <option value="zh">{{ t('try.langZh') }}</option>
-                <option value="en">{{ t('try.langEn') }}</option>
-              </select>
+              <div class="relative">
+                <select
+                  id="try-lang"
+                  v-model="lang"
+                  :disabled="busy"
+                  class="appearance-none rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 pl-3 pr-9 py-2 text-sm text-gray-900 dark:text-white"
+                >
+                  <option value="zh">{{ t('try.langZh') }}</option>
+                  <option value="en">{{ t('try.langEn') }}</option>
+                </select>
+                <!-- 原生箭头贴右边框且不受 padding 控制，改自绘箭头定位 -->
+                <svg class="pointer-events-none absolute right-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
+              </div>
             </div>
             <button
               type="button"
