@@ -2,6 +2,7 @@
 // 模型资产由 Service Worker 拼块 + Cache Storage 供给（见 scripts/try-sw.js）；
 // 解码参数与单线程配置来自 M0 spike 实测（RTF 0.27–0.38、复读=0 的那组）。
 type TryStage = 'idle' | 'decode' | 'sw' | 'model' | 'run' | 'done' | 'error';
+export interface TrySegment { start: number; end: number; text: string }
 
 const MODEL_ID = 'onnx-community/whisper-base';
 
@@ -14,7 +15,7 @@ export const useTryAsr = () => {
   const liveChars = ref(0);
   const dlLoaded = ref(0);
   const dlTotal = ref(0);
-  const resultText = ref('');
+  const segments = ref<TrySegment[]>([]);
   const isMobile = ref(false);
   // SSG 的 HTML 按桌面 UA 生成；UA 判定必须等 hydration 之后，否则真手机打开必报 mismatch
   if (import.meta.client) onMounted(() => { isMobile.value = /Android|iPhone|iPad|Mobi/i.test(navigator.userAgent); });
@@ -52,7 +53,7 @@ export const useTryAsr = () => {
     cancelled = false;
     errorKey.value = '';
     errorDetail.value = '';
-    resultText.value = '';
+    segments.value = [];
     liveChars.value = 0;
     runMs.value = 0;
     dlByRel.clear();
@@ -115,11 +116,13 @@ export const useTryAsr = () => {
         chunk_length_s: 30,
         stride_length_s: 5,
         no_repeat_ngram_size: 3,
-        repetition_penalty: 1.2,
+        // 1.2 实测在 whisper-base wasm 上压掉整句甚至早停（中英、有无时间戳都受害）；防复读只靠 ngram
+        repetition_penalty: 1.0,
+        return_timestamps: true,
         streamer,
       });
       runMs.value = Math.round(performance.now() - t0);
-      resultText.value = out.text;
+      segments.value = toSegments(out, audioSec.value);
       stage.value = 'done';
     } catch (e) {
       if (String((e as Error)?.message || e).includes('VV_CANCEL')) stage.value = 'idle';
@@ -136,8 +139,28 @@ export const useTryAsr = () => {
     stage.value = 'idle';
     errorKey.value = '';
     errorDetail.value = '';
-    resultText.value = '';
+    segments.value = [];
   };
 
-  return { stage, busy, errorKey, errorDetail, audioSec, runMs, liveChars, dlLoaded, dlTotal, resultText, capSec, isMobile, start, cancel, reset };
+  return { stage, busy, errorKey, errorDetail, audioSec, runMs, liveChars, dlLoaded, dlTotal, segments, capSec, isMobile, start, cancel, reset };
 };
+
+// whisper 的 chunk 时间戳在边界处可能缺 end（null）；用前一段 end / 音频总长兜底，
+// 保证 SRT 的时间轴单调且不超过音频本身。
+function toSegments(out: any, audioSec: number): TrySegment[] {
+  const chunks: any[] = Array.isArray(out?.chunks) ? out.chunks : [];
+  if (!chunks.length) return [{ start: 0, end: audioSec, text: String(out?.text ?? '').trim() }];
+  const segs: TrySegment[] = [];
+  let prevEnd = 0;
+  for (const c of chunks) {
+    const text = String(c?.text ?? '').trim();
+    if (!text) continue;
+    const ts = c?.timestamp ?? [];
+    const start = typeof ts[0] === 'number' ? ts[0] : prevEnd;
+    let end = typeof ts[1] === 'number' ? ts[1] : audioSec;
+    if (end < start) end = start;
+    segs.push({ start, end, text });
+    prevEnd = end;
+  }
+  return segs.length ? segs : [{ start: 0, end: audioSec, text: String(out?.text ?? '').trim() }];
+}

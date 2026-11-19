@@ -100,13 +100,36 @@
               <h2 class="text-lg font-bold text-gray-900 dark:text-white">{{ t('try.resultTitle') }}</h2>
               <p class="text-xs text-gray-500 dark:text-gray-400">{{ t('try.resultStats', { sec: audioSec.toFixed(1), ms: (runMs / 1000).toFixed(1), rtf: (runMs / 1000 / audioSec).toFixed(2) }) }}</p>
             </div>
-            <textarea
-              readonly
-              rows="10"
-              class="w-full rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 p-4 text-sm leading-relaxed text-gray-800 dark:text-gray-200 focus:outline-none"
-              :value="resultText"
-            />
-            <button type="button" class="mt-4 text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline" @click="reset">{{ t('try.again') }}</button>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mb-3">{{ t('try.editHint') }}</p>
+            <div class="space-y-3">
+              <div v-for="(seg, i) in segments" :key="i" class="rounded-lg border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950 p-3">
+                <p class="text-xs font-mono text-gray-400 dark:text-gray-500 mb-1">{{ clock(seg.start) }} → {{ clock(seg.end) }}</p>
+                <textarea
+                  v-model="seg.text"
+                  rows="2"
+                  class="w-full bg-transparent text-sm leading-relaxed text-gray-800 dark:text-gray-200 focus:outline-none resize-y"
+                />
+              </div>
+            </div>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                class="inline-flex items-center gap-2 rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                @click="exportAs('srt')"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v12m0 0l-4-4m4 4l4-4" /></svg>
+                {{ t('try.exportSrt') }}
+              </button>
+              <button
+                type="button"
+                class="inline-flex items-center gap-2 rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-2 text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                @click="exportAs('txt')"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 4v12m0 0l-4-4m4 4l4-4" /></svg>
+                {{ t('try.exportTxt') }}
+              </button>
+              <button type="button" class="text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline" @click="reset">{{ t('try.again') }}</button>
+            </div>
           </div>
 
           <div class="rounded-xl bg-gradient-to-br from-brand-600 to-brand-800 p-6 text-white">
@@ -123,11 +146,35 @@
 <script setup lang="ts">
 const { t, locale } = useI18n();
 const localePath = useLocalePath();
-const { stage, busy, errorKey, errorDetail, audioSec, runMs, liveChars, dlLoaded, dlTotal, resultText, isMobile, start, cancel, reset } = useTryAsr();
+const { stage, busy, errorKey, errorDetail, audioSec, runMs, liveChars, dlLoaded, dlTotal, segments, isMobile, start, cancel, reset } = useTryAsr();
 
 const file = ref<File | null>(null);
 const lang = ref<'zh' | 'en'>(locale.value === 'en' ? 'en' : 'zh');
 const mb = (b: number) => (b / 1048576).toFixed(1);
+const clock = (s: number) => {
+  const m = Math.floor(s / 60);
+  return `${String(m).padStart(2, '0')}:${(s % 60).toFixed(1).padStart(4, '0')}`;
+};
+const srtClock = (s: number) => {
+  const ms = Math.max(0, Math.round(s * 1000));
+  const h = Math.floor(ms / 3600000);
+  const m = Math.floor((ms % 3600000) / 60000);
+  const sec = Math.floor((ms % 60000) / 1000);
+  return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')},${String(ms % 1000).padStart(3, '0')}`;
+};
+const exportAs = (kind: 'srt' | 'txt') => {
+  const segs = segments.value.map((s) => ({ ...s, text: s.text.trim() })).filter((s) => s.text);
+  const content = kind === 'srt'
+    ? segs.map((s, i) => `${i + 1}\n${srtClock(s.start)} --> ${srtClock(s.end)}\n${s.text}\n`).join('\n')
+    : segs.map((s) => s.text).join('\n');
+  const base = (file.value?.name || 'transcript').replace(/\.[^.]+$/, '') || 'transcript';
+  const url = URL.createObjectURL(new Blob([content], { type: kind === 'srt' ? 'application/x-subrip' : 'text/plain' }));
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${base}.${kind}`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+};
 
 const onFile = (e: Event) => {
   const input = e.target as HTMLInputElement;

@@ -37,7 +37,7 @@
     },
     "try": {
       "title": "Try online: audio to text in your browser - Vv Transcribe",
-      "description": "No-install online trial: audio is transcribed locally inside your browser and never uploaded. Chinese and English, clips up to 3 minutes; use the desktop app for export and proofreading.",
+      "description": "No-install online trial: audio is transcribed locally inside your browser and never uploaded. Chinese and English, clips up to 3 minutes, editable with SRT / TXT export; use the desktop app for proofreading and more formats.",
       "keywords": "online transcription,audio to text,browser transcription,free trial,Whisper online"
     }
   },
@@ -820,8 +820,8 @@
   },
   "try": {
     "title": "Try online: audio to text",
-    "lead": "No install, no sign-up: pick an audio clip and get text, entirely inside your browser. The first run downloads a ~102 MB model; later runs use the local cache.",
-    "quality": "This is an online preview: accuracy is below the desktop app (homophone errors, dropped phrases, and Traditional Chinese output are possible). For broadcast-grade accuracy, proofreading and export, use the desktop app.",
+    "lead": "No install, no sign-up: pick an audio clip and get text, entirely inside your browser. The first run downloads a ~102 MiB model; later runs use the local cache.",
+    "quality": "This is an online preview: accuracy is below the desktop app (homophone errors, dropped phrases, and Traditional Chinese output are possible). Text is editable and exportable as SRT / TXT; for broadcast-grade accuracy and proofreading, use the desktop app.",
     "privacy": "Audio and transcription stay inside your browser; nothing is uploaded to any server. Model files are only downloaded to your local cache.",
     "capDesktop": "One clip up to 3 minutes; for longer material use the desktop app (no length limit).",
     "capMobile": "On mobile, one clip up to 1 minute; for longer or more reliable runs use the desktop app.",
@@ -840,6 +840,9 @@
     "runNote": "Transcription runs in a background worker so the page stays responsive; cancel stops it within about 1–2 seconds.",
     "resultTitle": "Transcript (preview)",
     "resultStats": "audio {sec}s · took {ms}s · RTF {rtf}",
+    "editHint": "Click any segment's text to edit it; exports use your edited text.",
+    "exportSrt": "Export SRT",
+    "exportTxt": "Export TXT",
     "again": "Transcribe another clip",
     "ctaTitle": "Need broadcast-grade accuracy?",
     "ctaText": "The desktop app has no length limit and adds reference-script comparison, local and AI proofreading, and six subtitle export formats — still local, still no uploads.",
