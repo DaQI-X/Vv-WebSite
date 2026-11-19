@@ -22,7 +22,7 @@
         {{ t('hero.subtitleTail') }}
       </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
         <a :href="homeHash('download')" class="btn-primary text-lg px-10 py-4">
           <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -31,6 +31,10 @@
         </a>
         <a :href="homeHash('features')" class="btn-secondary text-lg px-10 py-4">{{ t('hero.learnMore') }}</a>
       </div>
+
+      <p class="mb-16 text-sm text-gray-500 dark:text-gray-400">
+        <NuxtLink :to="localePath('/try')" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">{{ t('hero.tryOnline') }}</NuxtLink>
+      </p>
 
       <div class="relative max-w-4xl mx-auto">
         <div class="bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm rounded-2xl border border-brand-100 dark:border-gray-800 shadow-xl shadow-brand-100/20 dark:shadow-black/20 p-6 md:p-8">

@@ -138,6 +138,8 @@
             <NuxtLink :to="localePath('/') + '#download'" class="inline-block rounded-lg bg-white px-6 py-2.5 text-sm font-semibold text-brand-700 hover:bg-brand-50 transition-colors">{{ t('try.ctaButton') }}</NuxtLink>
           </div>
         </div>
+
+        <AdSlot name="tryBottom" />
       </div>
     </div>
   </div>

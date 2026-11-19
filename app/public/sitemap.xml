@@ -36,6 +36,11 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://vvscribe.com/try/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://vvscribe.com/en/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -69,5 +74,10 @@
     <loc>https://vvscribe.com/en/privacy/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://vvscribe.com/en/try/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
