@@ -49,7 +49,20 @@ export default defineNuxtConfig({
   },
   nitro: {
     prerender: {
-      routes: ['/en', '/en/docs', '/en/privacy', '/en/guides', '/en/guides/video-to-subtitles', '/en/guides/srt-editing', '/en/guides/podcast-transcription'],
+      routes: ['/try', '/en/try', '/en', '/en/docs', '/en/privacy', '/en/guides', '/en/guides/video-to-subtitles', '/en/guides/srt-editing', '/en/guides/podcast-transcription'],
+    },
+  },
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          // ort 的 proxy worker 拿 ort 所在模块的 import.meta.url 当 worker 脚本；引擎混进页面 chunk
+          // 会让 worker 连 Nuxt runtime 一起加载并死在顶层 document 引用上。隔离成无 DOM 引用的纯库 chunk。
+          manualChunks(id) {
+            if (id.includes('node_modules') && (id.includes('@huggingface/transformers') || id.includes('onnxruntime'))) return 'try-engine';
+          },
+        },
+      },
     },
   },
   runtimeConfig: {

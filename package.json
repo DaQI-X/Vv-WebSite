@@ -5,11 +5,13 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "nuxt generate && node scripts/prune-ort-wasm.mjs",
     "preview": "nuxt preview",
+    "try:models": "node scripts/fetch-try-models.mjs",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@huggingface/transformers": "4.3.2",
     "nuxt": "^3.16.0",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"

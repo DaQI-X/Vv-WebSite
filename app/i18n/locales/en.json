@@ -34,6 +34,11 @@
     "privacy": {
       "title": "Privacy Policy - Vv Transcribe",
       "description": "Vv Transcribe privacy policy: in local mode all transcription and comparison runs on your machine and no file is uploaded. Data leaves your device only after you configure a third-party API yourself."
+    },
+    "try": {
+      "title": "Try online: audio to text in your browser - Vv Transcribe",
+      "description": "No-install online trial: audio is transcribed locally inside your browser and never uploaded. Chinese and English, clips up to 3 minutes; use the desktop app for export and proofreading.",
+      "keywords": "online transcription,audio to text,browser transcription,free trial,Whisper online"
     }
   },
   "common": {
@@ -812,5 +817,36 @@
     "errorDesc": "Please try again later.",
     "backHome": "Back to home",
     "openDocs": "Read the documentation"
+  },
+  "try": {
+    "title": "Try online: audio to text",
+    "lead": "No install, no sign-up: pick an audio clip and get text, entirely inside your browser. The first run downloads a ~102 MB model; later runs use the local cache.",
+    "quality": "This is an online preview: accuracy is below the desktop app (homophone errors, dropped phrases, and Traditional Chinese output are possible). For broadcast-grade accuracy, proofreading and export, use the desktop app.",
+    "privacy": "Audio and transcription stay inside your browser; nothing is uploaded to any server. Model files are only downloaded to your local cache.",
+    "capDesktop": "One clip up to 3 minutes; for longer material use the desktop app (no length limit).",
+    "capMobile": "On mobile, one clip up to 1 minute; for longer or more reliable runs use the desktop app.",
+    "mobileWarn": "Mobile devices have limited memory and the tab may crash during transcription; a computer is recommended for this page.",
+    "upload": "Choose an audio file",
+    "uploadHint": "Common formats supported: mp3 / wav / m4a / aac / flac / ogg",
+    "language": "Language",
+    "langZh": "Chinese",
+    "langEn": "English",
+    "start": "Transcribe",
+    "cancel": "Cancel",
+    "stageDecode": "Decoding audio…",
+    "stageSw": "Preparing the local model cache…",
+    "stageModel": "Downloading model {mb} / {total} MiB (first run only, cached afterwards)",
+    "stageRun": "Transcribing… {n} characters so far",
+    "runNote": "Transcription runs in a background worker so the page stays responsive; cancel stops it within about 1–2 seconds.",
+    "resultTitle": "Transcript (preview)",
+    "resultStats": "audio {sec}s · took {ms}s · RTF {rtf}",
+    "again": "Transcribe another clip",
+    "ctaTitle": "Need broadcast-grade accuracy?",
+    "ctaText": "The desktop app has no length limit and adds reference-script comparison, local and AI proofreading, and six subtitle export formats — still local, still no uploads.",
+    "ctaButton": "Download the desktop app free",
+    "errDecode": "Could not decode this audio: try a common format (mp3 / wav / m4a).",
+    "errLong": "Clip exceeds the length cap: trim it, or use the desktop app with no length limit.",
+    "errSw": "Service Worker unsupported or registration failed: use a recent Chrome / Edge / Safari.",
+    "errModel": "Model load or transcription failed: check your network and retry; the desktop app is an alternative."
   }
 }

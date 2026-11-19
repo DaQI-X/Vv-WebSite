@@ -78,6 +78,11 @@ jobs:
             exit 1
           fi
 
+      # /try 在线转写的模型资产（#397 M1）：构建期从 HF 拉取并按 SHA256 校验、切块，
+      # 产物只进部署目录不进 git；缺这一步线上 /try 会 404 模型文件。
+      - name: Fetch /try model assets
+        run: pnpm run try:models
+
       - name: Generate static site
         run: pnpm run generate
 

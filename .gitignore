@@ -5,3 +5,6 @@ dist/
 .env*
 .DS_Store
 *.log
+app/public/try-models/
+scripts/.model-cache/
+app/public/try-sw.js
