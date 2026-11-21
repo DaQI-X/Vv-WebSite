@@ -241,6 +241,8 @@
     "macArmBtn": "Download for macOS (Apple silicon)",
     "macIntelLead": "On an Intel Mac?",
     "macIntelLink": "Download the Intel build (.dmg)",
+    "mirrorToggle": "Download slow? Switch to the fast CN mirror",
+    "mirrorNote": "The mirror is synced byte-for-byte from GitHub Release and ships a SHA256SUMS.txt you can verify against. Same app, same version.",
     "notice": "If the first launch warns that the developer cannot be verified (macOS) or that Windows protected your PC, that is expected — the app is not code-signed yet, nothing about its features or your data is affected, and you only have to do this once. macOS: dismiss the dialog, open **System Settings → Privacy & Security**, click **\"Open Anyway\"** at the very bottom. Windows: click **More info** then **Run anyway**.",
     "noticeLink": "See the full illustrated install guide",
     "statLocal": "Local",

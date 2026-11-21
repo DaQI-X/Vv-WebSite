@@ -83,6 +83,11 @@ export default defineNuxtConfig({
       downloadWinX64: 'https://github.com/DaQI-X/Vv-Transcribe/releases/latest/download/Vv-Transcribe-win-x64.exe',
       downloadMacArm64: 'https://github.com/DaQI-X/Vv-Transcribe/releases/latest/download/Vv-Transcribe-mac-arm64.dmg',
       downloadMacX64: 'https://github.com/DaQI-X/Vv-Transcribe/releases/latest/download/Vv-Transcribe-mac-x64.dmg',
+      /**
+       * 国内高速下载镜像（HF 数据集，发版 CI 逐字节同步自 GitHub Release）。
+       * 文件名与 Release 资产同名；链接钉到 v<appVersion> tag，旧版本永不被后版覆盖。
+       */
+      hfMirrorBase: 'https://hf-mirror.com/datasets/Seven7Q/vv-transcribe-releases/resolve',
     },
   },
   devtools: { enabled: true },

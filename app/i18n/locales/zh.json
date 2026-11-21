@@ -241,6 +241,8 @@
     "macArmBtn": "macOS 版（Apple 芯片）",
     "macIntelLead": "使用 Intel 芯片的 Mac？",
     "macIntelLink": "下载 Intel 版（.dmg）",
+    "mirrorToggle": "下载慢？切换国内高速下载",
+    "mirrorNote": "镜像与 GitHub Release 逐字节同步，附 SHA256SUMS.txt 可自行校验；装哪个版本效果相同。",
     "notice": "首次打开若提示「无法验证开发者」(macOS) 或「Windows 已保护你的电脑」，属正常现象——本应用暂未付费签名，功能与数据安全不受影响，且只需处理一次。macOS：点掉弹窗后打开 **系统设置 → 隐私与安全性**，最下方点 **「仍要打开」**；Windows：点「更多信息」→「仍要运行」。",
     "noticeLink": "看图文完整安装说明",
     "statLocal": "本地",
