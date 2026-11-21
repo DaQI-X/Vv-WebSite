@@ -92,6 +92,9 @@
                     {{ t('docs.install.brewLead') }}<CommandCopy class="mt-1" text="brew tap DaQI-X/tap && brew trust DaQI-X/tap && brew install --cask vv-transcribe" />
                     <span class="block mt-2 text-xs text-gray-500 dark:text-gray-400">{{ t('docs.install.brewNoteLead') }}<CommandCopy text="brew reinstall --cask vv-transcribe" />{{ t('docs.install.brewNoteTail') }}</span>
                   </p>
+                  <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">
+                    {{ t('docs.install.altLead') }}<a :href="githubReleasesUrl" target="_blank" rel="noopener" class="text-brand-600 dark:text-brand-400 hover:underline">{{ t('docs.install.altGithub') }}</a>{{ t('docs.install.altMid') }}<a :href="mirrorDatasetUrl" target="_blank" rel="noopener" class="text-brand-600 dark:text-brand-400 hover:underline">{{ t('docs.install.altMirror') }}</a>{{ t('docs.install.altTail') }}
+                  </p>
                 </div>
               </div>
 
@@ -532,6 +535,12 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const localePath = useLocalePath()
+const config = useRuntimeConfig()
+
+// 手动换源的出口：两个源同名同字节，这里各给到「能找到那一份文件」的那一页。
+// 镜像只给数据集首页：/tree/<tag> 那类子路径 hf-mirror 会回 403 阅读验证，只有文件本身的 resolve 路径与首页稳。
+const githubReleasesUrl = `${config.public.githubRepo}/releases/latest`
+const mirrorDatasetUrl = `${(config.public.hfMirrorBase as string).replace('/resolve', '')}`
 
 useSeoMeta({
   title: () => t('meta.docs.title'),

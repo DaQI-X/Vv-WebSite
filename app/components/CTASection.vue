@@ -34,22 +34,6 @@
         <a :href="macIntelUrl" target="_blank" rel="noopener" class="underline font-medium hover:text-white transition-colors">{{ t('cta.macIntelLink') }}</a>
       </p>
 
-      <div class="flex flex-col items-center gap-2 mb-8">
-        <button
-          type="button"
-          :aria-pressed="mirrorOn"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium border transition-colors"
-          :class="mirrorOn ? 'bg-white text-brand-700 border-white' : 'bg-white/10 text-white border-white/25 hover:bg-white/20'"
-          @click="mirrorOn = !mirrorOn"
-        >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-          {{ t('cta.mirrorToggle') }}
-        </button>
-        <p v-if="mirrorOn" class="text-brand-100 dark:text-brand-300 text-xs">{{ t('cta.mirrorNote') }}</p>
-      </div>
-
       <div class="max-w-xl mx-auto mb-10 px-4 py-3 bg-white/10 border border-white/15 rounded-lg text-brand-100 dark:text-brand-300 text-xs leading-relaxed text-left">
         <RichText :text="t('cta.notice')" strong-class="font-semibold text-white" />
         <a :href="docsInstallPath" class="underline hover:text-white transition-colors">{{ t('cta.noticeLink') }}</a>
@@ -82,7 +66,7 @@
 const config = useRuntimeConfig()
 const { t } = useI18n()
 const localePath = useLocalePath()
-const { winUrl, macArmUrl, macIntelUrl, mirrorOn } = useDownload()
+const { winUrl, macArmUrl, macIntelUrl } = useDownload()
 
 const docsInstallPath = computed(() => `${localePath('/docs')}#install`)
 </script>
