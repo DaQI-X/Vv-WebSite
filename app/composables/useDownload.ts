@@ -1,6 +1,6 @@
 // 模块级：取件源在所有 useDownload 调用方之间共享，探针全程只发一次。
-// 初值为镜像——境内直连 GitHub 是 0 字节，而 hf-mirror.com 两边都连得上，
-// 所以探测还没回来（或干脆没回来）时，用户点到的一定是一个能下载成功的链接。
+// 初值为镜像——境内直连 GitHub 实测只有十几 KB/s，而 hf-mirror.com 两边都连得上、能跑到 2.5MB/s，
+// 所以探测还没回来（或干脆没回来）时，用户点到的一定是一个下载得动的链接。
 const mirrorOn = ref(true)
 let probing = false
 
@@ -39,8 +39,12 @@ export const useDownload = () => {
     macIntel: config.public.downloadMacX64 as string,
   }
   // 镜像与 Release 资产同名，只换基底路径并钉到当前版本 tag。
+  // ?download=true 是 HF 的开关：数据集落在 Xet 后端，镜像只回 302 把字节交给 cas-bridge.xethub.hf.co，
+  // 那条签名 URL 默认带 Content-Disposition: inline（浏览器拿它当页面渲染），加上它才换成 attachment。
+  // 另一个必要条件是「不带 Referer」——hf-mirror 对任何外站 Referer 的 resolve 请求都回一张
+  // 「警告：未授权访问」的 HTML，所以调用方的 <a> 要挂 referrerpolicy="no-referrer"（见 CTASection）。
   const mirrorUrl = (url: string) =>
-    `${config.public.hfMirrorBase}/v${config.public.appVersion}/${url.slice(url.lastIndexOf('/') + 1)}`
+    `${config.public.hfMirrorBase}/v${config.public.appVersion}/${url.slice(url.lastIndexOf('/') + 1)}?download=true`
   const from = (file: keyof typeof github) =>
     computed(() => (mirrorOn.value ? mirrorUrl(github[file]) : github[file]))
 
