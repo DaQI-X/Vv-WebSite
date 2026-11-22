@@ -95,6 +95,14 @@
                   <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">
                     {{ t('docs.install.altLead') }}<a :href="githubReleasesUrl" target="_blank" rel="noopener" class="text-brand-600 dark:text-brand-400 hover:underline">{{ t('docs.install.altGithub') }}</a>{{ t('docs.install.altMid') }}<a :href="mirrorDatasetUrl" target="_blank" rel="noopener" class="text-brand-600 dark:text-brand-400 hover:underline">{{ t('docs.install.altMirror') }}</a>{{ t('docs.install.altTail') }}
                   </p>
+                  <p class="mt-3 text-xs text-gray-500 dark:text-gray-400">
+                    {{ t('docs.install.shaLead') }}
+                    <span class="block mt-1"><CommandCopy text="cd ~/Downloads && grep mac-arm64 SHA256SUMS.txt | shasum -a 256 -c -" /></span>
+                    <span class="block mt-2">{{ t('docs.install.shaMacNote') }}</span>
+                    <span class="block mt-2">{{ t('docs.install.shaWinLead') }}</span>
+                    <span class="block mt-1"><CommandCopy text="Get-FileHash $env:USERPROFILE\Downloads\Vv-Transcribe-win-x64.exe" /></span>
+                    <span class="block mt-2">{{ t('docs.install.shaWinNote') }}</span>
+                  </p>
                 </div>
               </div>
 
