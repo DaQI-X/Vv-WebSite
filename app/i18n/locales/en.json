@@ -311,7 +311,19 @@
       "warn3Label": "If it says the app is damaged and cannot be opened: ",
       "warn3Text": "That comes from the quarantine attribute the download added. Copy the line below into Terminal, press Return (no output means success), then open the app again:",
       "warn4Label": "Windows: ",
-      "warn4Text": "In the blue SmartScreen dialog click More info, then Run anyway."
+      "warn4Text": "In the blue SmartScreen dialog click More info, then Run anyway.",
+      "uninstTitle": "Uninstalling completely: what is left behind",
+      "uninstLead": "Dragging the app to the Trash removes the program only. Your settings, logs, history and the components already downloaded stay where they are, on purpose: reinstall and everything picks up. To leave nothing at all on this machine, there are three more places.",
+      "uninstBrewLabel": "Installed with Homebrew: ",
+      "uninstBrewText": "add --zap and the data goes with the app:",
+      "uninstBrewNote": "That covers the app itself, the data folder, the two network caches the transcription engine leaves, one preference file and a crash report. Model weights and the keychain entry are outside what --zap can reach.",
+      "uninstDirsLabel": "By hand on macOS: ",
+      "uninstDirsText": "Four locations. The first holds settings (API keys, encrypted), logs, history and the engine and models you downloaded; the other three are what the engine leaves behind while talking to the app over localhost:",
+      "uninstCacheLabel": "The local transcription weights are elsewhere: ",
+      "uninstCacheText": "They sit in the shared Hugging Face cache - ~/.cache/huggingface/hub on macOS and Linux, .cache\\huggingface\\hub inside your user folder on Windows - one entry per tier: about 138MB for Fast, about 461MB for Precise. Other software may use that same cache, so delete those two entries rather than the folder, which is exactly what this does:",
+      "uninstKcLabel": "One key stays in the keychain: ",
+      "uninstKcText": "Your API keys are encrypted before they go into the settings file, and the key that unlocks them sits in the login keychain under the service name \"Vv Transcribe Safe Storage\". Neither --zap nor deleting files reaches it, so search for Vv Transcribe in Keychain Access and remove it, or run this:",
+      "uninstKcNote": "If you never entered a key and only work in local mode, this entry was never created. A development build leaves a second one named \"Electron Safe Storage\" - every unpackaged Electron app shares that name, so leave it alone unless you know where it came from."
     },
     "transcribe": {
       "importTitle": "Importing media",

@@ -311,7 +311,19 @@
       "warn3Label": "若提示「应用已损坏，无法打开」：",
       "warn3Text": "这是下载带来的隔离属性造成的，把下面这行复制进「终端」回车执行（没有输出就是成功），再重新打开应用：",
       "warn4Label": "Windows：",
-      "warn4Text": "蓝色的 SmartScreen 弹窗点「更多信息」→「仍要运行」。"
+      "warn4Text": "蓝色的 SmartScreen 弹窗点「更多信息」→「仍要运行」。",
+      "uninstTitle": "想彻底清除：卸载之后本机还留着什么",
+      "uninstLead": "把应用拖进废纸篓只删掉程序本身，您的设置、日志、历史记录与已下载好的组件都留在原地——这是有意的，重装就能接着用。要这台机器上一点都不留，剩下三处按下面走。",
+      "uninstBrewLabel": "用 Homebrew 装的：",
+      "uninstBrewText": "加 --zap，连数据一起清：",
+      "uninstBrewNote": "zap 管到应用本体、下面那份数据目录、转写引擎的两份网络缓存、偏好设置，以及一条崩溃记录；模型权重与钥匙串那两处它碰不到。",
+      "uninstDirsLabel": "macOS 手动删：",
+      "uninstDirsText": "这四处分得很清楚——设置（含加密后的 API Key）、日志、历史记录、按需下载的引擎与模型都在第一处里；后三处只是转写引擎跑过之后留下的网络缓存和一个偏好开关：",
+      "uninstCacheLabel": "本地转写的模型权重不在这几处里：",
+      "uninstCacheText": "它们落在 HuggingFace 的通用缓存目录（macOS 与 Linux 是 ~/.cache/huggingface/hub，Windows 是用户目录下的 .cache\\huggingface\\hub），按档位各一项：「快速」档约 138MB、「精准」档约 461MB。这层目录是通用的，别的程序也可能在用，所以只删这两项、别整包删 ~/.cache/huggingface——下面这条删的正好就是这两项：",
+      "uninstKcLabel": "钥匙串里还留下一把钥匙：",
+      "uninstKcText": "API Key 是加密之后存进设置文件的，解密用的那把钥匙放在登录钥匙串里（服务名「Vv Transcribe Safe Storage」）。删文件和 --zap 都动不到它：要么打开「钥匙串访问」搜 Vv Transcribe 删掉，要么把下面这行复制进「终端」。",
+      "uninstKcNote": "如果从没填过任何 Key、只用本地模式，这条本来就不存在。另外，开发版跑起来会留一条「Electron Safe Storage」——那是所有未打包 Electron 应用共用的名字，除非清楚它的来路，否则别删它。"
     },
     "transcribe": {
       "importTitle": "导入文件",

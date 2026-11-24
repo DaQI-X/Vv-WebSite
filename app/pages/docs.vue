@@ -121,6 +121,31 @@
                   <li><strong>{{ t('docs.install.warn4Label') }}</strong>{{ t('docs.install.warn4Text') }}</li>
                 </ol>
               </div>
+
+              <div class="mt-6 bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
+                <h3 class="font-semibold text-gray-900 dark:text-white mb-3">{{ t('docs.install.uninstTitle') }}</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">{{ t('docs.install.uninstLead') }}</p>
+                <ul class="mt-4 space-y-4 text-sm text-gray-600 dark:text-gray-400">
+                  <li>
+                    <strong class="text-gray-900 dark:text-white">{{ t('docs.install.uninstBrewLabel') }}</strong>{{ t('docs.install.uninstBrewText') }}
+                    <CommandCopy class="mt-1" :text="zapCommand" />
+                    <span class="block mt-1 text-xs text-gray-500 dark:text-gray-400">{{ t('docs.install.uninstBrewNote') }}</span>
+                  </li>
+                  <li>
+                    <strong class="text-gray-900 dark:text-white">{{ t('docs.install.uninstDirsLabel') }}</strong>{{ t('docs.install.uninstDirsText') }}
+                    <CommandCopy class="mt-1" :text="macDataCommand" />
+                  </li>
+                  <li>
+                    <strong class="text-gray-900 dark:text-white">{{ t('docs.install.uninstCacheLabel') }}</strong>{{ t('docs.install.uninstCacheText') }}
+                    <CommandCopy class="mt-1" :text="hfWeightsCommand" />
+                  </li>
+                  <li>
+                    <strong class="text-gray-900 dark:text-white">{{ t('docs.install.uninstKcLabel') }}</strong>{{ t('docs.install.uninstKcText') }}
+                    <CommandCopy class="mt-1" :text="keychainCommand" />
+                    <span class="block mt-1 text-xs text-gray-500 dark:text-gray-400">{{ t('docs.install.uninstKcNote') }}</span>
+                  </li>
+                </ul>
+              </div>
             </section>
 
             <section id="transcribe" class="scroll-mt-24">
@@ -563,6 +588,11 @@ const activeSection = ref('overview')
 
 // 命令与扩展名与语言无关
 const xattrCommand = 'xattr -cr "/Applications/Vv Transcribe.app"'
+// 卸载三条：路径来自应用仓库 electron/main/services/userDataDir.ts 与引擎的缓存口径，不是猜的
+const zapCommand = 'brew uninstall --cask vv-transcribe --zap'
+const macDataCommand = 'rm -rf "$HOME/Library/Application Support/Vv Transcribe" "$HOME/Library/Caches/vv-asr-server" "$HOME/Library/HTTPStorages/vv-asr-server" "$HOME/Library/Preferences/com.vv.transcribe.plist"'
+const hfWeightsCommand = 'rm -rf "$HOME/.cache/huggingface/hub/models--Systran--faster-whisper-base" "$HOME/.cache/huggingface/hub/models--Systran--faster-whisper-small"'
+const keychainCommand = 'security delete-generic-password -s "Vv Transcribe Safe Storage"'
 const formats = ['MP4', 'MOV', 'MKV', 'AVI', 'WEBM', 'FLV', 'MP3', 'WAV', 'M4A', 'FLAC', 'OGG', 'WMA']
 const exportFormats = ['srt', 'vtt', 'tsv', 'txt', 'json', 'md']
 // 配音那一节的条目图标：文案在两份语言包的 docs.voice.itemN* 里，这里只保证「有几条、配什么图」
