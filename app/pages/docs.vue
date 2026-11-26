@@ -259,6 +259,10 @@
                     </li>
                     <li class="flex items-start gap-2">
                       <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span><strong>{{ t('docs.transcribe.tierUsageLabel') }}</strong><RichText :text="t('docs.transcribe.tierUsageText')" /></span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <svg class="w-4 h-4 text-brand-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
                       <span><strong>{{ t('docs.transcribe.tierNoteLabel') }}</strong><RichText :text="t('docs.transcribe.tierNoteText')" /></span>
                     </li>
                   </ul>
