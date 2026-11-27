@@ -313,7 +313,9 @@
       "warn4Label": "Windows: ",
       "warn4Text": "In the blue SmartScreen dialog click More info, then Run anyway.",
       "uninstTitle": "Uninstalling completely: what is left behind",
-      "uninstLead": "Dragging the app to the Trash removes the program only. Your settings, logs, history and the components already downloaded stay where they are, on purpose: reinstall and everything picks up. To leave nothing at all on this machine, there are three more places.",
+      "uninstLead": "Dragging the app to the Trash removes the program only. Your settings, logs, history and the components already downloaded stay where they are, on purpose: reinstall and everything picks up. To leave nothing at all on this machine, work through the items below - since 1.2.6 the first few can be cleared from inside the app.",
+      "uninstAppLabel": "Freeing the disk without reinstalling: ",
+      "uninstAppText": "Open Settings → About and updates → Local data and cache and press \"Clear this machine's data…\". It measures eight items on the spot and sorts them into three groups - \"safe to clear, it grows back when needed / deleting means downloading again / deleting loses it for good\" - with only the four pure by-products ticked by default: the clip cache, temporary media, logs and the dictionary update copy. History, settings (including your encrypted API keys) and the components you downloaded are touched only if you tick them yourself, and the dialog is itself the confirmation before that one click. What it cannot reach is the key that unlocks your API keys in the login keychain - that is still the last item below.",
       "uninstBrewLabel": "Installed with Homebrew: ",
       "uninstBrewText": "add --zap and the data goes with the app:",
       "uninstBrewNote": "That covers the app itself, the data folder, the two network caches the transcription engine leaves, one preference file and a crash report. Since 1.2.5 the model weights the app downloads live inside that data folder, so --zap removes them too. What it cannot reach is the keychain entry and - on machines upgraded from an earlier version - the weights the engine used to pull into the shared Hugging Face cache; there is a command below for each.",
@@ -536,6 +538,10 @@
       "appManagement": {
         "q": "My Mac asks \"Vv Transcribe\" wants to modify apps on this Mac. when I transcribe a link - what do I do?",
         "a": "Click Allow… - each Mac only has to do this once. Link transcription launches your local Chrome or Edge to open the page you pasted so the site check can pass, and macOS classifies that as App Management, hence the dialog. After you allow it the system restarts the app; if you denied it earlier, switch Vv Transcribe on under System Settings → Privacy & Security → App Management and restart the app. This step does not read your browser accounts, passwords or history."
+      },
+      "multiInstance": {
+        "q": "Can I run two copies of Vv Transcribe on one computer?",
+        "a": "The windows can, the local engines cannot: one machine gets one of each. Since 1.2.6 a second copy no longer kills the first one's work. Before it reaps whatever answers on an engine port it asks who owns that process tree - it takes it down only when nobody is watching it (a leftover from a copy that was force-quit), and leaves it alone when it is still held by another running instance, or when ownership cannot be determined. So the copy that starts second simply cannot reach the local engine, and says so: \"Another Vv Transcribe is using the local transcription engine on this machine, so this copy cannot reach it. Quit the other copy completely, then press Restart local engine.\" Cloud transcription and cloud voice-over are not affected - both copies can use them at once; if only the local engine is the blocker, switching the second copy to a cloud profile is enough."
       },
       "urlFailed": {
         "q": "Link transcription failed - what now?",

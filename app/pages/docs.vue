@@ -127,6 +127,9 @@
                 <p class="text-sm text-gray-600 dark:text-gray-400">{{ t('docs.install.uninstLead') }}</p>
                 <ul class="mt-4 space-y-4 text-sm text-gray-600 dark:text-gray-400">
                   <li>
+                    <strong class="text-gray-900 dark:text-white">{{ t('docs.install.uninstAppLabel') }}</strong>{{ t('docs.install.uninstAppText') }}
+                  </li>
+                  <li>
                     <strong class="text-gray-900 dark:text-white">{{ t('docs.install.uninstBrewLabel') }}</strong>{{ t('docs.install.uninstBrewText') }}
                     <CommandCopy class="mt-1" :text="zapCommand" />
                     <span class="block mt-1 text-xs text-gray-500 dark:text-gray-400">{{ t('docs.install.uninstBrewNote') }}</span>
@@ -626,7 +629,7 @@ const sections = [
   { id: 'faq', key: 'faq' },
 ]
 
-const faqIds = ['net', 'language', 'engine', 'appManagement', 'urlFailed', 'component', 'ttsVendor', 'voiceClone', 'agentCli', 'tempFiles', 'accuracy', 'security', 'speed', 'feedback', 'ads', 'referenceFormat', 'cancel', 'update', 'slowDownload']
+const faqIds = ['net', 'language', 'engine', 'appManagement', 'multiInstance', 'urlFailed', 'component', 'ttsVendor', 'voiceClone', 'agentCli', 'tempFiles', 'accuracy', 'security', 'speed', 'feedback', 'ads', 'referenceFormat', 'cancel', 'update', 'slowDownload']
 
 onMounted(() => {
   const observer = new IntersectionObserver(
